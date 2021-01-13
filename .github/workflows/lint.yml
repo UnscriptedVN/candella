@@ -1,0 +1,24 @@
+name: Lint Candella Project
+on: [push, pull_request]
+
+jobs:
+  lint:
+    name: Lint Project with SDK
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        renpy-versions:
+          - '7.4.0'
+    steps:
+      - name: Clone source
+        uses: actions/checkout@v1
+        with:
+          fetch-depth: 50    
+      - name: Lint project
+        uses: ProjectAliceDev/renpy-lint-action@v1.1.1
+        with:
+          sdk-version: ${{ matrix.renpy-versions }}
+          project-dir: '.'
+        env:
+          SDL_AUDIODRIVER: dummy
+          SDL_VIDEODRIVER: dummy
