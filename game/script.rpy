@@ -1,12 +1,7 @@
-label before_main_menu:
+label splashscreen:
     $ ASBootloader.boot()
     return
 
-label main_menu:
-    python:
-        ASDesktop.showDesktop()
-    return
-
 label start:
-    $ ASDesktop.showDesktop()
+    $ ASDesktop._callDesktop()
     return
