@@ -23,13 +23,22 @@ define gui.show_name = True
 
 ## The version of the game.
 
-define config.version = "2.0.0"
+define config.version = AS_SYS_INFO["VERSION"] or "2.0.0"
 
 
 ## Text that is placed on the game's about screen. To insert a blank line
 ## between paragraphs, write \n\n.
 
-define gui.about = _("")
+define gui.about = _("""\
+© 2018-2021 Project Alice and Unscripted VN Team.
+\n\n
+Candella is a refreshed fork of the {a=https://aliceos.app}AliceOS{/a} operating environment.
+\n\n
+Running the game as-is will let you demo some of Candella's features, such as the Desktop and 
+userland applications.
+\n\n
+AliceOS/Candella is free and open-source software, licensed under the BSD-2-Clause license.
+""")
 
 
 ## A short name for the game used for executables and directories in the built
