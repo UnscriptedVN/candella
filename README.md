@@ -24,6 +24,10 @@ You can additionally download a release from [the Releases page][releases].
 
 To build this project, clone the repository and in Ren'Py Launcher, click "Distribute" and select "Candella System Distributable". The resulting file will be in a ZIP archive with AliceOSBaseSystem.rpa.
 
+#### Test-drive features
+
+If you want to test out some of the features without building anything, clone the repository and launch the project from the Ren'Py launcher.
+
 ## License
 
 Candella is licensed under the BSD-2-Clause license per the licensing of the original AliceOS project.
