@@ -316,6 +316,10 @@ screen navigation():
 
             textbutton _("Main Menu") action MainMenu()
 
+        textbutton _("Demo Halt") action Call("example_halt")
+        
+        textbutton _("Rerun Setup") action Call("reset")
+        
         textbutton _("About") action ShowMenu("about")
 
         if renpy.variant("pc"):
@@ -392,6 +396,7 @@ style main_menu_vbox:
 
 style main_menu_text:
     properties gui.text_properties("main_menu", accent=True)
+    outlines [(1, "#00000013", 0, 1)]
 
 style main_menu_title:
     properties gui.text_properties("title")
