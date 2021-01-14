@@ -22,7 +22,10 @@ init python:
             - Grabbing icon sizes for an app is handled with a method.
         """
         
-        product_name = "Bundle product name"
+        _warn_text = "\n\nThis app is made for the Candella distribution and may not be compatible with AliceOS."
+        
+        description = ""
+        product_name = ""
         license = "No license provided."
         permissions = []
         
@@ -34,23 +37,44 @@ init python:
             """
             
             # Initialize the AliceOS-compatible app.
-            ASAppRepresentative.__init__(self, app_path)
+            self.bundleDir = app_path
+            
+            self.icons = {
+                16: self.bundleDir + "Resources/Iconset/16.png",
+                24: self.bundleDir + "Resources/Iconset/24.png",
+                32: self.bundleDir + "Resources/Iconset/32.png",
+                48: self.bundleDir + "Resources/Iconset/48.png",
+                64: self.bundleDir + "Resources/Iconset/64.png",
+                128: self.bundleDir + "Resources/Iconset/128.png",
+                256: self.bundleDir + "Resources/Iconset/256.png"
+            }
             
             # Load the manifest, if there is one.
             try:
                 self._initialize_manifest()
-            except FileNotFoundError:
-                print("WARN: Manifest file for this app has not been found.")
+            except Exception as problem:
+                print(
+                    "WARN: A problem occurred when reading the manifest for %s: %s" % (self.__class__.__name__, problem)
+                )
                 
-            self.bundleDescription += "\n This app is made for the Candella distribution and may not be compatible with AliceOS."
-            self.description += "\n This app is made for the Candella distribution and may not be compatible with AliceOS."
+            # Perform the regular AliceOS permission inits if the manifest failed to load.
+            if self.bundleId not in persistent.AS_PERMISSIONS:
+                persistent.AS_PERMISSIONS[self.bundleId] = {}
+            else:
+                for require in self.requires:
+                    if require not in persistent.AS_PERMISSIONS[self.bundleId]:
+                        persistent.AS_PERMISSIONS[self.bundleId][require] = False
+            
+            # Add the compatibility notice to the description of the app.
+            self.bundleDescription += self._warn_text
+            self.description += self._warn_text
         
         def _initialize_manifest(self):
             manifest = {}
-            if not renpy.exists(self.appDirectory + "manifest.json"):
+            if not renpy.exists(self.bundleDir + "manifest.json"):
                 raise FileNotFoundError()
             
-            with renpy.file(self.appDirectory + "manifest.json", 'r') as file:
+            with renpy.file(self.bundleDir + "manifest.json") as file:
                 manifest = json.load(file)
                 
             self.bundleName = self.name = manifest["name"]
@@ -61,14 +85,20 @@ init python:
             self.bundleDescription = self.description = manifest["description"]
             self.license = manifest["license"]
             
+            if self.bundleId in persistent.AS_PERMISSIONS:
+                return
+            
             self.permissions = manifest["permissions"]
-            persistent.AS_PERMISSIONS[self.id] = {}
             for permission in manifest["permissions"]:
                 if permission not in CA_PERMISSIONS:
                     continue
                 permission_data = CA_PERMISSIONS[permission]
                 persistent.AS_PERMISSIONS[self.id][permission_data.key] = permission_data.default_state
-            
+        
+        def get_name(self):
+            """Returns the name of the app, or its bundle name."""
+            return self.product_name or self.bundleName
+                
         def get_app_icon(self, size=16):
             """Returns the path for a given icon size."""
             return self.bundleDir + "Resources/Iconset/%.png" % (size)

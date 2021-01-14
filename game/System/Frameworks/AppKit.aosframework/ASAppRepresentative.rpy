@@ -41,11 +41,7 @@ init python:
             256: bundleDir + "Resources/Iconset/256.png"
         }
 
-        requires = {
-            AS_REQUIRES_NOTIFICATIONKIT,
-            AS_REQUIRES_FULL_DISK_ACCESS,
-            AS_REQUIRES_SYSTEM_EVENTS
-        }
+        requires = {}
 
         # MARK: Initialization
 
@@ -53,20 +49,11 @@ init python:
             """Initialize and create a blank template for permissions."""
             
             if self.bundleId not in persistent.AS_PERMISSIONS:
-                persistent.AS_PERMISSIONS[self.bundleId] = {
-                    AS_REQUIRES_NOTIFICATIONKIT: False,
-                    AS_REQUIRES_FULL_DISK_ACCESS: False,
-                    AS_REQUIRES_SYSTEM_EVENTS: False
-                }
+                persistent.AS_PERMISSIONS[self.bundleId] = {}
             else:
-                if AS_REQUIRES_NOTIFICATIONKIT not in persistent.AS_PERMISSIONS[self.bundleId]:
-                    persistent.AS_PERMISSIONS[self.bundleId][AS_REQUIRES_NOTIFICATIONKIT] = False
-
-                if AS_REQUIRES_FULL_DISK_ACCESS not in persistent.AS_PERMISSIONS[self.bundleId]:
-                    persistent.AS_PERMISSIONS[self.bundleId][AS_REQUIRES_FULL_DISK_ACCESS] = False
-
-                if AS_REQUIRES_SYSTEM_EVENTS not in persistent.AS_PERMISSIONS[self.bundleId]:
-                    persistent.AS_PERMISSIONS[self.bundleId][AS_REQUIRES_SYSTEM_EVENTS] = False
+                for require in self.requires:
+                    if require not in persistent.AS_PERMISSIONS[self.bundleId]:
+                        persistent.AS_PERMISSIONS[self.bundleId][require] = False
 
             self.bundleDir = appDirectory
 
@@ -79,9 +66,6 @@ init python:
                 128: self.bundleDir + "Resources/Iconset/128.png",
                 256: self.bundleDir + "Resources/Iconset/256.png"
             }
-
-            pass
-
 
         # MARK: Permissions
 

@@ -10,7 +10,7 @@ screen ASAppManagerView():
     style_prefix "ASInterface"
 
     python:
-        apps = appManager.gatherAllApplications()
+        apps = appManager.gather_applications()
 
     default currentAppView = None
 
@@ -42,17 +42,7 @@ screen ASAppManagerView():
 
                         vbox:
                             for app in apps:
-                                button action SetScreenVariable("currentAppView", app):
-                                    ymaximum 56
-                                    xsize 300
-                                    has hbox:
-                                        spacing 8
-
-                                        add app.icons[48]
-                                        vbox:
-                                            text "[app.bundleName]":
-                                                style "ASAppManager_AppName_text"
-                                            text "[app.bundleAuthor]"
+                                use ASAppManagerDetailButton(app)
 
 
                 vbox:
@@ -70,7 +60,8 @@ screen ASAppManagerView():
                                 zoom 0.9
 
                             vbox:
-                                label "[currentAppView.bundleName]":
+                                $ _app_name = appManager.get_app_name(currentAppView)
+                                label "[_app_name]":
                                     style "ASAppManager_DetailedAppName"
                                 text "[currentAppView.bundleAuthor]":
                                     style "ASAppManager_DetailedAppAuthor_text"
@@ -114,3 +105,19 @@ screen ASAppManagerView():
                                             style "ASAppManager_text"
                             else:
                                 text "This app doesn't require any permissions."
+                                
+screen ASAppManagerDetailButton(app):
+    button action SetScreenVariable("currentAppView", app):
+        ymaximum 56
+        xsize 300
+        has hbox:
+            spacing 8
+    
+            add app.icons[48]
+            vbox:
+                python:
+                    _name = appManager.get_app_name(app)
+                    _author = app.bundleAuthor if len(app.bundleAuthor) < 32 else app.bundleAuthor[0:31] + "..."
+                text "[_name]":
+                    style "ASAppManager_AppName_text"
+                text "[_author]"

@@ -1,0 +1,10 @@
+{
+    "name": "appman",
+    "productName": "App Manager",
+    "id": "dev.unscriptedvn.candella.app-manager",
+    "author": "Project Alice <hello@aliceos.app>, Unscripted VN Team <unscriptedvn@marquiskurt.net>",
+    "version": "1.1.0",
+    "description": "View the installed apps on Candella in detail and manage their permissions.",
+    "license": "BSD-2-Clause",
+    "permissions": []
+}
