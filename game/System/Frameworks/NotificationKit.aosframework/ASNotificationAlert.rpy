@@ -19,7 +19,11 @@ init screen ASNotificationAlert(message, withDetails, onDismissCallback=Return('
                 Function(SetThumbnailOriginal)
                 ]
 
-    add FileCurrentScreenshot() at blur
+    if renpy.version(tuple=True) < (7, 4, 0):
+        add FileCurrentScreenshot() at blur
+    else:
+        add FileCurrentScreenshot():
+            blur 1.0
 
     frame at ASDynamicBlurTransition:
         style "ASDynamicBlurFrame"

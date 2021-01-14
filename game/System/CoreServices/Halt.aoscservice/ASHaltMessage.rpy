@@ -18,7 +18,11 @@ init screen ASHaltMessage(error=""):
                 Function(SetThumbnailOriginal)
                 ]
 
-    add FileCurrentScreenshot()
+    if renpy.version(tuple=True) < (7, 4, 0):
+        add FileCurrentScreenshot() at blur
+    else:
+        add FileCurrentScreenshot():
+            blur 256.0
 
     frame at ASDynamicBlurTransition:
         style "ASDynamicBlurFrame"

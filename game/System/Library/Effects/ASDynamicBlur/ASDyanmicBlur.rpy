@@ -17,22 +17,25 @@ init -1 python:
 
 
 init:
-    transform blur(child):
-        contains:
-            child
-            alpha 1.0
-        contains:
-            child
-            alpha 0.2 xoffset -3
-        contains:
-            child
-            alpha 0.2 xoffset 3
-        contains:
-            child
-            alpha 0.2 yoffset -3
-        contains:
-            child
-            alpha 0.2 yoffset 3
+    # Newer versions of Ren'Py come with a native blur property. This blur property is left over from AliceOS,
+    # so this is kept in here for compatibility reasons.
+    if renpy.version(tuple=True) < (7, 4, 0):
+        transform blur(child):
+            contains:
+                child
+                alpha 1.0
+            contains:
+                child
+                alpha 0.2 xoffset -3
+            contains:
+                child
+                alpha 0.2 xoffset 3
+            contains:
+                child
+                alpha 0.2 yoffset -3
+            contains:
+                child
+                alpha 0.2 yoffset 3
 
     transform ASDynamicBlurTransition:
         on show:

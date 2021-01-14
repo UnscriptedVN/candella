@@ -12,7 +12,7 @@ init -1000:
     # These definitions are used as a means of identifying the current
     # version of AliceOS provided with a
     define AS_SYS_INFO = {
-        "VERSION": "1.0.0",
+        "VERSION": "1.21",
         "COMMON_NAME": "Apple Cinnamon",
         "BUILD_ID": "GITHASH"
     }
