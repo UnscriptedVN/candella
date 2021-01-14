@@ -8,4 +8,6 @@
 
 init offset = -5
 
-define AS_DESKTOP_IMG = AS_LIBRARY_DIR + "Desktop Pictures/Prospect Park.png"
+# The default desktop image for Candella.
+
+define AS_DESKTOP_IMG = AS_LIBRARY_DIR + "Desktop Pictures/Candella.png"
