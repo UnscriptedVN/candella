@@ -1,0 +1,8 @@
+{
+    "name": "NotificationKit",
+    "authors": ["Project Alice <hello@aliceos.app>", "Marquis Kurt <software@marquiskurt.net>"],
+    "version": "21.01",
+    "license": "BSD-2-Clause",
+    "description": "Show notifications and alerts in applications.",
+    "requisites": []
+}

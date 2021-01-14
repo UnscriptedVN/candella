@@ -62,11 +62,12 @@ init python:
             self.license = manifest["license"]
             
             self.permissions = manifest["permissions"]
-            persistent.AS_PERMISSIONS[self.bundleId] = {}
+            persistent.AS_PERMISSIONS[self.id] = {}
             for permission in manifest["permissions"]:
-                if permission not in AS_REQUIRE_PERMS_NAME.keys():
+                if permission not in CA_PERMISSIONS:
                     continue
-                persistent.AS_PERMISSIONS[self.bundleId][permission] = False
+                permission_data = CA_PERMISSIONS[permission]
+                persistent.AS_PERMISSIONS[self.id][permission_data.key] = permission_data.default_state
             
         def get_app_icon(self, size=16):
             """Returns the path for a given icon size."""
