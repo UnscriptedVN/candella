@@ -10,7 +10,7 @@ init -20 python:
 
     class ASCoreServiceRepresentative(object):
         bundleName = "Bundle name"
-        bundleId = "dev.unscriptedvn.candella.bundle"
+        bundleId = "dev.unscriptedvn.candella.service-bundle"
         bundleDir = AS_CORESERVICES_DIR + "Bundle/"
         bundleAuthor = "Author"
         bundleVersion = "1.0.0"
@@ -30,6 +30,12 @@ init -20 python:
         def __init__(self, appDirectory):
 
             self.bundleDir = appDirectory
+            
+            persistent.AS_PERMISSIONS[self.bundleId] = {
+                AS_REQUIRES_SYSTEM_EVENTS: True,
+                AS_REQUIRES_FULL_DISK_ACCESS: True,
+                AS_REQUIRES_NOTIFICATIONKIT: True
+            }
 
             self.icons = {
                 16: self.bundleDir + "Resources/Iconset/16.png",
@@ -39,8 +45,6 @@ init -20 python:
                 128: self.bundleDir + "Resources/Iconset/128.png",
                 256: self.bundleDir + "Resources/Iconset/256.png"
             }
-
-            pass
 
         # Steps to take when starting the app.
         def serviceWillLaunch(self):

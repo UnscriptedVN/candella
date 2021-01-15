@@ -5,6 +5,7 @@
     "license": "BSD-2-Clause",
     "description": "Develop apps quickly and easily for AliceOS/Candella.",
     "requisites": [
-        "NotificationKit"
+        "NotificationKit",
+        "Multiuser"
     ]
 }

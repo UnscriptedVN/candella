@@ -40,15 +40,14 @@ init python:
         ),
         "file_system": CAPermission(
             "REQ_FULL_DISK",
-            "Access Your Files",
-            "File access may include your Home directory and your Candella installation. This can be configured in App" 
-                + "Manager."
+            "Access The File System",
+            "File access includes your user configuration file and may include other files present in Candella. This"
+                + " can be configured in App Manager."
         ),
         "system_events": CAPermission(
             "REQ_SYSTEM_EVENTS",
-            "Control Candella Settings",
-            "Settings access may include accessibility settings, system events, and preferences. This can be configured" 
-                + "in App Manager."
+            "Control System Events",
+            "System events include login, shutdown, or user switching. This can be configured in App Manager."
         ),
         "virtual_platform": CAPermission(
             "REQ_METEORVM",

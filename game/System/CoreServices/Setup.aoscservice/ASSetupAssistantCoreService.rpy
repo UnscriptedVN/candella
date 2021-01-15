@@ -32,6 +32,7 @@ init 5 python:
             if disclaimer != None:
                 self.runStep("Game Licensing Agreement", "Your game provider has requested that you read the following information and agree to any terms.\n\n" + disclaimer)
             persistent.playername = self.runStep("Create Your Username", "Type in a username that you want to use while using Candella. This name will also appear as your character name if applicable.", typeInput=True)
+            CAUserData._create_user_file(persistent.playername)
             if not express:
                 self.runStep("Setup Complete", "The Setup Assistant has completed all of the necessary setup tasks and Candella is ready for use.\n\nMore information about what Candella is, notes for this release, and what you can do with it can be found at {b}https://aliceos.app{/b}.\n\nThank you for choosing Candella. To exit the Setup Assistant, press Finish.", complete=True)
             persistent.AS_COMPLETED_SETUP = True

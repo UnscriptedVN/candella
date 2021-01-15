@@ -20,6 +20,16 @@ init python:
                 a manifest file, manifest.json.
             - Notification requests are handled by methods that simplify calls.
             - Grabbing icon sizes for an app is handled with a method.
+            - The description field for the app includes information regarding AliceOS compatibility.
+            - The license, product name, permissions, and description fields are present.
+            - This class contains methods for accessing user data via the Multiuser framework.
+            
+        Class Attributes:
+            description (str): The description for the app (same as bundleDescription).
+            product_name (str): The human-readable name of the app.
+            license (str): The license this app falls under.
+            permissions (list): A list containing all of the permissions this app needs.
+            data (AppStorage): An app storage object for this app, or None if the app doesn't need app storage.
         """
         
         _warn_text = "\n\nThis app is made for the Candella distribution and may not be compatible with AliceOS."
@@ -28,6 +38,7 @@ init python:
         product_name = ""
         license = "No license provided."
         permissions = []
+        data = None
         
         def __init__(self, app_path):
             """Initialize a Candella app.
@@ -68,7 +79,15 @@ init python:
             # Add the compatibility notice to the description of the app.
             self.bundleDescription += self._warn_text
             self.description += self._warn_text
-        
+            
+            # Load the app's storage files if the app has file system permissions.
+            if "file_system" in self.permissions or persistent.AS_PERMISSIONS[self.bundleId]["REQ_FULL_DISK"]:
+                self.data = AppStorage(self)
+            
+        def applicationWillTerminate(self):
+            if isinstance(self.data, AppStorage):
+                self.data.write()
+                
         def _initialize_manifest(self):
             manifest = {}
             if not renpy.exists(self.bundleDir + "manifest.json"):
@@ -93,6 +112,7 @@ init python:
                 if permission not in CA_PERMISSIONS:
                     continue
                 permission_data = CA_PERMISSIONS[permission]
+                self.requires[permission_data.key] = True
                 persistent.AS_PERMISSIONS[self.id][permission_data.key] = permission_data.default_state
         
         def get_name(self):

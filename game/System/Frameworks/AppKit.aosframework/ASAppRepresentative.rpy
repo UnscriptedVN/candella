@@ -193,6 +193,19 @@ init python:
         def application_did_terminate(self):
             """Perform post-termination tasks for this app."""
             self.applicationDidTerminate()
+            
+        # MARK: File System
+        
+        def applicationShouldRequestData(self):
+            """Returns whether the application should request data."""
+            if AS_REQUIRES_FULL_DISK_ACCESS not in self.requires:
+                return False
+            if self.bundleId not in persistent.AS_PERMISSIONS:
+                return False
+            return persistent.AS_PERMISSIONS[self.bundleId][AS_REQUIRES_FULL_DISK_ACCESS]
+            
+        def application_should_request_data(self):
+            return self.applicationShouldRequestData()
 
 
         # MARK: Notifications

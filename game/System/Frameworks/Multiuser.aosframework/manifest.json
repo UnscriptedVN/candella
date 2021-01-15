@@ -1,0 +1,12 @@
+{
+    "name": "Multiuser",
+    "authors": ["Marquis Kurt <software@marquiskurt.net>"],
+    "version": "21.01",
+    "license": "BSD-2-Clause",
+    "description": "Add multi-user support with custom configuration files.",
+    "requisites": [
+        "NotificationKit",
+        "AppKit",
+        "ServiceKit"
+    ]
+}
