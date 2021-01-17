@@ -8,7 +8,7 @@
 init offset = -10
 
 init python:
-    class Service():
+    class ServiceStorage():
         """A class for app storage in Candella services."""
         
         _data_store = {}
@@ -56,4 +56,4 @@ init python:
             try:
                 CAUserData.write_data_to_current_user(self._bundle_id, self._data_store)
             except Exception as error:
-            print("ERR: Data could not be written. Reason: %s" % (error))
+                print("ERR: Data could not be written. Reason: %s" % (error))

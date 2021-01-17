@@ -24,16 +24,17 @@ init python:
         
         def __init__(self, user):
             self.username = user.lower().replace(" ", "")
-            data_file = self.data_path + "/" + username
+            data_file = self.data_path + "/" + user
             
             if not renpy.exists(data_file):
                 CAUserData._create_user_file(user)
+                self._data = { "name": user, "prettyName": user }
             else:
                 with open(data_file, 'rb') as data_object:
                     self._data = json.load(data_object)
         
         @staticmethod
-        def _create_user_file(username):
+        def _create_user_file(username, pretty_name=None):
             """Create a user data file for a user.
             
             Arguments:
@@ -41,7 +42,7 @@ init python:
                     letters, the username will automatically be lowercased and spaces will be removed.
             """
             ca_username = username.lower().replace(" ", "")
-            data = { "username": username }
+            data = { "name": username, "prettyName": pretty_name if pretty_name else username }
             if not os.path.isdir(config.savedir + "/.causerland/"):
                 os.mkdir("%s/.causerland" % (config.savedir))
             with open("%s/.causerland/%s" % (config.savedir, username), 'wb+') as file:
