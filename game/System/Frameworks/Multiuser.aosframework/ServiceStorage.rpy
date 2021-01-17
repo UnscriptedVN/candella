@@ -5,8 +5,6 @@
 # (C) 2021 Marquis Kurt. All rights reserved.
 #
 
-init offset = -10
-
 init python:
     class ServiceStorage():
         """A class for app storage in Candella services."""
@@ -28,9 +26,12 @@ init python:
             self._bundle_id = service.bundleId
             
             try:
-                self._data_store = CSUserData.get_current_user_data(self._bundle_id)
-            except:
+                self._data_store = CAUserData.get_current_user_data(self._bundle_id)
+            except Exception as error:
                 self._data_store = {}
+                
+        def __str__(self):
+            return str(self._data_store)
         
         def read(self, field):
             """Returns the value of a field in the storage, or None if the value doesn't exist.
@@ -50,6 +51,10 @@ init python:
             if self._data_store[field] is None:
                 raise KeyError
             return self._data_store[field]
+            
+        def write_field(self, field, result):
+            """Sets the field to the result in the current storage."""
+            self._data_store[field] = result
                 
         def write(self):
             """Write the app data to the current user's file."""

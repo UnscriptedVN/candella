@@ -34,12 +34,16 @@ init python:
         def get_logged_in_user():
             """Returns the user information for the currently logged in user."""
             _user = CAUserData(persistent.playername)
-            return CAUser(_user.data["name"], _user.data["prettyName"])
+            return CAUser(_user._data["name"], _user._data["prettyName"])
         
         @staticmethod
         def get_all_users():
             """Returns a list of user objects."""
             users = []
+            
+            if not os.path.isdir(config.savedir + "/.causerland"):
+                return []
+            
             for name in os.listdir(config.savedir + "/.causerland"):
                 users += [CAAccountsService._get_user(name)]
                 return users
@@ -71,6 +75,11 @@ init python:
             """
             CAUserData._create_user_file(username, pretty_name=pretty_name)
             _users_list = CAUser(username, pretty_name)
+            
+        def change_current_user(self, username):
+            """Change the currently logged-in user."""
+            persistent.playername = username
+            renpy.reload()
             
         def remove_user(self, username):
             """Removes the specified user.

@@ -7,7 +7,7 @@ label splashscreen:
 # Open the desktop.
     
 label start:
-    $ ASDesktop._callDesktop()
+    $ caberto.launch()
     return
 
 # Show an example Stop screen.

@@ -11,6 +11,9 @@ init python:
     import os
     import json
     
+    class CAUserDataNotFoundError(Exception):
+        """User data not found."""
+    
     class CAUserDataPermissionError(Exception):
         """An exception used when the app doesn't have permission to access user data."""
     
@@ -26,11 +29,11 @@ init python:
             self.username = user.lower().replace(" ", "")
             data_file = self.data_path + "/" + user
             
-            if not renpy.exists(data_file):
+            if not os.path.isfile(data_file):
                 CAUserData._create_user_file(user)
                 self._data = { "name": user, "prettyName": user }
             else:
-                with open(data_file, 'rb') as data_object:
+                with open(data_file, 'r') as data_object:
                     self._data = json.load(data_object)
         
         @staticmethod
@@ -74,8 +77,8 @@ init python:
             if not CAUserData.__file_permissible(bundle_id):
                 raise CAUserDataPermissionError
             
-            if not renpy.exists(config.savedir + "/.causerland/" + persistent.playername):
-                raise FileNotFoundError
+            if not os.path.isfile(config.savedir + "/.causerland/" + persistent.playername):
+                raise CAUserDataNotFoundError(config.savedir + "/.causerland/" + persistent.playername)
             
             with open(config.savedir + "/.causerland/" + persistent.playername, 'rb') as file:
                 data = json.load(file)
@@ -100,10 +103,17 @@ init python:
             if not CAUserData.__file_permissible(bundle_id):
                 raise CAUserDataPermissionError
             
-            if not renpy.exists(config.savedir + "/.causerland/" + persistent.playername):
-                raise FileNotFoundError
+            if not os.path.isfile(config.savedir + "/.causerland/" + persistent.playername):
+                raise CAUserDataNotFoundError("User file " + persistent.playername + "not found. Re-run Setup.")
+            
+            try:
+                with open(config.savedir + "/.causerland/" + persistent.playername, 'r') as data_object:
+                    user_data = json.load(data_object)
+            except Exception as error:
+                print(error)
+                user_data = { "name": persistent.playername, "prettyName": persistent.playername }
                 
-            with open(config.savedir + "/.causerland/" + persistent.playername, 'wb') as file:
-                user_data = json.load(file)
-                user_data[bundle_id] = data.copy()
+            user_data[bundle_id] = data.copy()
+                
+            with open(config.savedir + "/.causerland/" + persistent.playername, 'w+') as file:
                 json.dump(user_data, file)

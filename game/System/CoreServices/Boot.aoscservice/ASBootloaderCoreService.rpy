@@ -9,6 +9,7 @@
 init 5 python:
 
     from threading import Thread
+    from os import path
 
     class ASBootloaderCoreService(ASCoreServiceRepresentative):
         bundleName = "Bootloader"
@@ -52,5 +53,9 @@ init 5 python:
 
         def __init__(self):
             ASCoreServiceRepresentative.__init__(self, AS_CORESERVICES_DIR + "Boot.aoscservice/")
+            
+            if not path.isdir(config.savedir + "/.causerland"):
+                print("ERR: Userland folder is missing. Re-running Setup Assistant.")
+                persistent.AS_COMPLETED_SETUP = False
 
     ASBootloader = ASBootloaderCoreService()

@@ -34,7 +34,7 @@ init python:
             self._bundle_id = app.id
             
             try:
-                self._data_store = CSUserData.get_current_user_data(self._bundle_id)
+                self._data_store = CAUserData.get_current_user_data(self._bundle_id)
             except:
                 self._data_store = {}
         

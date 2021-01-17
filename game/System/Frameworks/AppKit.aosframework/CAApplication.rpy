@@ -121,7 +121,7 @@ init python:
                 
         def get_app_icon(self, size=16):
             """Returns the path for a given icon size."""
-            return self.bundleDir + "Resources/Iconset/%.png" % (size)
+            return self.bundleDir + ("Resources/Iconset/%s.png" % (size))
             
         def send_banner(self, title, supporting, callback=Return('didClickRespond')):
             """Send a notification banner with respect to the user's settings.
