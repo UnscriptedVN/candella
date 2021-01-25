@@ -8,7 +8,7 @@ jobs:
     strategy:
       matrix:
         renpy-versions:
-          - '7.4.0'
+          - '7.4.1'
     steps:
       - name: Clone source
         uses: actions/checkout@v1

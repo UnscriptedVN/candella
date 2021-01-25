@@ -19,7 +19,7 @@ jobs:
     strategy:
       matrix:
         renpy-versions:
-          - '7.4.0'
+          - '7.4.1'
 
     steps:
       - name: Clone source
@@ -44,7 +44,7 @@ jobs:
           sdk: ${{ matrix.renpy-versions }}
       - name: Build Candella archive
         id: buildseq
-        uses: ProjectAliceDev/renpy-build-action@v1.1.2
+        uses: ProjectAliceDev/renpy-build-action@v1.1.3
         with:
           sdk-version: ${{ matrix.renpy-versions }}
           project-dir: '.'
