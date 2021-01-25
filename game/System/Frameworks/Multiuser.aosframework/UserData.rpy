@@ -110,7 +110,6 @@ init python:
                 with open(config.savedir + "/.causerland/" + persistent.playername, 'r') as data_object:
                     user_data = json.load(data_object)
             except Exception as error:
-                print(error)
                 user_data = { "name": persistent.playername, "prettyName": persistent.playername }
                 
             user_data[bundle_id] = data.copy()

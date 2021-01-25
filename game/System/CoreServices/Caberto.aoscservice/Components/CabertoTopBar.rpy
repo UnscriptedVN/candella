@@ -32,6 +32,12 @@ screen CabertoTopBar():
             text "[_Username]"
             text "[_CurrentTime]"
             
+            button action Show("CabertoSettings"):
+                xysize (24, 18)
+                add caberto.bundleDir + "Resources/settings.png":
+                    size (18, 18)
+                    align (0.5, 0.5)
+            
             button action Return("CabertoShellView"):
                 xysize (24, 18)
                 add caberto.bundleDir + "Resources/logoff.png":
@@ -41,7 +47,7 @@ screen CabertoTopBar():
 style CabertoTopBar_frame is frame:
     margin (0, 0)
     xpadding 16
-    background "#212121"
+    background "#191919"
     
 style CabertoTopBar_hbox is hbox:
     spacing 8

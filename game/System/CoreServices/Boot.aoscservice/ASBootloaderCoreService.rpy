@@ -10,6 +10,7 @@ init 5 python:
 
     from threading import Thread
     from os import path
+    import logging
 
     class ASBootloaderCoreService(ASCoreServiceRepresentative):
         bundleName = "Bootloader"
@@ -35,9 +36,9 @@ init 5 python:
                 app.applicationWillLaunchAtLogin()
             else:
                 if AS_REQUIRES_SYSTEM_EVENTS in app.requires and not app.applicationShouldLaunchAtLogin():
-                    print("WARN: %s cannot run its login service because it doesn't have permission to do so." % (app.bundleName,))
+                    logging.warn("%s cannot run its login service because it doesn't have permission to do so.", app.bundleName)
                 else:
-                    print("INFO: Skipping %s (%s) login service because it doesn't have one." % (app.bundleName, app.bundleId, ) )
+                    logging.debug("%s doesn't have a defined login service. Skipped.", app.bundleId)
 
         def boot(self, timeout=5, expressSetup=True, disclaimer=None, bootView="ASBootloaderView"):
             if not persistent.AS_COMPLETED_SETUP:
@@ -55,7 +56,7 @@ init 5 python:
             ASCoreServiceRepresentative.__init__(self, AS_CORESERVICES_DIR + "Boot.aoscservice/")
             
             if not path.isdir(config.savedir + "/.causerland"):
-                print("ERR: Userland folder is missing. Re-running Setup Assistant.")
+                logging.error("Userland folder is missing. Re-running Setup Assistant.")
                 persistent.AS_COMPLETED_SETUP = False
 
     ASBootloader = ASBootloaderCoreService()

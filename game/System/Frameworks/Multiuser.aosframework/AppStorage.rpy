@@ -8,6 +8,8 @@
 init offset = -10
 
 init python:
+    import logging
+    
     class AppStorage():
         """A class for app storage in Candella applications.
         
@@ -62,4 +64,4 @@ init python:
             try:
                 CAUserData.write_data_to_current_user(self._bundle_id, self._data_store)
             except Exception as error:
-                print("ERR: Data could not be written. Reason: %s" % (error))
+                logging.error("Data could not be written. Reason: %s", error)

@@ -9,6 +9,7 @@ init offset = 5
 
 init python:
     import gc
+    from os import listdir, path
     from time import gmtime, strftime
     
     class CabertoShell(ASCoreServiceRepresentative):
@@ -20,6 +21,18 @@ init python:
         bundleDescription = "A Unity/Lomiri-inspired desktop shell for Candella."
         
         _acct_mgr = CAAccountsService()
+        _wallpaper = AS_LIBRARY_DIR + "Desktop Pictures/Candella.png"
+        
+        @staticmethod
+        def wallpapers():
+            """A list containing the names of all of the wallpapers available to Candella."""
+            isimage = lambda pic: pic.endswith(".png")
+            
+            return [
+                pic.replace(".png", "") for pic in\
+                    listdir(config.basedir + "/game/" + AS_LIBRARY_DIR + "/Desktop Pictures/")\
+                    if isimage(pic)
+            ]
         
         @staticmethod
         def get_all_applications():
@@ -38,15 +51,17 @@ init python:
             if not self.settings.read("apps_list"):
                 self.settings.write_field("apps_list", self._default_apps())
                 self.settings.write()
+            
             if not self.settings.read("wallpaper"):
                 self.settings.write_field("wallpaper", AS_LIBRARY_DIR + "Desktop Pictures/Candella.png")
                 self.settings.write()
             
+            self._wallpaper = self.settings.read_not_none("wallpaper")
+            
         def launch(self):
             """Launch the desktop with the user's settings."""
             apps = self.settings.read_not_none("apps_list")
-            wallpaper = self.settings.read_not_none("wallpaper")
-            renpy.call_screen("CabertoShellView", wallpaper=wallpaper, apps=self._get_dock_apps(apps))
+            renpy.call_screen("CabertoShellView", wallpaper=self._wallpaper, apps=self._get_dock_apps(apps))
             
         def _default_apps(self):
             """Returns the list of default apps to load into the launcher."""
@@ -56,6 +71,13 @@ init python:
             ]
             
         def _get_dock_apps(self, apps):
+            """Returns the list of app objects that is in the dock."""
             return [app for app in CabertoShell.get_all_applications() if app.bundleId in apps]
+            
+        def _set_wallpaper(self, name):
+            """Set the wallpaper and save the preference."""
+            self._wallpaper = AS_LIBRARY_DIR + "Desktop Pictures/" + name + ".png"
+            self.settings.write_field("wallpaper", self._wallpaper)
+            self.settings.write()
     
     caberto = CabertoShell()

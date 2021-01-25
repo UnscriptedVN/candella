@@ -7,6 +7,7 @@
 #
 
 init -20 python:
+    import logging
 
     class ASCoreServiceRepresentative(object):
         bundleName = "Bundle name"
@@ -72,7 +73,7 @@ init -20 python:
                 renpy.call_screen("ASNotificationBanner", applet=self, message=message, withDetails=withDetails, responseCallback=responseCallback)
                 self.serviceDidRequestNotification()
             else:
-                print "This service is not authorized to send notifications."
+                logging.error("%s is not authorized to send notifications.", self.bundleId)
             return
 
         # Steps to take when the app is done sending a notification

@@ -7,6 +7,7 @@
 #
 
 init 10 python:
+    import logging
     class ASInventoryItem(object):
 
         def __init__(self, itemId=None, name="Item", description="", canBeUsed=True, specialUseCase=None, canBeUsedOnce=False, imageName=ASInventories.bundleDir + "Resources/Item.png"):
@@ -27,5 +28,5 @@ init 10 python:
                     return True
 
             else:
-                print("WARN: This item cannot be used.")
+                logging.warn("This item cannot be used.")
                 return False

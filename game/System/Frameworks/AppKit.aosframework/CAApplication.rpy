@@ -8,6 +8,7 @@
 
 init python:
     import json
+    import logging
     
     class CAApplication(ASAppRepresentative):
         """The class used for Candella apps.
@@ -64,8 +65,10 @@ init python:
             try:
                 self._initialize_manifest()
             except Exception as problem:
-                print(
-                    "WARN: A problem occurred when reading the manifest for %s: %s" % (self.__class__.__name__, problem)
+                logging.warn(
+                    "A problem occurred when reading the manifest for %s: %s",
+                    self.__class__.__name__,
+                    problem
                 )
                 
             # Perform the regular AliceOS permission inits if the manifest failed to load.

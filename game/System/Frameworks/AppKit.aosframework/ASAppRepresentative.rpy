@@ -8,10 +8,14 @@
 
 # Set AliceOS permissions if they don't exist yet.
 init -1000 python:
+    import logging
+    
     if not persistent.AS_PERMISSIONS:
         persistent.AS_PERMISSIONS = {}
+        logging.debug("Permissions manifest created.")
 
 init python:
+    import logging
 
     # Class representation of an app on AliceOS.
     class ASAppRepresentative(object):
@@ -82,7 +86,7 @@ init python:
                 persistent.AS_PERMISSIONS[self.bundleId][forPermission] = store.tempPermission
                 store.tempPermission = None
             else:
-                print "The permission requested doesn't exist or isn't in the app's manifest."
+                logging.debug("The permission %s is not present in the app manifest or is invalid.", forPermission)
                 
         def request_permission(self, for_permission):
             """Request for a specific permission.
@@ -162,9 +166,7 @@ init python:
 
         # Steps to take when starting the app.
         def applicationWillLaunch(self):
-            print("WARN: %s (%s) doesn't have the applicationWillLaunch method implemented." 
-                    % (self.bundleName, self.bundleId, ))
-            pass
+            logging.warn("(%s) doesn't have the applicationWillLaunch method implemented.", self.bundleId)
             
         def application_will_launch(self):
             """Perform pre-startup tasks for this app."""
@@ -239,7 +241,7 @@ init python:
                 self.applicationDidRequestNotification()
                 return notificationResponse
             else:
-                print "This app is not authorized to send notifications."
+                logging.error("%s is not authorized to send notifications.", self.bundleId)
             return
             
         def application_will_request_notification(self, message, with_details, response_callback=Return('didClickRespond')):
@@ -275,7 +277,7 @@ init python:
                 self.applicationDidRequestAlert()
                 return notificationResponse
             else:
-                print "This app is not authorized to send notifications."
+                logging.error("%s is not authorized to send alerts (notifications).", self.bundleId)
             return
             
         def application_will_request_basic_alert(self, message, with_details, on_dismiss_callback=Return('didDismissAlert')):
@@ -317,7 +319,7 @@ init python:
                 )
                 self.applicationDidRequestAlert()
             else:
-                print "This app is not authorized to send notifications."
+                logging.error("%s is not authorized to send notifications.", self.bundleId)
             return
             
         def application_will_request_extended_alert(

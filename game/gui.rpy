@@ -86,6 +86,7 @@ define gui.title_text_size = 50
 
 ## The images used for the main and game menus.
 
+define AS_DESKTOP_IMG = AS_LIBRARY_DIR + "/Desktop Pictures/Candella.png"
 define gui.main_menu_background = AS_DESKTOP_IMG
 define gui.game_menu_background = AS_DESKTOP_IMG
 
