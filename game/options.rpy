@@ -31,12 +31,11 @@ define config.version = AS_SYS_INFO["VERSION"] if "AS_SYS_INFO" in vars() else "
 
 define gui.about = _("""\
 © 2018-2021 Project Alice and Unscripted VN Team.
-\n\n
+
 Candella is a refreshed fork of the {a=https://aliceos.app}AliceOS{/a} operating environment.
-\n\n
-Running the game as-is will let you demo some of Candella's features, such as the Desktop and 
-userland applications.
-\n\n
+
+Running the game as-is will let you demo some of Candella's features, such as the Desktop and userland applications.
+
 AliceOS/Candella is free and open-source software, licensed under the BSD-2-Clause license.
 """)
 
@@ -46,6 +45,7 @@ AliceOS/Candella is free and open-source software, licensed under the BSD-2-Clau
 ## or semicolons.
 
 define build.name = "Candella"
+define build.executable_name = "CandellaDemo"
 
 
 ## Sounds and music ############################################################
@@ -166,19 +166,21 @@ init python:
         build.name,
         description="Candella System Distributable"
     )
+    
+    build.archive("CandellaSystem", "all")
 
-    build.archive("Candella", build.name)
-
-    build.classify("game/System/**.**", "Candella")
-    build.classify("game/System/**.rpyc", "Candella")
-
+    build.classify("game/System/**", "CandellaSystem")
+    
     build.classify('**~', None)
     build.classify('**.bak', None)
     build.classify('**/.**', None)
     build.classify('**/#**', None)
     build.classify('**/thumbs.db', None)
-    build.classify('game/**.rpyc', None)
-
+    build.classify('mkdocs/**', None)
+    build.classify('.github/**', None)
+    build.classify('res/**', None)
+    build.classify('scripts/**', None)
+    
     build.documentation('*.html')
     build.documentation('*.txt')
 
