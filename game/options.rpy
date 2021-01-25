@@ -23,7 +23,7 @@ define gui.show_name = True
 
 ## The version of the game.
 
-define config.version = AS_SYS_INFO["VERSION"] or "2.0.0"
+define config.version = AS_SYS_INFO["VERSION"] if "AS_SYS_INFO" in vars() else "2.0.0"
 
 
 ## Text that is placed on the game's about screen. To insert a blank line
