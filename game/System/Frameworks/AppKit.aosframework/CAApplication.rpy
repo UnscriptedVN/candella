@@ -84,7 +84,9 @@ init python:
             self.description += self._warn_text
             
             # Load the app's storage files if the app has file system permissions.
-            if "file_system" in self.permissions or persistent.AS_PERMISSIONS[self.bundleId]["REQ_FULL_DISK"]:
+            if "file_system" in self.permissions or \
+                ("REQ_FILL_DISK" in persistent.AS_PERMISSIONS[self.bundleId] and \
+                    persistent.AS_PERMISSIONS[self.bundleId]["REQ_FULL_DISK"]):
                 self.data = AppStorage(self)
             
         def applicationWillTerminate(self):
