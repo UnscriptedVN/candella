@@ -36,7 +36,7 @@ init screen CabertoDrawer():
                         if len(_app_name) > 36:
                             _app_name = _app_name[:34] + "..."
                     
-                    button action [Function(caberto.drawer, Function(_app_launch)]:
+                    button action [Function(caberto.drawer), Function(_app_launch)]:
                         xysize(96, 72)
                         sensitive True
                         
