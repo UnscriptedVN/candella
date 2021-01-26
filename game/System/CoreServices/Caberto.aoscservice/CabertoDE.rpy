@@ -23,6 +23,8 @@ init python:
         _acct_mgr = CAAccountsService()
         _wallpaper = AS_LIBRARY_DIR + "Desktop Pictures/Candella.png"
         
+        _drawer_open = False
+        
         @staticmethod
         def wallpapers():
             """A list containing the names of all of the wallpapers available to Candella."""
@@ -37,7 +39,8 @@ init python:
         @staticmethod
         def get_all_applications():
             """Returns all of the installed apps on the system."""
-            return [app for app in gc.get_objects() if isinstance(app, ASAppRepresentative)]
+            is_app = lambda app: isinstance(app, ASAppRepresentative) or isinstance(app, CAApplication)
+            return [app for app in gc.get_objects() if is_app(app)]
         
         @staticmethod
         def current_time():
@@ -62,6 +65,15 @@ init python:
             """Launch the desktop with the user's settings."""
             apps = self.settings.read_not_none("apps_list")
             renpy.call_screen("CabertoShellView", wallpaper=self._wallpaper, apps=self._get_dock_apps(apps))
+            
+        def drawer(self):
+            """Toggle the app drawer."""
+            self._drawer_open = not self._drawer_open
+            
+            if self._drawer_open:
+                renpy.run(ShowTransient("CabertoDrawer"))
+            else:
+                renpy.run(Hide("CabertoDrawer"))
             
         def _default_apps(self):
             """Returns the list of default apps to load into the launcher."""

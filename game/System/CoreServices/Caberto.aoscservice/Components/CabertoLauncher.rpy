@@ -32,7 +32,7 @@ screen CabertoLauncher(apps):
                         add _icon:
                             xalign 0.5
                                 
-            button action NullAction(): # TODO: Link this to open the launcher.
+            button action Function(caberto.drawer):
                 ysize 72
                 add "#FC9856" # TODO: Replace this with the Caberto/Candella logo.
                 add caberto.bundleDir + "Resources/distributor_logo.png":
