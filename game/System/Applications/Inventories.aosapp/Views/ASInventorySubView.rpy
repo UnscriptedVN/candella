@@ -15,7 +15,7 @@ screen ASInventorySubView():
 
     python:
         if len(inventory.retrieve()) > 0:
-            for item in inventory.retrieve():
+            for item in inventory.export():
                 top_items.append(item)
 
             if len(top_items) > 4:

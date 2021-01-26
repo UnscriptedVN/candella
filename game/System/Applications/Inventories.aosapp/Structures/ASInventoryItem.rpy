@@ -18,15 +18,27 @@ init 10 python:
             self.runSpecialUseCase = specialUseCase if callable(specialUseCase) else None
             self.imageName = imageName
             self.itemId = itemId
+            
+        def __eq__(self, other):
+            return isinstance(other, ASInventoryItem) and (self.itemId == other.itemId or self.name == other.name)
+            
+        def __ne__(self, other):
+            return not self.__eq__(other)
+            
+        def __repr__(self):
+            return "ASInventoryItem(%s, %s)" % (self.name, self.description)
+        
+        def __str__(self):
+            return self.__repr__()
 
         def useItem(self):
-            if self.canBeUsed:
-                if self.runSpecialUseCase is not None:
-                    self.runSpecialUseCase()
-                if self.canBeUsedOnce:
-                    self.canBeUsed = False
-                    return True
-
-            else:
+            if not self.canBeUsed:
                 logging.warn("This item cannot be used.")
                 return False
+        
+            if self.runSpecialUseCase is not None:
+                self.runSpecialUseCase()
+            
+            if self.canBeUsedOnce:
+                self.canBeUsed = False
+                return True

@@ -34,7 +34,6 @@ screen CabertoSettings():
                         label "Desktop Background"
                         
                         hbox:
-                            xsize 420
                             spacing 8
                             box_wrap True
                             

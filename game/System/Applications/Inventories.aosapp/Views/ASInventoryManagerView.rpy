@@ -11,7 +11,7 @@ screen ASInventoryManagerView(currentItem=None):
     zorder 100
     modal True
 
-    $ inv = inventory.retrieve()
+    $ inv = inventory.export()
 
     default currentItemView = currentItem
 
