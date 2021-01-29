@@ -24,7 +24,7 @@ screen ASAppManagerView():
             xalign 0.5
             yfit True
 
-            use ASInterfaceTitlebar("App Manager", onClose=Hide("ASAppManagerView"))
+            use ASInterfaceTitlebar("App Manager", onClose=[Hide("ASAppManagerView"), appManager.terminate])
 
             hbox:
                 style_prefix "ASAppManager"

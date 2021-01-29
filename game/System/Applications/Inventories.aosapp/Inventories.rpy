@@ -6,7 +6,7 @@
 # Copyright © 2019 Marquis Kurt. All rights reserved.
 #
 
-init 10 python:
+init 5 python:
     import logging
 
     class ASInventories(ASAppRepresentative):

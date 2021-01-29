@@ -10,7 +10,7 @@ init python:
     import json
     import logging
     
-    class CAApplication(ASAppRepresentative):
+    class CAApplication(ASAppRepresentative, CAObservable):
         """The class used for Candella apps.
         
         CAApplication is an extension of the standard ASAppRepresentative class and aims to make app development
@@ -24,6 +24,8 @@ init python:
             - The description field for the app includes information regarding AliceOS compatibility.
             - The license, product name, permissions, and description fields are present.
             - This class contains methods for accessing user data via the Multiuser framework.
+            - This class inherits the CAObservable class, which will emit signals to services or apps that listen for
+                it.
             
         Class Attributes:
             description (str): The description for the app (same as bundleDescription).
@@ -92,6 +94,7 @@ init python:
         def applicationWillTerminate(self):
             if isinstance(self.data, AppStorage):
                 self.data.write()
+            self.emit_signal("application_terminated")
                 
         def _initialize_manifest(self):
             manifest = {}
@@ -133,6 +136,12 @@ init python:
             
             self.application_will_launch()
             self.application_did_launch()
+            self.emit_signal("application_launched", name=self.get_name())
+            
+        def terminate(self):
+            self.application_will_terminate()
+            self.application_did_terminate()
+            self.emit_signal("application_terminated")
             
         def send_banner(self, title, supporting, callback=Return('didClickRespond')):
             """Send a notification banner with respect to the user's settings.
@@ -147,6 +156,7 @@ init python:
             """
             response = self.application_will_request_notification(title, supporting, response_callback=callback)
             self.application_did_request_notification()
+            self.emit_signal("banner_sent", response=response)
             return response
             
         def send_alert(self, title, details, callback=Return('didDismissAlert')):
@@ -162,4 +172,5 @@ init python:
             """
             response = self.application_will_request_basic_alert(title, details, on_dismiss_callback=callback)
             self.application_did_request_alert()
+            self.emit_signal("sent_alert", response=response)
             return response

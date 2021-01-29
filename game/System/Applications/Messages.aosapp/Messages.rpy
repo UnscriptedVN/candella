@@ -6,7 +6,7 @@
 # Copyright © 2019 ProjectAliceDev. All rights reserved.
 #
 
-init 10 python:
+init 5 python:
     class ASMessages(ASAppRepresentative):
         bundleName = "Messages"
         bundleId = "dev.unscriptedvn.candella.messages"

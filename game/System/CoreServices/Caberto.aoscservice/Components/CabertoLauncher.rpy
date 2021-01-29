@@ -27,7 +27,7 @@ screen CabertoLauncher(apps):
                         _icon = app.get_app_icon(64) if isinstance(app, CAApplication) else app.icons[64]
                         _name = app.product_name if isinstance(app, CAApplication) else app.bundleName
                 
-                    button action Function(app.application_will_launch):
+                    button action Function(caberto.launch_app_bundle, app_bundle=app):
                         xysize (72, 72)
                         add _icon:
                             xalign 0.5

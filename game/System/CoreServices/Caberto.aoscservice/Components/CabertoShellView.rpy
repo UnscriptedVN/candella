@@ -15,8 +15,8 @@ screen CabertoShellView(wallpaper, apps):
         size (1280, 720)
     
     # Display the top bar and the launcher on the side.
-    use CabertoTopBar
     use CabertoLauncher(apps=apps)
+    use CabertoTopBar
     
     # Listen for changes on the set wallpaper and refresh the wallpaper.
     timer 0.25 action SetScreenVariable("wall", caberto._wallpaper) repeat True

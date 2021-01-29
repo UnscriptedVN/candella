@@ -9,7 +9,7 @@ init screen CabertoDrawer():
     style_prefix "CabertoDrawer"
     modal False
         
-    $ appsForLauncher = caberto.get_all_applications()
+    $ all_apps = caberto.get_all_applications()
     
     frame:
         xsize 700
@@ -24,19 +24,16 @@ init screen CabertoDrawer():
             hbox:
                 box_wrap True
                 
-                for app in appsForLauncher:
+                for app in all_apps:
                     python:
-                        if isinstance(app, CAApplication):
-                            _app_name = app.product_name
-                            _app_launch = app.launch
-                        else:
-                            _app_name = app.bundleName
-                            _app_launch = app.applicationWillLaunch
+                        _app_name = app.get_name() if isinstance(app, CAApplication) else app.bundleName
                             
                         if len(_app_name) > 36:
                             _app_name = _app_name[:34] + "..."
                     
-                    button action [Function(caberto.drawer), Function(_app_launch)]:
+                    button action [
+                        Function(caberto.drawer), Function(caberto.launch_app_bundle, app_bundle=app)
+                    ]:
                         xysize(96, 72)
                         sensitive True
                         

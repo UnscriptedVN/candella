@@ -6,7 +6,7 @@
 # Copyright © 2019-2021 Marquis Kurt. All rights reserved.
 #
 
-init 10 python:
+init 5 python:
     class ASAppManager(CAApplication):
     
         def applicationWillLaunch(self):
