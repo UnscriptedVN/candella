@@ -61,10 +61,20 @@ init python:
             
             self._wallpaper = self.settings.read_not_none("wallpaper")
             
-        def launch(self):
-            """Launch the desktop with the user's settings."""
+        def launch(self, transient=False):
+            """Launch the desktop with the user's settings.
+            
+            Args:
+                transient (bool): Whether to show the screen transiently. Defaults to false.
+            """
             apps = self.settings.read_not_none("apps_list")
-            renpy.call_screen("CabertoShellView", wallpaper=self._wallpaper, apps=self._get_dock_apps(apps))
+            
+            if transient:
+                renpy.run(
+                    ShowTransient("CabertoShellView", wallpaper=self._wallpaper, apps=self._get_dock_apps(apps))
+                )
+            else:
+                renpy.call_screen("CabertoShellView", wallpaper=self._wallpaper, apps=self._get_dock_apps(apps))
             
         def drawer(self):
             """Toggle the app drawer."""

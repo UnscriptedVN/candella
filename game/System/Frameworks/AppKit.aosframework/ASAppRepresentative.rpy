@@ -12,7 +12,7 @@ init -1000 python:
     
     if not persistent.AS_PERMISSIONS:
         persistent.AS_PERMISSIONS = {}
-        logging.debug("Permissions manifest created.")
+        clog.debug("Permissions manifest created.")
 
 init python:
     import logging
@@ -86,7 +86,7 @@ init python:
                 persistent.AS_PERMISSIONS[self.bundleId][forPermission] = store.tempPermission
                 store.tempPermission = None
             else:
-                logging.debug("The permission %s is not present in the app manifest or is invalid.", forPermission)
+                clog.debug("The permission %s is not present in the app manifest or is invalid.", forPermission)
                 
         def request_permission(self, for_permission):
             """Request for a specific permission.
@@ -166,7 +166,7 @@ init python:
 
         # Steps to take when starting the app.
         def applicationWillLaunch(self):
-            logging.warn("(%s) doesn't have the applicationWillLaunch method implemented.", self.bundleId)
+            clog.warn("(%s) doesn't have the applicationWillLaunch method implemented.", self.bundleId)
             
         def application_will_launch(self):
             """Perform pre-startup tasks for this app."""
@@ -241,7 +241,7 @@ init python:
                 self.applicationDidRequestNotification()
                 return notificationResponse
             else:
-                logging.error("%s is not authorized to send notifications.", self.bundleId)
+                clog.error("%s is not authorized to send notifications.", self.bundleId)
             return
             
         def application_will_request_notification(self, message, with_details, response_callback=Return('didClickRespond')):
@@ -277,7 +277,7 @@ init python:
                 self.applicationDidRequestAlert()
                 return notificationResponse
             else:
-                logging.error("%s is not authorized to send alerts (notifications).", self.bundleId)
+                clog.error("%s is not authorized to send alerts (notifications).", self.bundleId)
             return
             
         def application_will_request_basic_alert(self, message, with_details, on_dismiss_callback=Return('didDismissAlert')):
@@ -319,7 +319,7 @@ init python:
                 )
                 self.applicationDidRequestAlert()
             else:
-                logging.error("%s is not authorized to send notifications.", self.bundleId)
+                clog.error("%s is not authorized to send notifications.", self.bundleId)
             return
             
         def application_will_request_extended_alert(

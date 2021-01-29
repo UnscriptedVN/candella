@@ -36,9 +36,9 @@ init 5 python:
                 app.applicationWillLaunchAtLogin()
             else:
                 if AS_REQUIRES_SYSTEM_EVENTS in app.requires and not app.applicationShouldLaunchAtLogin():
-                    logging.warn("%s cannot run its login service because it doesn't have permission to do so.", app.bundleName)
+                    clog.warn("%s cannot run its login service because it doesn't have permission to do so.", app.bundleName)
                 else:
-                    logging.debug("%s doesn't have a defined login service. Skipped.", app.bundleId)
+                    clog.debug("%s doesn't have a defined login service. Skipped.", app.bundleId)
 
         def boot(self, timeout=5, expressSetup=True, disclaimer=None, bootView="ASBootloaderView"):
             if not persistent.AS_COMPLETED_SETUP:
@@ -56,7 +56,7 @@ init 5 python:
             ASCoreServiceRepresentative.__init__(self, AS_CORESERVICES_DIR + "Boot.aoscservice/")
             
             if not path.isdir(config.savedir + "/.causerland"):
-                logging.error("Userland folder is missing. Re-running Setup Assistant.")
+                clog.error("Userland folder is missing. Re-running Setup Assistant.")
                 persistent.AS_COMPLETED_SETUP = False
 
     ASBootloader = ASBootloaderCoreService()

@@ -13,10 +13,20 @@ init offset = -1000
 init python:
     import logging
     
-    logging.basicConfig(
-        filename=config.savedir+"/candella.log",
-        encoding='utf-8',
-        format="%(asctime)s [%(levelname)s] %(message)s",
-        level=logging.DEBUG
-    )
-    logging.debug("Opened debug file and started a new session.")
+    clog = logging.getLogger('dev.unscriptedvn.candella')
+    clog.setLevel(logging.DEBUG)
+    
+    clog_fhandler = logging.FileHandler(config.savedir+"/candella.log")
+    clog_fhandler.setLevel(logging.DEBUG)
+    
+    clog_chandler = logging.StreamHandler()
+    clog_chandler.setLevel(logging.ERROR)
+    
+    clog_format = logging.Formatter("%(asctime)s [%(levelname)s] %(message)s")
+    clog_fhandler.setFormatter(clog_format)
+    clog_chandler.setFormatter(clog_format)
+    
+    clog.addHandler(clog_fhandler)
+    clog.addHandler(clog_chandler)
+    
+    clog.debug("Opened debug file and started a new session.")

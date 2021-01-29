@@ -35,7 +35,7 @@ init 10 python:
             return len(self.inventory) == 0
 
         def retrieve(self):
-            logging.warn("ASInventories.retrieve is deprecated. Please use ASInventories.export instead.")
+            clog.warn("ASInventories.retrieve is deprecated. Please use ASInventories.export instead.")
             return self.export()
 
         def export(self, filter=None):

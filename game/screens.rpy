@@ -355,7 +355,8 @@ screen main_menu():
 
     style_prefix "main_menu"
 
-    add gui.main_menu_background
+    add gui.main_menu_background:
+        size (1280, 720)
 
     ## This empty frame darkens the main menu.
     frame:

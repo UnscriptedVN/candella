@@ -61,4 +61,4 @@ init screen ASHaltMessage(error=""):
                 style "ASHaltMessageCode"
                 xalign 0.5
 
-    timer 10.0 action Return()
+    timer 10.0 action [Function(renpy.utter_restart), Return()]

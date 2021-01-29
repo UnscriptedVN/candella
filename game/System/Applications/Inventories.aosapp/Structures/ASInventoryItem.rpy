@@ -33,7 +33,7 @@ init 10 python:
 
         def useItem(self):
             if not self.canBeUsed:
-                logging.warn("This item cannot be used.")
+                clog.warn("This item cannot be used.")
                 return False
         
             if self.runSpecialUseCase is not None:
