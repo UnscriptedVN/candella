@@ -23,7 +23,7 @@ init screen ASNotificationAlert(message, withDetails, onDismissCallback=Return('
         add FileCurrentScreenshot() at blur
     else:
         add FileCurrentScreenshot():
-            blur 1.0
+            blur CABlurType["default"]
 
     frame at ASDynamicBlurTransition:
         style "ASDynamicBlurFrame"

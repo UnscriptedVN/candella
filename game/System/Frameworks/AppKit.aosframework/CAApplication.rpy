@@ -98,8 +98,8 @@ init python:
                 
         def _initialize_manifest(self):
             manifest = {}
-            if not renpy.exists(self.bundleDir + "manifest.json"):
-                raise FileNotFoundError()
+            if not renpy.loadable(self.bundleDir + "manifest.json"):
+                raise Exception("Manifest file not found: %s" % (self.bundleDir + "manifest.json"))
             
             with renpy.file(self.bundleDir + "manifest.json") as file:
                 manifest = json.load(file)

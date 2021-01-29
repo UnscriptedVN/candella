@@ -110,6 +110,9 @@ define config.end_game_transition = None
 
 define config.window = "auto"
 
+if "gl2" in config:
+    define config.gl2 = True
+
 
 ## Transitions used to show and hide the dialogue window
 
@@ -162,14 +165,14 @@ define config.window_icon = "gui/window_icon.png"
 init python:
 
     build.package(
-        build.directory_name + "System", 'zip',
-        build.name,
+        build.directory_name + "System",
+        'zip',
+        "candella_system",
         description="Candella System Distributable"
     )
     
-    build.archive("CandellaSystem", "all")
-
-    build.classify("game/System/**", "CandellaSystem")
+    build.archive("candella", "all candella_system")
+    build.classify("game/System/**", "candella")
     
     build.classify('**~', None)
     build.classify('**.bak', None)

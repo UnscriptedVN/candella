@@ -22,7 +22,7 @@ init screen ASHaltMessage(error=""):
         add FileCurrentScreenshot() at blur
     else:
         add FileCurrentScreenshot():
-            blur 256.0
+            blur CABlurType["strong"]
 
     frame at ASDynamicBlurTransition:
         style "ASDynamicBlurFrame"

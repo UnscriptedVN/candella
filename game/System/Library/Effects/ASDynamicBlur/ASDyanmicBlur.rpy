@@ -36,6 +36,14 @@ init:
             contains:
                 child
                 alpha 0.2 yoffset 3
+    
+    # This dictionary contains the different "strength" types for blurring. This is used to denote importance
+    # in a blurred context.
+    define CABlurType = {
+        "strong": 32,
+        "default": 16,
+        "weak": 8
+    }
 
     transform ASDynamicBlurTransition:
         on show:

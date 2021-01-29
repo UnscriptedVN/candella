@@ -23,7 +23,7 @@ init screen ASPermissionRequest(bundleName="AS_APP_BUNDLE", requestingFor, onDec
         add FileCurrentScreenshot() at blur
     else:
         add FileCurrentScreenshot():
-            blur 1.0
+            blur CABlurType["default"]
 
     frame at ASDynamicBlurTransition:
         style "ASDynamicBlurFrame"
