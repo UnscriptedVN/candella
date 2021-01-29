@@ -5,7 +5,7 @@
 # (C) 2021 Marquis Kurt. All rights reserved.
 #
 
-init offset = -1000
+init offset = -5000
 
 # The following creates a basic logger that will be saved in the user's save directory of the game.
 # This log is used to log Candella events instead of directing output to the console.
