@@ -44,9 +44,11 @@ init python:
             if not os.path.isdir(config.savedir + "/.causerland"):
                 return []
             
-            for name in os.listdir(config.savedir + "/.causerland"):
+            for name in os.listdir(config.savedir + "/.causerland/"):
+                if name.startswith("."):
+                    continue
                 users += [CAAccountsService._get_user(name)]
-                return users
+            return users
         
         @staticmethod
         def _get_user(username):
@@ -79,7 +81,7 @@ init python:
         def change_current_user(self, username):
             """Change the currently logged-in user."""
             persistent.playername = username
-            renpy.reload()
+            # renpy.reload()
             
         def remove_user(self, username):
             """Removes the specified user.

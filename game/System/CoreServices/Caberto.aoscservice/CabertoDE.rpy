@@ -23,21 +23,23 @@ init python:
         
         _acct_mgr = CAAccountsService()
         _wallpaper = AS_LIBRARY_DIR + "Desktop Pictures/Candella.png"
+        _dock = []
         _drawer_open = False
         _current_app_name = "Caberto Desktop"
+        _acct_switcher_open = False
         
         def __init__(self):
             ASCoreServiceRepresentative.__init__(self, AS_CORESERVICES_DIR + "Caberto.aoscservice/")
             self.settings = ServiceStorage(self)
-                        
+            
             if not self.settings.read("apps_list"):
                 self.settings.write_field("apps_list", self._default_apps())
-                self.settings.write()
+                self.settings.write()    
+            self._dock = self.settings.read_not_none("apps_list")
             
             if not self.settings.read("wallpaper"):
                 self.settings.write_field("wallpaper", AS_LIBRARY_DIR + "Desktop Pictures/Candella.png")
                 self.settings.write()
-            
             self._wallpaper = self.settings.read_not_none("wallpaper")
             
             apps = CabertoShell.get_all_applications()
@@ -46,14 +48,14 @@ init python:
                     clog.warn("%s cannot emit signals and will be ignored.", app.bundleName)
                     continue
                 app.register_event(self._app_listen)
-        
+                    
         @staticmethod
         def wallpapers():
             """A list containing the names of all of the wallpapers available to Candella."""            
             return [
-                pic.replace(".png", "") for pic in\
-                    listdir(config.basedir + "/game/" + AS_LIBRARY_DIR + "/Desktop Pictures/")\
-                    if pic.endswith(".png")
+                fil.replace(".png", "").replace(AS_LIBRARY_DIR + "Desktop Pictures/", "") \
+                for fil in renpy.list_files() \
+                if fil.startswith(AS_LIBRARY_DIR + "Desktop Pictures/") and fil.endswith(".png")
             ]
         
         @staticmethod
@@ -74,19 +76,19 @@ init python:
             Args:
                 transient (bool): Whether to show the screen transiently. Defaults to false.
             """
-            apps = self.settings.read_not_none("apps_list")
+            apps = self._get_dock_apps(self._dock)
             
             if transient:
                 renpy.run(
                     ShowTransient(
                         "CabertoShellView", wallpaper=self._wallpaper, 
-                        apps=self._get_dock_apps(apps)
+                        apps=apps
                     )
                 )
             else:
                 renpy.call_screen(
                     "CabertoShellView", wallpaper=self._wallpaper, 
-                    apps=self._get_dock_apps(apps)
+                    apps=apps
                 )
                 
         def launch_app(self, app_id):
@@ -123,6 +125,42 @@ init python:
                 renpy.run(ShowTransient("CabertoDrawer"))
             else:
                 renpy.run(Hide("CabertoDrawer"))
+                
+        def start_acct_manager(self):
+            """Call the account switcher dialog."""
+            if self._acct_switcher_open:
+                clog.error("Account switcher is already active.")
+                return
+            
+            self._acct_switcher_open = True
+            username = renpy.invoke_in_new_context(
+                renpy.call_screen, "CabertoAccountSwitcher", users=CAAccountsService.get_all_users()
+            )
+            self._acct_switcher_open = False
+            if not username:
+                clog.debug("User has requested to cancel.")
+                return                
+            
+            self._acct_mgr.change_current_user(username)
+            
+            renpy.run([Hide("CabertoShellView"), Hide("CabertoLauncher")])
+            clog.debug("Reloading Caberto settings to current user.")
+            
+            self._init_settings()
+            self.launch(transient=True)
+            
+        def _init_settings(self):        
+            self.settings = ServiceStorage(self)
+            
+            if not self.settings.read("apps_list"):
+                self.settings.write_field("apps_list", self._default_apps())
+                self.settings.write()
+            self._dock = self.settings.read_not_none("apps_list")
+            
+            if not self.settings.read("wallpaper"):
+                self.settings.write_field("wallpaper", AS_LIBRARY_DIR + "Desktop Pictures/Candella.png")
+                self.settings.write()
+            self._wallpaper = self.settings.read_not_none("wallpaper")
             
         def _default_apps(self):
             """Returns the list of default apps to load into the launcher."""

@@ -35,7 +35,7 @@ screen CabertoTopBar():
                 xalign 1.0
                 spacing 8
                 
-                text "[_Username]"
+                textbutton "[_Username]" action Function(caberto.start_acct_manager)
                 text "[_CurrentTime]"
                 
                 button action Show("CabertoSettings"):
@@ -51,15 +51,22 @@ screen CabertoTopBar():
                         align (0.5, 0.5)
             
 style CabertoTopBar_frame is frame:
+    background Frame("#191919", Borders(0, 0, 0, 0), tile=True)
     margin (0, 0)
     xpadding 8
-    background "#191919"
+    ypadding 4
     
 style CabertoTopBar_hbox is hbox:
     spacing 8
     
 style CabertoTopBar_text is ASSystemRegularFont:
+    color "#ffffff"
     size 16
 
 style CabertoTopBar_AppName is ASSystemMediumFont:
+    color "#ffffff"
     size 16
+    
+style CabertoTopBar_button is button:
+    padding (0, 0)
+style CabertoTopBar_button_text is CabertoTopBar_text

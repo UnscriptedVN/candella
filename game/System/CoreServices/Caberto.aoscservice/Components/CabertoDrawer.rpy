@@ -34,7 +34,7 @@ init screen CabertoDrawer():
                     button action [
                         Function(caberto.drawer), Function(caberto.launch_app_bundle, app_bundle=app)
                     ]:
-                        xysize(96, 72)
+                        xysize(96, 128)
                         sensitive True
                         
                         vbox:
