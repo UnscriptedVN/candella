@@ -14,12 +14,16 @@ init -1 python:
     def SetThumbnailOriginal():
         config.thumbnail_width = 256
         config.thumbnail_height = 144
+        
+    def ca_supports_blur():
+        return renpy.version(tuple=True) > (7, 4, 0) and config.gl2
 
 
 init:
     # Newer versions of Ren'Py come with a native blur property. This blur property is left over from AliceOS,
-    # so this is kept in here for compatibility reasons.
-    if renpy.version(tuple=True) < (7, 4, 0):
+    # so this is kept in here for compatibility reasons. This feature is also available if model-based rendering
+    # via OpenGL is disabled.
+    if not ca_supports_blur():
         transform blur(child):
             contains:
                 child

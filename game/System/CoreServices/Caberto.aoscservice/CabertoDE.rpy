@@ -137,8 +137,9 @@ init python:
                 renpy.call_screen, "CabertoAccountSwitcher", users=CAAccountsService.get_all_users()
             )
             self._acct_switcher_open = False
-            if not username:
-                clog.debug("User has requested to cancel.")
+            
+            if username is not str:
+                clog.debug("User has requested to cancel or the username is invalid.")
                 return                
             
             self._acct_mgr.change_current_user(username)

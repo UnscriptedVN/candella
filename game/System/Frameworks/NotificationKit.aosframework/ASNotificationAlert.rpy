@@ -19,7 +19,7 @@ init screen ASNotificationAlert(message, withDetails, onDismissCallback=Return('
                 Function(SetThumbnailOriginal)
                 ]
 
-    if renpy.version(tuple=True) < (7, 4, 0):
+    if ca_supports_blur():
         add FileCurrentScreenshot() at blur
     else:
         add FileCurrentScreenshot():
