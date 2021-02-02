@@ -10,7 +10,7 @@ screen ASAppManagerView():
     style_prefix "ASInterface"
 
     python:
-        apps = appManager.gather_applications()
+        apps = CabertoShell.get_all_applications()
 
     default currentAppView = None
 
@@ -67,9 +67,17 @@ screen ASAppManagerView():
                                     style "ASAppManager_DetailedAppAuthor_text"
                                 text "Version [currentAppView.bundleVersion] ([currentAppView.bundleId])"
                                 null height 8
+                                
+                                hbox:
+                                    spacing 8
 
-                                textbutton "Launch" action Function(currentAppView.applicationWillLaunch):
-                                    style "ASInterfacePushButton"
+                                    textbutton "Launch" action Function(currentAppView.applicationWillLaunch):
+                                        style "ASInterfacePushButton"
+                                    
+                                    vbox:
+                                        style_prefix "ASInterfaceCheckbox"
+                                        textbutton "Pin to launcher" action Function(appman._pin_to_shell_dock, app_id=currentAppView.bundleId):
+                                            selected caberto.app_exists_in_current_launcher(currentAppView.bundleId)
 
                         null height 8
 
@@ -117,7 +125,7 @@ screen ASAppManagerDetailButton(app):
             vbox:
                 python:
                     _name = appManager.get_app_name(app)
-                    _author = app.bundleAuthor if len(app.bundleAuthor) < 32 else app.bundleAuthor[0:31] + "..."
+                    _ver = app.bundleVersion
                 text "[_name]":
                     style "ASAppManager_AppName_text"
-                text "[_author]"
+                text "v[_ver]"

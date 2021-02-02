@@ -28,6 +28,8 @@ screen CabertoAccountSwitcher(users):
             
     default s_users = [user for user in users if user != CAAccountsService.get_logged_in_user()]
     
+    key "K_ESCAPE" action [Return(None)]
+    
     frame at ASDynamicBlurTransition:
         xalign 0.5
         yalign 0.5

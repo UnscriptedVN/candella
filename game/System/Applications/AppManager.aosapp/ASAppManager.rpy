@@ -15,19 +15,19 @@ init 5 python:
 
         def gather_applications(self):
             """Returns a list of all of the gathered applications."""
-            import gc
-            apps = []
-            for obj in gc.get_objects():
-                if isinstance(obj, ASAppRepresentative):
-                    apps.append(obj)
-            return apps
+            clog.warn("ASAppManager.gather_applications is deprecated. Use CabertoShell.get_all_applications instead.")
+            return CabertoShell.get_all_applications()
             
         def get_app_name(self, app):
             if isinstance(app, CAApplication):
                 return app.get_name()
             return app.bundleName
+            
+        def _pin_to_shell_dock(self, app_id):
+            """Prompt Caberto Shell to add/remove an app to/from the Dock."""
+            self.emit_signal("__appman_pin", app=app_id)
 
         def __init__(self):
             CAApplication.__init__(self, AS_DEFAULT_APP_DIR + "AppManager.aosapp/")
 
-    appManager = ASAppManager()
+    appman = appManager = ASAppManager()

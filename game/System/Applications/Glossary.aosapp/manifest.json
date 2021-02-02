@@ -1,0 +1,10 @@
+{
+    "name": "glossary",
+    "productName": "Glossary",
+    "id": "dev.unscriptedvn.candella.glossary",
+    "author": "Unscripted VN Team <unscriptedvn@marquiskurt.net>",
+    "version": "1.1.0",
+    "description": "Need to look up an unfamiliar term in the game dialogue? Use Glossary to define it.\n\nGlossary contains key terms that can help players determine what characters are talking about.",
+    "license": "MPL-2.0",
+    "permissions": []
+}

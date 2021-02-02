@@ -9,7 +9,7 @@ init screen CabertoDrawer():
     style_prefix "CabertoDrawer"
     modal False
         
-    $ all_apps = caberto.get_all_applications()
+    $ all_apps = sorted(caberto.get_all_applications(), key=lambda app: app.get_name() if isinstance(app, CAApplication) else app.bundleName)
     
     frame:
         xsize 700

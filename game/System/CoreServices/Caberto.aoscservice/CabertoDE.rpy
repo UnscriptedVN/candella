@@ -70,6 +70,10 @@ init python:
             """Returns the current time of the system."""
             return strftime("%I:%M%p")
             
+        def app_exists_in_current_launcher(self, app_id):
+            """Returns if a given app bundle ID is in the current user's dock."""
+            return app_id in self._dock
+            
         def launch(self, transient=False):
             """Launch the desktop with the user's settings.
             
@@ -131,6 +135,10 @@ init python:
             if self._acct_switcher_open:
                 clog.error("Account switcher is already active.")
                 return
+                
+            if len(CAAccountsService.get_all_users()) < 2:
+                clog.error("There aren't any other users on the system.")
+                return
             
             self._acct_switcher_open = True
             username = renpy.invoke_in_new_context(
@@ -138,8 +146,8 @@ init python:
             )
             self._acct_switcher_open = False
             
-            if username is not str:
-                clog.debug("User has requested to cancel or the username is invalid.")
+            if type(username) is not str:
+                clog.debug("User has requested to cancel or the username is invalid. Type: %s", username)
                 return                
             
             self._acct_mgr.change_current_user(username)
@@ -181,9 +189,22 @@ init python:
             self.settings.write()
             
         def _app_listen(self, *args, **kwargs):
+            # Handle the title section on the desktop.
             if "application_launched" in args:
                 self._current_app_name = kwargs["name"]
             elif "application_terminated" in args:
                 self._current_app_name = "Caberto Desktop"
+            
+            # Handle app pinning from the App Manager.
+            elif "__appman_pin" in args:
+                app_id = kwargs["app"]
+                
+                if app_id in self._dock:
+                    self._dock.remove(app_id)
+                else:
+                    self._dock.append(app_id)
+                self.settings.write_field("apps_list", self._dock)
+                self.settings.write()
+                renpy.run([Hide("CabertoShellView"), Function(self.launch, transient=True)])
     
     caberto = CabertoShell()

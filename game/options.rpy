@@ -110,7 +110,7 @@ define config.end_game_transition = None
 
 define config.window = "auto"
 
-if "gl2" in config:
+if "gl2" in config and not renpy.linux:
     define config.gl2 = True
 
 
