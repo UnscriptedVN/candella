@@ -31,7 +31,7 @@ init -20 python:
         def __init__(self, appDirectory):
 
             self.bundleDir = appDirectory
-            
+
             persistent.AS_PERMISSIONS[self.bundleId] = {
                 AS_REQUIRES_SYSTEM_EVENTS: True,
                 AS_REQUIRES_FULL_DISK_ACCESS: True,
@@ -70,11 +70,18 @@ init -20 python:
         # Steps to take when the app is about to send a notification
         def serviceWillRequestNotification(self, message, withDetails, responseCallback=Return(0)):
             if self.serviceShouldRequestNotification():
-                renpy.call_screen("ASNotificationBanner", applet=self, message=message, withDetails=withDetails, responseCallback=responseCallback)
+                response = renpy.call_screen(
+                    "ASNotificationBanner",
+                    applet=self,
+                    message=message,
+                    withDetails=withDetails,
+                    responseCallback=responseCallback
+                )
                 self.serviceDidRequestNotification()
+                return response
             else:
                 logging.error("%s is not authorized to send notifications.", self.bundleId)
-            return
+                return None
 
         # Steps to take when the app is done sending a notification
         def serviceDidRequestNotification(self):

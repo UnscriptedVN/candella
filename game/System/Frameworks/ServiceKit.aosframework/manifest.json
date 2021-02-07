@@ -5,6 +5,7 @@
     "license": "BSD-2-Clause",
     "description": "Create core services built into AliceOS/Candella.",
     "requisites": [
-        "NotificationKit"
+        "NotificationKit",
+        "Observable"
     ]
 }

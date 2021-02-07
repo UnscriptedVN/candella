@@ -1,0 +1,8 @@
+{
+    "name": "Observable",
+    "authors": ["Marquis Kurt <software@marquiskurt.net>"],
+    "version": "21.01",
+    "license": "BSD-2-Clause",
+    "description": "Add observable features to services, apps, and other classes.",
+    "requisites": []
+}

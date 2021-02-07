@@ -8,3 +8,5 @@ errors.txt
 game/cache/**
 game/saves/**
 game/tl/**
+
+.vscode/

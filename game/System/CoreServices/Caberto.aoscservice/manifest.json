@@ -1,0 +1,9 @@
+{
+  "name": "Caberto Shell",
+  "id": "dev.unscriptedvn.candella.caberto-shell",
+  "author": "Marquis Kurt <unscriptedvn@marquiskurt.net>",
+  "version": "1.0.0",
+  "description": "A desktop shell for Candella, inspired by Lomiri.",
+  "license": "Proprietary",
+  "requisites": ["file_system"]
+}
