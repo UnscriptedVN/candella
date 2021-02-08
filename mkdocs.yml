@@ -1,0 +1,19 @@
+site_name: Candella Documentation
+site_author: Marquis Kurt
+site_description: "Candella is a fork of the AliceOS framework for Ren'Py."
+docs_dir: mkdocs/
+
+edit_uri: ""
+
+repo_name: 'UnscriptedVN/candella'
+repo_url: 'https://github.com/UnscriptedVN/candella'
+
+copyright: 'Copyright &copy; 2021 Unscripted VN Team.'
+theme: readthedocs
+
+extra:
+    social:
+    - type: 'github'
+      link: 'https://github.com/UnscriptedVN/candella'
+    - type: 'twitter'
+      link: 'https://twitter.com/UnscriptedVN'
