@@ -106,12 +106,15 @@ Returns the path for a given icon size.
 
 Apps can also store data for the currently logged-in user on the system; this data can be used to save preferences or other data that is necessary for app functions. App storage is handled by the `AppStorage` class and can be accessed for your app via `CAApplication.data`.
 
-There are three methods in `AppStorage` to help read and write data accordingly:
+There are four methods in `AppStorage` to help read and write data accordingly:
 
 - `AppStorage.read(field)` will fetch the value for a field or return `None` if no value for the field was found.
 - `AppStorage.read_not_none(field)` will fetch the value for a field or throw an exception if there is no value.
 - `AppStorage.write_field(field, value)` will write the value `value` into the specified `field`.
 - `AppStorage.write()` will commit all written changes to the current user's data file.
+
+!!! danger "Sensitive Information"
+    Do _**not**_ store sensitive information in app storage unless you are using cryptography to encrypt the information. App storage is provided in the user's data file in a human-readable format and may be easily compromised if not encrypted properly.
 
 ## User interfaces
 

@@ -1,4 +1,4 @@
-# Observable
+# Observable Framework
 
 Observable is a Candella framework designed to add observability to classes, similar to what's offered in languages like Java.
 

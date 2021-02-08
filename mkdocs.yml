@@ -17,3 +17,6 @@ extra:
       link: 'https://github.com/UnscriptedVN/candella'
     - type: 'twitter'
       link: 'https://twitter.com/UnscriptedVN'
+
+markdown_extensions:
+  - markdown.extensions.admonition

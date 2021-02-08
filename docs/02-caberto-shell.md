@@ -2,7 +2,8 @@
 
 The default desktop shell for Candella is **Caberto**. Caberto's interface is mainly inspired from the [Lomiri][lomiri] desktop environment and comes with per-user customizations.
 
-Caberto is currently in a pre-release state and the documentation here may change as the project evolves.
+!!! warning
+    Caberto is currently in a pre-release state and the documentation here may change as the project evolves.
 
 ![Default Caberto Shell desktop](./images/caberto/default.png)
 

@@ -24,6 +24,8 @@ init python:
                     problem
                     )
 
+            self.data = ServiceStorage(self)
+
         def _load_manifest(self):
             manifest = {}
             if not renpy.loadable(self.bundleDir + "manifest.json"):

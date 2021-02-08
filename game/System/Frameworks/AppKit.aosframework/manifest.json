@@ -1,11 +1,11 @@
 {
-    "name": "AppKit",
-    "authors": ["Project Alice <hello@aliceos.app>", "Marquis Kurt <software@marquiskurt.net>"],
-    "version": "21.01",
-    "license": "BSD-2-Clause",
-    "description": "Develop apps quickly and easily for AliceOS/Candella.",
-    "requisites": [
-        "NotificationKit",
-        "Multiuser"
-    ]
+  "name": "AppKit",
+  "authors": [
+    "Project Alice <hello@aliceos.app>",
+    "Marquis Kurt <software@marquiskurt.net>"
+  ],
+  "version": "21.01",
+  "license": "BSD-2-Clause",
+  "description": "Develop apps quickly and easily for AliceOS/Candella.",
+  "requisites": ["NotificationKit", "Observable", "Multiuser"]
 }
