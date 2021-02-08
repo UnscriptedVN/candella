@@ -1,7 +1,7 @@
 site_name: Candella Documentation
 site_author: Marquis Kurt
 site_description: "Candella is a fork of the AliceOS framework for Ren'Py."
-docs_dir: mkdocs/
+docs_dir: docs/
 
 edit_uri: ""
 
