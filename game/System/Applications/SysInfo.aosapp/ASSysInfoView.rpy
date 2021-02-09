@@ -22,7 +22,7 @@ screen ASSysInfoView():
             hbox:
                 spacing 32
 
-                add ASSysInfoApp.bundleDir + "Resources/Elements/SystemIcon.png":
+                add ASSysInfo.bundleDir + "Resources/Elements/SystemIcon.png":
                     size (256, 256)
                     xoffset 16
 
