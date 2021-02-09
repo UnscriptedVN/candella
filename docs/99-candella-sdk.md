@@ -27,6 +27,8 @@ poetry install
 poetry build
 ```
 
+Then, use `pip install` and point to the resulting wheel file in the `dist` directory.
+
 ## Creating projects
 
 Currently, the Candella SDK lets you create three different kinds of projects: applications, core services, and frameworks. To create any of these projects, run `candella-sdk --create` and specify the `--type` argument:

@@ -48,7 +48,6 @@ init 5 python:
                 appProcess.start()
                 appProcess.join()
 
-
             renpy.call_screen(bootView, timeout=timeout)
 
     ASBootloader = ASBootloaderCoreService()

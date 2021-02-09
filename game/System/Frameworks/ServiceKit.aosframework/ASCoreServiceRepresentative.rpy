@@ -47,6 +47,12 @@ init -20 python:
                 256: self.bundleDir + "Resources/Iconset/256.png"
             }
 
+        def serviceWillLaunchAtLogin(self):
+            clog.warn("serviceWillLaunchAtLogin not implemented for %s.", self.__class__.__name__)
+
+        def serviceDidLaunchAtLogin(self):
+            clog.warn("serviceDidLaunchAtLogin not implemented for %s.", self.__class__.__name__)
+
         # Steps to take when starting the app.
         def serviceWillLaunch(self):
             return

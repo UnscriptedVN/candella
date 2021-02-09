@@ -50,6 +50,11 @@ init python:
                 perm = CA_PERMISSIONS[requisite].key
                 persistent.AS_PERMISSIONS[self.id][perm] = True
 
+        def launch_at_login(self):
+            self.serviceWillLaunchAtLogin()
+            self.serviceDidLaunchAtLogin()
+            self.emit_signal("service_launched_at_login", name=self.__class__.__name__)
+
         def launch(self):
             self.serviceWillLaunch()
             self.serviceDidLaunch()

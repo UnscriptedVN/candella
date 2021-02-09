@@ -131,6 +131,16 @@ init python:
             """Returns the path for a given icon size."""
             return self.bundleDir + ("Resources/Iconset/%s.png" % (size))
 
+        def launch_at_login(self):
+            if "system_events" not in self.permissions or not self.applicationShouldLaunchAtLogin():
+                clog.warn(
+                    "App does not have permission to launch at login or doesn't provide a login service: %s.",
+                    self.id
+                )
+                return
+            self.application_will_launch_at_login()
+            self.emit_signal("application_launched_at_login", name=self.get_name())
+
         def launch(self):
             """Launch the app."""
 

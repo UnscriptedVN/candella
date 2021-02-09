@@ -1,0 +1,9 @@
+{
+  "name": "Roland",
+  "id": "dev.unscriptedvn.candella.roland-boot",
+  "author": "Marquis Kurt <unscriptedvn@marquiskurt.net>",
+  "version": "0.1.0",
+  "description": "A modular bootloader for Candella",
+  "license": "MPL-2.0",
+  "requisites": []
+}

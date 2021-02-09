@@ -20,6 +20,7 @@ Candella is a fork of the [AliceOS framework][aliceos], a Ren'Py framework that 
 ### Core Services
 - **Caberto Shell**: A Lomiri-inspired desktop environment with support for multiple users, custom wallpapers, a launcher, and more.
 - **Accounts**: Manage different users on a Candella system with ease.
+- **Roland Boot Manager**: A modular approach to booting and shutting down Candella.
 ### Apps
 - **Glossary**: Look up words that you may not be familiar with as you play through the game.
 
