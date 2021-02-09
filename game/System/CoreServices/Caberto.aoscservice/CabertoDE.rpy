@@ -14,7 +14,6 @@ init python:
     from time import gmtime, strftime
 
     class CabertoShell(CACoreService):
-        _acct_mgr = CAAccountsService()
         _wallpaper = AS_LIBRARY_DIR + "Desktop Pictures/Candella.png"
         _dock = []
         _drawer_open = False
@@ -23,6 +22,8 @@ init python:
 
         def __init__(self):
             CACoreService.__init__(self, AS_CORESERVICES_DIR + "Caberto.aoscservice/")
+            self._acct_mgr = CAAccountsService(self)
+
             self.settings = ServiceStorage(self)
 
             if not self.settings.read("apps_list"):

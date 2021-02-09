@@ -51,10 +51,11 @@ The manifest file contains information about your app, as well as what the app n
 - `description`: A summary of what your app does.
 - `license`: The license your app falls under as an SPDX expression.
 - `permissions`: A list of strings containing what permissions your app requires:
-  - `file_system`: Requires access to the Candella "file system"
-  - `notifications`: Requires access to NotificationKit to send notifications
-  - `system_events`: Requires access to System Events
-  - `virtual_platform`: Requires access to the MeteorVM platform
+    - `file_system`: Requires access to the Candella "file system"
+    - `notifications`: Requires access to NotificationKit to send notifications
+    - `system_events`: Requires access to System Events
+    - `manage_users`: Requires access to the accounts service to manage users
+    - `virtual_platform`: Requires access to the MeteorVM platform
 
 The following is an example manifest:
 
@@ -105,6 +106,9 @@ Returns the path for a given icon size.
 ## App storage
 
 Apps can also store data for the currently logged-in user on the system; this data can be used to save preferences or other data that is necessary for app functions. App storage is handled by the `AppStorage` class and can be accessed for your app via `CAApplication.data`.
+
+!!! warning "Declare file system permissions"
+    Apps that utilize app storage must include the `file_system` permission in their app manifest in the `permissions` field. Apps will not be able to access app storage if this permission isn't declared or if the user has not granted the app permission to do so.
 
 There are four methods in `AppStorage` to help read and write data accordingly:
 
