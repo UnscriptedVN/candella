@@ -1,5 +1,7 @@
 # Candella
 
+![Lint Candella Project](https://github.com/UnscriptedVN/candella/workflows/Lint%20Candella%20Project/badge.svg)
+
 Candella is a refreshed fork of the [AliceOS](https://aliceos.app) framework for Ren'Py. Candella is primarily targeted for Unscripted, but maintains compatibility with AliceOS APIs for other Ren'Py distributions.
 
 ## Differences between AliceOS
