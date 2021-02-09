@@ -1,0 +1,9 @@
+{
+  "name": "Halt Manager",
+  "id": "dev.unscriptedvn.candella.core-services.halt",
+  "author": "Project Alice <hello@aliceos.app>, Marquis Kurt <unscriptedvn@marquiskurt.net>",
+  "version": "1.1.0",
+  "description": "Safely catch system-level errors and restart Candella.",
+  "license": "BSD-2-Clause",
+  "requisites": []
+}

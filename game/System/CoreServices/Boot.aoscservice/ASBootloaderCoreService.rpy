@@ -12,15 +12,14 @@ init 5 python:
     from os import path
     import logging
 
-    class ASBootloaderCoreService(ASCoreServiceRepresentative):
-        bundleName = "Bootloader"
-        bundleId = "dev.unscriptedvn.candella.core-services.boot"
-        bundleDir = AS_CORESERVICES_DIR + "Boot.aoscservice/"
-        bundleAuthor = "Project Alice and Unscripted Team"
-        bundleVersion = "1.0.0"
-        bundleDescription = """\
-            Show a loading screen for Candella.
-        """
+    class ASBootloaderCoreService(CACoreService):
+
+        def __init__(self):
+            CACoreService.__init__(self, AS_CORESERVICES_DIR + "Boot.aoscservice/")
+
+            if not path.isdir(config.savedir + "/.causerland"):
+                clog.error("Userland folder is missing. Re-running Setup Assistant.")
+                persistent.AS_COMPLETED_SETUP = False
 
         # Looks for all apps using AppKit and returns a list of them.
         def gatherAllApplications(self):
@@ -51,12 +50,5 @@ init 5 python:
 
 
             renpy.call_screen(bootView, timeout=timeout)
-
-        def __init__(self):
-            ASCoreServiceRepresentative.__init__(self, AS_CORESERVICES_DIR + "Boot.aoscservice/")
-            
-            if not path.isdir(config.savedir + "/.causerland"):
-                clog.error("Userland folder is missing. Re-running Setup Assistant.")
-                persistent.AS_COMPLETED_SETUP = False
 
     ASBootloader = ASBootloaderCoreService()

@@ -4,6 +4,10 @@
 #
 # (C) 2021 Marquis Kurt. All rights reserved.
 #
+# This Source Code Form is subject to the terms of the Mozilla Public
+# License, v. 2.0. If a copy of the MPL was not distributed with this
+# file, You can obtain one at https://mozilla.org/MPL/2.0/.
+#
 
 init offset = -10
 
@@ -16,21 +20,13 @@ init python:
     class CAAccountsPermissionError(Exception):
         """The core service or app does not have permission to use CAAccountsService."""
 
-    class CAAccountsService(ASCoreServiceRepresentative):
-        bundleName = "Accounts Service"
-        bundleId = "dev.unscriptedvn.candella.accounts-service"
-        bundleDir = AS_CORESERVICES_DIR + "Accounts.aoscservice/"
-        bundleAuthor = "Unscripted VN Team <unscriptedvn@marquiskurt.net>"
-        bundleVersion = "1.0.0"
-        bundleDescription = """\
-            Manage multiple user accounts via the Multiuser framework.
-        """
+    class CAAccountsService(CACoreService):
 
         _accounts_dir = config.savedir + "/.causerland"
         _users_list = []
 
         def __init__(self, appobj):
-            ASCoreServiceRepresentative.__init__(self, AS_CORESERVICES_DIR + "Accounts.aoscservice/")
+            CACoreService.__init__(self, AS_CORESERVICES_DIR + "Accounts.aoscservice/")
             self._users_list = CAAccountsService.get_all_users()
 
             # Disable access to this service on Candella apps and services that don't request this behavior.

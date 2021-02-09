@@ -8,15 +8,10 @@
 
 init 5 python:
 
-    class ASSetupAssistantCoreService(ASCoreServiceRepresentative):
-        bundleName = "Setup Assistant"
-        bundleId = "dev.unscriptedvn.candella.core-services.setup-assitant"
-        bundleDir = AS_CORESERVICES_DIR + "Setup.aoscservice/"
-        bundleAuthor = "Project Alice and Unscripted Team"
-        bundleVersion = "1.0.0"
-        bundleDescription = """\
-            Quickly set up Candella for configuration.
-        """
+    class ASSetupAssistantCoreService(CACoreService):
+
+        def __init__(self):
+            CACoreService.__init__(self, AS_CORESERVICES_DIR + "Setup.aoscservice/")
 
         def getFromElements(self, filename):
             return self.bundleDir + "Resources/Elements/" + filename
@@ -38,7 +33,5 @@ init 5 python:
             persistent.AS_COMPLETED_SETUP = True
             return persistent.playername
 
-        def __init__(self):
-            ASCoreServiceRepresentative.__init__(self, AS_CORESERVICES_DIR + "Setup.aoscservice/")
 
     ASSetup = ASSetupAssistantCoreService()

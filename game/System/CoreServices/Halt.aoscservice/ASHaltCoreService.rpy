@@ -10,15 +10,10 @@ init 5 python:
     import os
     import logging
 
-    class ASHaltCoreService(ASCoreServiceRepresentative):
-        bundleName = "Error Halt System"
-        bundleId = "dev.unscriptedvn.candella.core-services.halt"
-        bundleDir = AS_CORESERVICES_DIR + "Halt.aoscservice/"
-        bundleAuthor = "Project Alice and Unscripted Team"
-        bundleVersion = "1.0.0"
-        bundleDescription = """\
-            Safely catch system-level errors and restart Candella.
-        """
+    class ASHaltCoreService(CACoreService):
+
+        def __init__(self):
+            CACoreService.__init__(self, AS_CORESERVICES_DIR + "Halt.aoscservice/")
 
         def _write_halt(self, code=""):
             template = """\
@@ -64,7 +59,5 @@ Host Operating System: %s
                 clog.info("Wrote stop file to candella_stop.txt.")
                 renpy.quit()
 
-        def __init__(self):
-            ASCoreServiceRepresentative.__init__(self, AS_CORESERVICES_DIR + "Halt.aoscservice/")
 
     ASHalt = ASHaltCoreService()
