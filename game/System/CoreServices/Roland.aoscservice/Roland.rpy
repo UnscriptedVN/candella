@@ -63,9 +63,17 @@ init python:
                     clog.error("An exception occurred when launching %s: %s.", service.id, error)
 
             # Re-run the Setup Assistant, if necessary.
-            if not persistent.AS_COMPLETED_SETUP and "ASSetup" in vars():
-                clog.debug("Re-opening the AliceOS Setup Assistant.")
-                ASSetup.startSetup()
+            if not persistent.AS_COMPLETED_SETUP:
+                try:
+                    clog.debug("Launching Thorax.")
+                    setup.launch()
+                except NameError:
+                    pass
+                try:
+                    clog.debug("Launching AliceOS Setup Assistant.")
+                    ASSetup.startSetup()
+                except:
+                    ASHalt.halt("MISSING_OOBE_SERVICE")
 
             # Launch apps that have permission to do so.
             for app in self.__get_apps():
