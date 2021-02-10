@@ -29,7 +29,7 @@ jobs:
       - name: Add release tag to Build ID
         shell: bash
         run: |
-          ./scripts/inject_version.sh
+          ./scripts/version_inject.py
         if: github.event.release
         env:
           tag: ${{ github.ref }}
@@ -37,7 +37,7 @@ jobs:
       - name: Add build hash to Build ID
         shell: bash
         run: |
-          ./scripts/inject_version.sh
+          ./scripts/version_inject.py
         if: contains(github.event_name, 'push')
         env:
           commit: ${{ github.sha }}
