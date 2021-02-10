@@ -16,6 +16,7 @@ There are two additional parameters that can be passed into the boot function:
 
 - `loader` (str): The name of the Ren'Py screen to display during boot. By default, this is set to `None`, thus not displaying a screen.
 - `minimum_load_time` (float): The minimum amount of seconds the boot screen should be displayed if the boot sequence finishes too quickly. By default, this is set to `0.0`.
+- `run_setup` (bool): Whether to look for a setup assistant and run it if setup is incomplete or hasn't been executed before. By default, this is set to `True`.
 
 ### Default boot screens
 

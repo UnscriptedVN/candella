@@ -42,7 +42,7 @@ init python:
         def __launch_app(self, app):
             return app.launch_at_login()
 
-        def boot(self, loader=None, minimum_load_time=0):
+        def boot(self, loader=None, minimum_load_time=0, run_setup=True):
             # Show a boot screen.
             clog.debug("Checking for boot screen.")
             if type(loader) is str and loader:
@@ -63,7 +63,7 @@ init python:
                     clog.error("An exception occurred when launching %s: %s.", service.id, error)
 
             # Re-run the Setup Assistant, if necessary.
-            if not persistent.AS_COMPLETED_SETUP:
+            if not persistent.AS_COMPLETED_SETUP and run_setup:
                 try:
                     clog.debug("Launching Thorax.")
                     setup.launch()
