@@ -20,7 +20,7 @@ init -999 python in CAFrameworkLoader:
         frameworks = []
         for file in fr_files:
             name = file.split("/")[0].replace(".aosframework", "")
-            if name in frameworks:
+            if name in frameworks or name.startswith("."):
                 continue
             frameworks.append(name)
         return frameworks
