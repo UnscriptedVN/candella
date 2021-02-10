@@ -15,10 +15,13 @@ from datetime import datetime
 import os
 import json
 
-lsb_release = {}
+current = datetime.now()
 
 with open("game/System/release_info.json", 'r') as release_data:
     lsb_release = json.load(release_data)
+
+lsb_release["distribution"]["version"] = __ver = f"{str(current.year)[2:]}.{current.month:02d}"
+print(f"Release version dated : {__ver}")
 
 if "tag" in os.environ and os.environ["tag"]:
     tag = os.environ["tag"]
@@ -30,8 +33,9 @@ elif "commit" in os.environ and os.environ["commit"]:
     lsb_release["distribution"]["build_id"] = os.environ["commit"][:7]
 else:
     print("No tags or commits found. Using date/time as Build ID.")
-    current = datetime.now()
     lsb_release["distribution"]["build_id"] = f"{current.year}{current.month}{current.day}"
+
+lsb_release["build_date"] = current.isoformat()
 
 with open("game/System/release_info.json", "w+") as release_data_writable:
     json.dump(lsb_release, release_data_writable, indent=4)
