@@ -12,10 +12,24 @@ init -1000:
     # These definitions are used as a means of identifying the current
     # version of AliceOS provided with a
     define AS_SYS_INFO = {
+        "NAME": "Candella",
         "VERSION": "21.01",
         "COMMON_NAME": "Apple Cinnamon",
+        "CHANNEL": "stable",
         "BUILD_ID": "GITHASH"
     }
+
+    python:
+        import json
+
+        with renpy.file("System/release_info.json") as manifest:
+            lsb_release = json.load(manifest)["distribution"]
+
+        AS_SYS_INFO["NAME"] = lsb_release["name"]
+        AS_SYS_INFO["VERSION"] = lsb_release["version"]
+        AS_SYS_INFO["BUILD_ID"] = lsb_release["build_id"]
+        AS_SYS_INFO["COMMON_NAME"] = lsb_release["codename"]
+        AS_SYS_INFO["CHANNEL"] = lsb_release["channel"]
 
     # MARK: OS directory definitions
     # Define system-wide directories here. These definitions are used

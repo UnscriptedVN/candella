@@ -28,7 +28,7 @@ screen RolandGraphicalLoader():
                     size (176, 176)
                     xalign 0.5
 
-                text "Powered by Candella":
+                text "Powered by [AS_SYS_INFO[NAME]]":
                     text_align 0.5
         else:
             text "candella":
