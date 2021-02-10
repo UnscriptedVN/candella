@@ -20,12 +20,12 @@ lsb_release = {}
 with open("game/System/release_info.json", 'r') as release_data:
     lsb_release = json.load(release_data)
 
-if os.environ["tag"]:
+if "tag" in os.environ and os.environ["tag"]:
     tag = os.environ["tag"]
     print(f"Tag {tag} found. Using tag as Build ID.")
     tag = tag.replace("refs/tags", "")
     lsb_release["distribution"]["build_id"] = os.environ["tag"]
-elif os.environ["commit"]:
+elif "commit" in os.environ and os.environ["commit"]:
     print("Commit hash found. Using commit hash as Build ID.")
     lsb_release["distribution"]["build_id"] = os.environ["commit"][:7]
 else:
