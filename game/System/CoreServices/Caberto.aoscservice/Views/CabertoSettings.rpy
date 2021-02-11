@@ -49,14 +49,14 @@ style CabertoSettings_vbox is ASInterface_vbox
 
 style CabertoSettings_label is ASInterface_label
 style CabertoSettings_label_text is ASInterface_label_text:
-    font AS_FONTS_DIR + "Bold.ttf"
+    font get_font("Interface", variant="Bold")
 
 style CabertoSettings_text is ASInterface_text:
     size 14
 
 style CabertoSettings_panel_label is ASInterface_label
 style CabertoSettings_panel_label_text is ASInterface_label_text:
-    font AS_FONTS_DIR + "Medium.ttf"
+    font get_font("Interface", variant="Medium")
     size 18
 
 

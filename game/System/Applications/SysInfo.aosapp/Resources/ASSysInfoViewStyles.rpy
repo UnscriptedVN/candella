@@ -7,23 +7,23 @@
 #
 
 style ASSysInfoTitle_text:
-    font AS_FONTS_DIR + "Bold.ttf"
+    font get_font("Interface", variant="Bold")
     size 34
 
 style ASSysInfoTitle_text_nobold is ASSysInfoTitle_text:
-    font AS_FONTS_DIR + "Regular.ttf"
+    font get_font("Interface")
 
 style ASSysInfoVersion_text is ASInterface_text:
     size 24
 
 style ASSysInfoProperty_text:
-    font AS_FONTS_DIR + "Regular.ttf"
+    font get_font("Interface")
     size 17
 
 style ASSysInfoProperty_text_bold is ASSysInfoProperty_text:
-    font AS_FONTS_DIR + "Bold.ttf"
+    font get_font("Interface", variant="Bold")
 
 style ASSysInfoCopyright_text:
-    font AS_FONTS_DIR + "Regular.ttf"
+    font get_font("Interface")
     size 14
     color "#666666"

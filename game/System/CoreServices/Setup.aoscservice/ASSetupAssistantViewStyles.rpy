@@ -12,7 +12,7 @@ init:
         yalign 0.5
 
     style ASSetupAssistantViewTitle is ASInterface_label_text:
-        font AS_FONTS_DIR + "Bold.ttf"
+        font get_font("Interface", variant="Bold")
         size 28
         color "#ffffff"
 

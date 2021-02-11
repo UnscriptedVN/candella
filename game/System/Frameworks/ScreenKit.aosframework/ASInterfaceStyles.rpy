@@ -23,9 +23,9 @@ style ASInterface_hbox is hbox:
     spacing 8
 
 style ASInterface_text:
-    font AS_FONTS_DIR + "Regular.ttf"
+    font get_font("Interface")
     size 14
 
 style ASInterface_button is gui_button
 style ASInterface_button_text:
-    font AS_FONTS_DIR + "Bold.ttf"
+    font get_font("Interface", variant="Bold")

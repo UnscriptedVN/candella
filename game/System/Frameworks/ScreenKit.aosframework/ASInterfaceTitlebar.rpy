@@ -22,6 +22,6 @@ style ASWindowTitleBar_hbox is hbox:
     spacing 8
 
 style ASWindowTitleBar_text:
-    font AS_FONTS_DIR + "Medium.ttf"
+    font get_font("Interface", variant="Medium")
     size 16
     xalign 0.0

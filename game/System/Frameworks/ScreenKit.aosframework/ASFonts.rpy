@@ -8,29 +8,29 @@
 
 init:
     style ASSystemRegularFont is default:
-        font AS_FONTS_DIR + "Regular.ttf"
+        font get_font("Interface")
             outlines []
 
     style ASSystemBoldFont is default:
-        font AS_FONTS_DIR + "Bold.ttf"
+        font get_font("Interface", variant="Bold")
             outlines []
 
     style ASSystemMediumFont is default:
-        font AS_FONTS_DIR + "Medium.ttf"
+        font get_font("Interface", variant="Medium")
         outlines []
 
     style ASSystemBlackFont is default:
-        font AS_FONTS_DIR + "Black.ttf"
+        font get_font("Interface", variant="Black")
         outlines []
 
     style ASSystemItalicFont is default:
-        font AS_FONTS_DIR + "Italic.ttf"
+        font get_font("Interface", variant="Italic")
         outlines []
 
     style ASSystemThinFont is default:
-        font AS_FONTS_DIR + "Thin.ttf"
+        font get_font("Interface", variant="Thin")
         outlines []
 
     style ASSystemMonoFont is default:
-        font AS_FONTS_DIR + "Mono.ttf"
+        font get_font("Interface", variant="Mono")
         outlines []
