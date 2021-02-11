@@ -40,14 +40,14 @@ init python:
             self.bundleVersion = self.version = manifest["version"]
             self.bundleDescription = self.description = manifest["description"]
             self.license = manifest["license"]
-            self.requisites = manifest["requisites"]
+            self.permissions = manifest["permissions"]
 
             if self.id not in persistent.AS_PERMISSIONS:
                 persistent.AS_PERMISSIONS[self.id] = {}
 
             # Auto-grant permissions listed in the service's requisites.
-            for requisite in self.requisites:
-                perm = CA_PERMISSIONS[requisite].key
+            for permission in self.permissions:
+                perm = CA_PERMISSIONS[permission].key
                 persistent.AS_PERMISSIONS[self.id][perm] = True
 
         def launch_at_login(self):

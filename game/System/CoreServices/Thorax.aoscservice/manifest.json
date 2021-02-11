@@ -5,5 +5,5 @@
   "version": "0.1.0",
   "description": "A modular setup assistant for Candella.",
   "license": "MPL-2.0",
-  "requisites": []
+  "permissions": ["manage_users"]
 }

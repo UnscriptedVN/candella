@@ -5,5 +5,5 @@
   "version": "1.0.0",
   "description": "Manage multiple user accounts via the Multiuser framework.",
   "license": "MPL-2.0",
-  "requisites": []
+  "permissions": []
 }
