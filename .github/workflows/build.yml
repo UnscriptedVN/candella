@@ -19,7 +19,7 @@ jobs:
     strategy:
       matrix:
         renpy-versions:
-          - '7.4.1'
+          - '7.4.2'
 
     steps:
       - name: Clone source
