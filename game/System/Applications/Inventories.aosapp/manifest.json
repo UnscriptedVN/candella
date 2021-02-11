@@ -6,5 +6,6 @@
   "version": "1.1.0",
   "description": "View, use, and manage items you receive in-game with Inventories, a simple app designed for make item inventory systems easy.",
   "license": "BSD-2-Clause",
-  "permissions": ["notifications"]
+  "permissions": ["notifications"],
+  "requisites": ["AppKit", "Observable", "NotificationKit", "ScreenKit"]
 }

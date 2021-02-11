@@ -7,6 +7,7 @@
 #
 
 init python:
+    from store.CAFrameworkLoader import get_framework_names
     import json
     import logging
 
@@ -63,6 +64,8 @@ init python:
                 256: self.bundleDir + "Resources/Iconset/256.png"
             }
 
+            self.requisites = []
+
             # Load the manifest, if there is one.
             try:
                 self._initialize_manifest()
@@ -91,6 +94,8 @@ init python:
                     persistent.AS_PERMISSIONS[self.bundleId]["REQ_FULL_DISK"]):
                 self.data = AppStorage(self)
 
+            self._validate_requisites()
+
         def applicationWillTerminate(self):
             if isinstance(self.data, AppStorage):
                 self.data.write()
@@ -105,12 +110,16 @@ init python:
                 manifest = json.load(file)
 
             self.bundleName = self.name = manifest["name"]
-            self.bundleProductName = self.product_name = manifest["productName"]
+            self.bundleProductName = self.product_name = \
+                manifest["productName"] if "productName" in manifest else self.name
             self.bundleId = self.id = manifest["id"]
             self.bundleAuthor = self.author = manifest["author"]
             self.bundleVersion = self.version = manifest["version"]
             self.bundleDescription = self.description = manifest["description"]
             self.license = manifest["license"]
+
+            if "requisites" in manifest:
+                self.requisites = manifest["requisites"]
 
             if self.bundleId in persistent.AS_PERMISSIONS:
                 return
@@ -122,6 +131,18 @@ init python:
                 permission_data = CA_PERMISSIONS[permission]
                 self.requires[permission_data.key] = True
                 persistent.AS_PERMISSIONS[self.id][permission_data.key] = permission_data.default_state
+
+        def _validate_requisites(self):
+            all_frameworks = get_framework_names()
+            if not self.requisites:
+                clog.warning("Requisite frameworks for %s are not defined. Skipping validation.", self.id)
+                return
+            for requisite in self.requisites:
+                clog.debug("Checking requisite framework %s for %s.", requisite, self.id)
+                if requisite not in all_frameworks:
+                    clog.error("Requisite framework for %s is missing: %s.", self.id, requisite)
+                    continue
+            clog.debug("Requisites have been validated for app %s.", self.id)
 
         def get_name(self):
             """Returns the name of the app, or its bundle name."""

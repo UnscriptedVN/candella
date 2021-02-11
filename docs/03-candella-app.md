@@ -44,7 +44,7 @@ init python:
 The manifest file contains information about your app, as well as what the app needs from Candella to run. The manifest file is located in the root of the app as `manifest.json`. Candella will automatically fill in the information of the app for you as the Ren'Py project initializes.
 
 - `name`: A short name of your app. This can also be used as the command name.
-- `productName`: A human-readable version of the app name.
+- `productName`: (Optional) A human-readable version of the app name.
 - `id`: An identifier for the app. It is recommended to use reverse domain notation.
 - `author`: The author of the app. It is recommended to use the `Name <name@email.server>` format.
 - `version`: The current version of the app.
@@ -56,6 +56,7 @@ The manifest file contains information about your app, as well as what the app n
     - `system_events`: Requires access to System Events
     - `manage_users`: Requires access to the accounts service to manage users
     - `virtual_platform`: Requires access to the MeteorVM platform
+- `requisites`: (Optional) A list of strings containing the names of the frameworks this app relies on.
 
 The following is an example manifest:
 
@@ -92,6 +93,12 @@ Whether you want to use the AliceOS-style approach or the new launch/terminate a
 - In `terminate`, `emit_signal("application_terminated")`
 
 More information on AliceOS's app lifecycle can be [found on the AliceOS documentation][app-lifecycle].
+
+### Validating app frameworks
+
+If your Candella app requires frameworks and you want to check that those frameworks are available, you can add the `requisites` field to your manifest file. The `requisites` field takes a list of strings containing the framework names that are required for your app to run.
+
+Most apps by default will have a requisite list of `["AppKit", "Observable"]`.
 
 ## Convenience methods
 

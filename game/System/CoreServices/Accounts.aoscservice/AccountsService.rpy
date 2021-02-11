@@ -30,11 +30,8 @@ init python:
             self._users_list = CAAccountsService.get_all_users()
 
             # Disable access to this service on Candella apps and services that don't request this behavior.
-            if isinstance(appobj, CAApplication):
+            if isinstance(appobj, CAApplication) or isinstance(appobj, CACoreService):
                 if "manage_users" not in appobj.permissions:
-                    raise CAAccountsPermissionError(appobj.__class__.__name__)
-            elif isinstance(appobj, CACoreService):
-                if "manage_users" not in appobj.requisites:
                     raise CAAccountsPermissionError(appobj.__class__.__name__)
 
         @staticmethod
