@@ -60,5 +60,6 @@ style CabertoDrawer_frame is frame:
     padding(24, 16)
     background "#080808EE"
 
-style CabertoDrawer_text is ASSystemRegularFont:
+style CabertoDrawer_text is text:
+    font get_font("Ubuntu", "Regular")
     size 16
