@@ -1,5 +1,9 @@
 The following is a list of names of the wallpapers and their photographers from Unsplash.
 Thanks to these people for making great photos that can be bundled with Candella.
 
-Mountain View | Giorgi Iremadze
-Horse Plains | Gabriel Tovar
+Mountain View   | Giorgi Iremadze
+Horse Plains    | Gabriel Tovar
+Chuttersnap     | Chuttersnap
+Candella        | Candella Team
+Waves           | Unknown
+Apples          | Martin Bargl
