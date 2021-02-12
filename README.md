@@ -1,6 +1,7 @@
 # Candella
 
-![Lint Candella Project](https://github.com/UnscriptedVN/candella/workflows/Lint%20Candella%20Project/badge.svg)
+![Lint Candella Project](https://github.com/UnscriptedVN/candella/workflows/Lint%20Candella%20Project/badge.svg) 
+![Run Project Tests](https://github.com/UnscriptedVN/candella/workflows/Run%20Project%20Tests/badge.svg)
 
 Candella is a refreshed fork of the [AliceOS](https://aliceos.app) framework for Ren'Py. Candella is primarily targeted for Unscripted, but maintains compatibility with AliceOS APIs for other Ren'Py distributions.
 
@@ -23,8 +24,12 @@ You can additionally download a release from [the Releases page][releases].
 
 #### Requirements
 - [Ren'Py SDK][renpy] v7.4.0 or greater
+- Python 3
+- Pipenv
 
-To build this project, clone the repository and in Ren'Py Launcher, click "Distribute" and select "Candella System Distributable". The resulting file will be in a ZIP archive with AliceOSBaseSystem.rpa.
+Clone the repository from GitHub, then run `pipenv install -d` in the root of the project to fetch dependencies for making the project.
+
+To build this project, open the Ren'Py Launcher, click "Distribute" and select "Candella System Distributable". The resulting file will be in a ZIP archive with `candella.rpa`.
 
 #### Test-drive features
 

@@ -4,12 +4,13 @@ verify_ssl = true
 name = "pypi"
 
 [scripts]
-test = "pytest ./tests"
+test = "pytest -v ./tests"
 
 [packages]
 pytest = "*"
 
 [dev-packages]
+autopep8 = "*"
 
 [requires]
 python_version = "3.9"

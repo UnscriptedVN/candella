@@ -3,12 +3,9 @@ on: [push, pull_request]
 
 jobs:
   lint:
-    name: Lint Project with SDK
+    name: Run Project Tests
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        renpy-versions:
-          - '7.4.2'
+
     steps:
       - name: Clone source
         uses: actions/checkout@v1

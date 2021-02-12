@@ -1,0 +1,1 @@
+from . import version_inject as vi
