@@ -4,6 +4,7 @@ verify_ssl = true
 name = "pypi"
 
 [scripts]
+update_release = "python3 ./scripts/version_inject.py"
 test = "pytest -v ./tests"
 
 [packages]
