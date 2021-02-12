@@ -8,12 +8,14 @@
 init offset = -20
 
 init python:
+    from store.CAFrameworkLoader import get_framework_names
     import logging
 
     class CACoreService(ASCoreServiceRepresentative, CAObservable):
 
         def __init__(self, app_path):
             ASCoreServiceRepresentative.__init__(self, app_path)
+            self.requisites = []
 
             try:
                 self._load_manifest()
@@ -24,6 +26,7 @@ init python:
                     problem
                     )
 
+            self._validate_requisites()
             self.data = ServiceStorage(self)
 
         def _load_manifest(self):
@@ -40,6 +43,10 @@ init python:
             self.bundleVersion = self.version = manifest["version"]
             self.bundleDescription = self.description = manifest["description"]
             self.license = manifest["license"]
+
+            if "requisites" in manifest:
+                self.requisites = manifest["requisites"]
+
             self.permissions = manifest["permissions"]
 
             if self.id not in persistent.AS_PERMISSIONS:
@@ -49,6 +56,18 @@ init python:
             for permission in self.permissions:
                 perm = CA_PERMISSIONS[permission].key
                 persistent.AS_PERMISSIONS[self.id][perm] = True
+
+        def _validate_requisites(self):
+            all_frameworks = get_framework_names()
+            if not self.requisites:
+                clog.warning("Requisite frameworks for %s are not defined. Skipping validation.", self.id)
+                return
+            for requisite in self.requisites:
+                clog.debug("Checking requisite framework %s for %s.", requisite, self.id)
+                if requisite not in all_frameworks:
+                    clog.error("Requisite framework for %s is missing: %s.", self.id, requisite)
+                    continue
+            clog.debug("Requisites have been validated for service %s.", self.id)
 
         def launch_at_login(self):
             self.serviceWillLaunchAtLogin()

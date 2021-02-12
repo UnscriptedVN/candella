@@ -5,5 +5,6 @@
   "version": "1.1.0",
   "description": " Quickly set up Candella for configuration.",
   "license": "BSD-2-Clause",
-  "permissions": ["manage_users"]
+  "permissions": ["manage_users"],
+  "requisites": ["Multiuser", "ServiceKit"]
 }

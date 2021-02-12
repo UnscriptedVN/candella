@@ -5,5 +5,6 @@
   "version": "1.0.0",
   "description": "A desktop shell for Candella, inspired by Lomiri.",
   "license": "MPL-2.0",
-  "permissions": ["file_system", "manage_users"]
+  "permissions": ["file_system", "manage_users"],
+  "requisites": ["ServiceKit", "NotificationKit", "Observable", "Multiuser", "ScreenKit"]
 }

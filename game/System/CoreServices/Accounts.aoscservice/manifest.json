@@ -5,5 +5,6 @@
   "version": "1.0.0",
   "description": "Manage multiple user accounts via the Multiuser framework.",
   "license": "MPL-2.0",
-  "permissions": []
+  "permissions": ["manage_users"],
+  "requisites": ["Multiuser", "ServiceKit"]
 }
