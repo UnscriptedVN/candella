@@ -10,3 +10,4 @@ game/saves/**
 game/tl/**
 
 .vscode/
+.pytest_cache/

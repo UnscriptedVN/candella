@@ -3,7 +3,7 @@
         "name": "Candella",
         "version": "21.02",
         "build_id": "GITHASH",
-        "channel": "development",
+        "channel": "edge",
         "codename": "apple_cinnamon"
     }
 }

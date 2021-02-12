@@ -1,0 +1,22 @@
+name: Run Project Tests
+on: [push, pull_request]
+
+jobs:
+  lint:
+    name: Run Project Tests
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Clone source
+        uses: actions/checkout@v1
+        with:
+          fetch-depth: 50    
+      - name: Install dependecies
+        uses: VaultVulp/action-pipenv@v2.0.1
+        with:
+          command: install -d # Install all dependencies, including development ones
+      
+      - name: Test
+        uses: VaultVulp/action-pipenv@v2.0.1
+        with:
+          command: run test # Run custom `test` command defined in the `[scripts]` block of Pipfile
