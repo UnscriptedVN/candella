@@ -63,11 +63,13 @@ style CabertoTopBar_frame is frame:
 style CabertoTopBar_hbox is hbox:
     spacing 8
 
-style CabertoTopBar_text is ASSystemRegularFont:
+style CabertoTopBar_text is text:
+    font get_font("Ubuntu", "Light")
     color "#ffffff"
     size 16
 
-style CabertoTopBar_AppName is ASSystemMediumFont:
+style CabertoTopBar_AppName is text:
+    font get_font("Ubuntu", "Medium")
     color "#ffffff"
     size 16
 
