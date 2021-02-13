@@ -12,6 +12,10 @@ pytest = "*"
 
 [dev-packages]
 autopep8 = "*"
+candella-sdk = "*"
 
 [requires]
 python_version = "3.9"
+
+[pipenv]
+allow_prereleases = true

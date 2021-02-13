@@ -1,6 +1,7 @@
 {
   "name": "ScreenKit",
-  "authors": [
+  "id": "dev.unscriptedvn.candella.screenkit",
+  "author": [
     "Project Alice <hello@aliceos.app>",
     "Marquis Kurt <software@marquiskurt.net>"
   ],

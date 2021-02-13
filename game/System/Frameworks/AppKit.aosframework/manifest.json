@@ -1,6 +1,7 @@
 {
   "name": "AppKit",
-  "authors": [
+  "id": "dev.unscriptedvn.candella.appkit",
+  "author": [
     "Project Alice <hello@aliceos.app>",
     "Marquis Kurt <software@marquiskurt.net>"
   ],
