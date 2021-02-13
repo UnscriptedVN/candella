@@ -10,8 +10,12 @@ You can additionally download a release from [the Releases page][releases].
 
 ### Requirements
 - [Ren'Py SDK][renpy] v7.4.0 or greater
+- Python 3
+- Pipenv
 
-To build this project, clone the repository and in Ren'Py Launcher, click "Distribute" and select "Candella System Distributable". The resulting file will be in a ZIP archive with candella.rpa.
+Clone the repository from GitHub, then run `pipenv install -d` in the root of the project to fetch dependencies for making the project.
+
+To build this project, open the Ren'Py Launcher, click "Distribute" and select "Candella System Distributable". The resulting file will be in a ZIP archive with `candella.rpa`.
 
 ### Test-drive features
 

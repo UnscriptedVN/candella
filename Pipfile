@@ -5,6 +5,7 @@ name = "pypi"
 
 [scripts]
 update_release = "python3 ./scripts/version_inject.py"
+documentation = "mkdocs serve"
 test = "pytest -v ./tests"
 
 [packages]
@@ -13,6 +14,7 @@ pytest = "*"
 [dev-packages]
 autopep8 = "*"
 candella-sdk = "*"
+mkdocs = "*"
 
 [requires]
 python_version = "3.9"

@@ -5,6 +5,8 @@
 
 Candella is a refreshed fork of the [AliceOS](https://aliceos.app) framework for Ren'Py. Candella is primarily targeted for Unscripted, but maintains compatibility with AliceOS APIs for other Ren'Py distributions.
 
+![Caberto Shell in Candella](./.github/release.png)
+
 ## Differences between AliceOS
 
 - **Release compatibility**: Candella's release cycle syncs up with feature releases of Unscripted and the Ren'Py SDK, respectively.
