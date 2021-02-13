@@ -16,16 +16,17 @@ init 10 python:
 
     class GlossaryApp(CAApplication):
         _levels = []
-        
+
         def __init__(self):
             CAApplication.__init__(self, AS_DEFAULT_APP_DIR + "Glossary.aosapp/")
+            self.default_glossary = self.bundleDir + "Resources/glossary.json"
 
         def applicationWillLaunch(self):
             renpy.show_screen("GlossaryAppUIView", glossary=self.load_glossary())
 
         def load_glossary(self, filepath=None):
             """Returns a dictionary containing the glossary terms and definitions."""
-            location = self.bundleDir + "Resources/glossary.json" if not filepath else filepath
+            location = self.default_glossary if not filepath else filepath
             glossary = {}
             if not renpy.loadable(location):
                 clog.warn("Glossary file couldn't be loaded: %s", location)
