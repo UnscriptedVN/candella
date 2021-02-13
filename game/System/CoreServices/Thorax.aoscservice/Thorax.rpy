@@ -57,8 +57,12 @@ init python:
             return results
 
         def launch(self, steps=None):
-            procedure = steps if steps is not None else self.default_steps
-            clog.debug(steps)
+            if steps and type(steps) is str:
+                procedure = self.__create_steps(steps)
+            elif steps and type(steps) is list:
+                procedure = steps
+            else:
+                 procedure = self.default_steps
 
             for step in procedure:
                 result = renpy.call_screen(
@@ -73,6 +77,12 @@ init python:
 
             clog.debug("Setup complete.")
 
+
+            def add_setup_callback(self, name, fn):
+                if name in self.__step_callbacks:
+                    clog.error("The callback with name %s is already defined.", name)
+                    return
+                self.__step_callbacks[name] = fn
 
 
     # Initialize the service outside of the class.
