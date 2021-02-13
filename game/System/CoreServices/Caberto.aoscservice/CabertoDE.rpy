@@ -68,6 +68,9 @@ init python:
             """Returns the current time of the system."""
             return strftime("%I:%M%p")
 
+        def get_app_mask(self):
+            return Frame(self.bundleDir + "Resources/app_mask.png")
+
         def app_exists_in_current_launcher(self, app_id):
             """Returns if a given app bundle ID is in the current user's dock."""
             return app_id in self._dock

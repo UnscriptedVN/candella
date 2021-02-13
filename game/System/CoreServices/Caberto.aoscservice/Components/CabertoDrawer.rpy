@@ -45,7 +45,7 @@ init screen CabertoDrawer():
                             xfill True
                             yfill True
 
-                            add app.icons[64]:
+                            add AlphaMask(app.icons[64], caberto.get_app_mask(), xysize=(64, 64)):
                                 xalign 0.5
                             text "[_app_name]":
                                 xalign 0.5

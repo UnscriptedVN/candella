@@ -32,8 +32,9 @@ screen CabertoLauncher(apps):
                         _name = app.product_name if isinstance(app, CAApplication) else app.bundleName
 
                     button action Function(caberto.launch_app_bundle, app_bundle=app):
-                        xysize (72, 72)
-                        add _icon:
+                        xysize (72, 68)
+                        add AlphaMask(_icon, caberto.get_app_mask(), xysize=(64, 64)):
+                            size (60, 60)
                             xalign 0.5
 
             button action Function(caberto.drawer):
