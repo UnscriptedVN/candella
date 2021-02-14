@@ -4,8 +4,9 @@ on:
     branches:
       - root
     paths:
-      - docs/*
-      - mkdocs.yml
+      - docs/*      # Actual documentation
+      - vanilla/*   # Vanilla theme
+      - mkdocs.yml  # Docs configuration
 jobs:
   deploy:
     runs-on: ubuntu-latest
