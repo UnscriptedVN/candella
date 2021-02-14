@@ -10,6 +10,7 @@ function getAllExternalLinks() {
 function addTitleSeparator() {
     let main = document.getElementById("main-content");
     let firstTitle = main.getElementsByTagName("h1");
+    if (firstTitle.length < 1) return;
     firstTitle[0].after(document.createElement("hr"));
 }
 
