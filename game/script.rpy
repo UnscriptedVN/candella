@@ -1,13 +1,13 @@
 # Run the bootloader.
 
 label splashscreen:
-    $ roland.boot(loader="RolandGraphicalLoader", minimum_load_time=1.0)
+    $ roland.boot(loader="RolandGraphicalLogomarkLoader", minimum_load_time=3.0)
     return
 
 # Run the bootloader's shutdown.
 
 label quit:
-    $ roland.shutdown(loader="RolandGraphicalLoader")
+    $ roland.shutdown(loader="RolandTextLoader")
     return
 
 # Open the desktop.

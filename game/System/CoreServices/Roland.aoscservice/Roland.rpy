@@ -42,6 +42,10 @@ init python:
         def __launch_app(self, app):
             return app.launch_at_login()
 
+        def get_os_log_data(self, cutoff=41):
+            with open(os.path.join(config.savedir, "candella.log"), "r") as log:
+                return log.readlines()[-cutoff:]
+
         def boot(self, loader=None, minimum_load_time=0, run_setup=True):
             # Show a boot screen.
             clog.debug("Checking for boot screen.")
@@ -61,6 +65,7 @@ init python:
                     self.__launch_service(service)
                 except Exception as error:
                     clog.error("An exception occurred when launching %s: %s.", service.id, error)
+            clog.info("Services have been launched (or attempted to do so).")
 
             # Re-run the Setup Assistant, if necessary.
             if not persistent.AS_COMPLETED_SETUP and run_setup:
@@ -81,8 +86,15 @@ init python:
                     self.__launch_app(app)
                 except Exception as error:
                     clog.error("An exception occurred when launching %s: %s.", app.id, error)
+            clog.info("Apps with login access have been launched (or attempted to do so).")
 
             # Display the bootloader for this long if the other services haven't finished loading.
+            if minimum_load_time > 5.0:
+                clog.warn(
+                    "Minimum load time is set to %s seconds. This may make the game unresponsive.",
+                    minimum_load_time
+                )
+            clog.debug("Forcefully displaying boot screen for %s seconds.", minimum_load_time)
             renpy.pause(minimum_load_time, hard=True)
 
             # Dismiss the boot screen.
