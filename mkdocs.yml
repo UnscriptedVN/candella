@@ -9,7 +9,14 @@ repo_name: 'UnscriptedVN/candella'
 repo_url: 'https://github.com/UnscriptedVN/candella'
 
 copyright: 'Copyright &copy; 2021 Unscripted VN Team.'
-theme: readthedocs
+theme:
+  name: null
+  custom_dir: 'vanilla/'
+  include_search_page: true
+  highlightjs: true
+  hljs_languages:
+    - python
+    - json
 
 extra:
     social:
@@ -17,6 +24,9 @@ extra:
       link: 'https://github.com/UnscriptedVN/candella'
     - type: 'twitter'
       link: 'https://twitter.com/UnscriptedVN'
+
+plugins:
+  - search
 
 markdown_extensions:
   - markdown.extensions.admonition

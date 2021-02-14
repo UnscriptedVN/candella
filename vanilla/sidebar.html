@@ -1,0 +1,37 @@
+{%- block sidebar %}
+{% if nav|length>1 %}
+<div class="p-side-navigation col-3" id="drawer">
+    <a href="#drawer" class="p-side-navigation__toggle js-drawer-toggle" aria-controls="drawer">
+        Toggle side navigation
+    </a>
+
+    <div class="p-side-navigation__overlay js-drawer-toggle" aria-controls="drawer"></div>
+
+    <nav class="p-side-navigation__drawer" aria-label="Example side navigation">
+        <div class="p-side-navigation__drawer-header">
+            <a href="#" class="p-side-navigation__toggle--in-drawer js-drawer-toggle" aria-controls="drawer">
+                Toggle side navigation
+            </a>
+        </div>
+
+        {% for nav_item in nav %}
+        <ul class="p-side-navigation__list">
+            <li class="p-side-navigation__item--title">
+                <a class="p-side-navigation__link" href="{{ nav_item.url|url }}" {% if nav_item.active
+                    %}aria-current="page" {% endif %}>{{ nav_item.title }}</a>
+            </li>
+
+            {% for toc_item in nav_item.toc %}
+            {% for toc_child in toc_item.children %}
+            <li class="p-side-navigation__item">
+                <a class="p-side-navigation__link" href="{{ nav_item.url|url }}{{ toc_child.url|url }}">{{
+                    toc_child.title }}</a>
+            </li>
+            {% endfor %}
+            {% endfor %}
+        </ul>
+        {% endfor %}
+    </nav>
+</div>
+{% endif %}
+{% endblock %}

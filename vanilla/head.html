@@ -1,0 +1,17 @@
+{%- block head %}
+
+<head>
+    <title>{% if page.title %}{{ page.title }} - {% endif %}{{ config.site_name }}</title>
+    <link href="/css/vanilla.min.css" rel="stylesheet" />
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    {%- if config.theme.highlightjs %}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+    {%- for lang in config.theme.hljs_languages %}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/{{lang}}.min.js"></script>
+    {%- endfor %}
+    <script>hljs.initHighlightingOnLoad();</script>
+    {%- endif %}
+    <script src="./search/main.js" defer=""></script>
+    <script src="{{ base_url }}/js/vanilla.js" defer=""></script>
+</head>
+{%- endblock %}

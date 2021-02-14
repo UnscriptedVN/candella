@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+
+{% include 'head.html' %}
+{% include 'nav.html' %}
+
+<body>
+    {% if page.is_homepage %}
+    <div class="p-strip--suru">
+        <div class="row u-vertically-center">
+            <div class="col-7">
+                <h1>A modern Ren'Py operating environment</h1>
+                <p>Developed and maintained by the team that brought you Unscripted, Candella offers a fresh new look
+                    and functionality to the popular AliceOS operating environment framework for Ren'Py.</p>
+                <p>
+                    <a href="{{ config.repo_url }}" class="p-button--brand">Try it out</a>
+                    <a href="/03-candella-app/" class="p-button--neutral">Write your first app</a>
+                </p>
+            </div>
+            <div class="col-5">
+                <img src="/img/desktop.png" alt="Caberto Shell on Candella">
+            </div>
+        </div>
+    </div>
+    {% endif %}
+    <div class="{% if page.is_homepage %}p-strip{% else %}p-strip--suru-topped{% endif %}">
+        <div class="row">
+            {% include 'sidebar.html' %}
+            <main id="main-content" class="col-9">
+                {{ page.content }}
+            </main>
+        </div>
+    </div>
+    <script>var base_url = '{{ base_url }}';</script>
+
+</body>
+
+<footer>
+    <div class="p-strip p-strip--light is-shallow">
+        <div class="row">
+            <p>{{ config.copyright }}</p>
+            <p class="p-link--external"><a href="{{ config.repo_url }}">View the source</a></p>
+        </div>
+    </div>
+</footer>
+
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+
+{% include 'head.html' %}
+{%- include 'nav.html' %}
+
+<body>
+    <div class="p-strip--suru-topped">
+        <div class="row">
+            {%- include 'sidebar.html' %}
+            <main id="main-content" class="col-9">
+                <h1 id="search">Search results for <b id="search-query">""</b></h1>
+                <div id="mkdocs-search-results"></div>
+            </main>
+        </div>
+    </div>
+    <script>
+        let base_url = '{{ base_url }}';
+        let searchQueryName = document.getElementById("search-query");
+        let query = window.location.search.replace("?q=", "");
+        searchQueryName.innerText = `"${query}"`;
+    </script>
+</body>
+
+<footer>
+    <div class="p-strip p-strip--light is-shallow">
+        <div class="row">
+            <p>{{ config.copyright }}</p>
+            <p class="p-link--external"><a href="{{ config.repo_url }}">View the source</a></p>
+        </div>
+    </div>
+</footer>
+
+</html>
