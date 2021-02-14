@@ -16,6 +16,14 @@ function getAllExternalLinks() {
     }
 }
 
+function getLabels() {
+    let main = document.getElementById("main-content");
+    main.innerHTML = main.innerHTML
+        .replace("\{label:deprecated\}", "<span class=\"p-label--deprecated\">Deprecated</span>")
+        .replace("\{label:new\}", "<span class=\"p-label--new\">New</span>")
+        .replace("\{label:updated\}", "<span class=\"p-label--updated\">Updated</span>");
+}
+
 function addTitleSeparator() {
     let main = document.getElementById("main-content");
     let firstTitle = main.getElementsByTagName("h1");
@@ -56,5 +64,6 @@ function convertAdmonitions() {
 }
 
 getAllExternalLinks();
+getLabels();
 addTitleSeparator();
 convertAdmonitions();
