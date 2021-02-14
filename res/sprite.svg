@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="100%" height="100%" viewBox="0 0 38 48" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;">
+    <g>
+        <rect x="15" y="2" width="1" height="1" style="fill:rgb(22,29,128);"/>
+        <rect x="15" y="3" width="1" height="1" style="fill:rgb(171,50,50);"/>
+        <rect x="19" y="3" width="1" height="1" style="fill:rgb(22,29,128);"/>
+        <rect x="23" y="3" width="1" height="1" style="fill:rgb(22,29,128);"/>
+        <rect x="16" y="4" width="1" height="1" style="fill:rgb(171,50,50);"/>
+        <rect x="18" y="4" width="1" height="1" style="fill:rgb(4,14,16);"/>
+        <rect x="19" y="4" width="1" height="1" style="fill:rgb(171,50,50);"/>
+        <path d="M14,4L14,7L15,7L15,4L14,4Z" style="fill:rgb(171,50,50);"/>
+        <path d="M17,6L18,6L18,7L19,7L19,5L17,5L17,6Z" style="fill:rgb(171,50,50);"/>
+        <path d="M16,8L16,7L17,7L17,8L18,8L18,6L17,6L17,5L16,5L16,4L15,4L15,8L16,8Z" style="fill:rgb(212,79,38);"/>
+        <path d="M19,5L19,8L20,8L20,7L21,7L21,6L20,6L20,5L19,5Z" style="fill:rgb(212,79,38);"/>
+        <rect x="20" y="7" width="1" height="1" style="fill:rgb(239,126,69);"/>
+        <path d="M20,6L21,6L21,8L22,8L22,5L20,5L20,6Z" style="fill:rgb(171,50,50);"/>
+        <path d="M22,5L22,8L23,8L23,5L22,5Z" style="fill:rgb(212,79,38);"/>
+        <path d="M22,5L23,5L23,8L24,8L24,4L22,4L22,5Z" style="fill:rgb(171,50,50);"/>
+        <rect x="20" y="8" width="1" height="1" style="fill:rgb(171,50,50);"/>
+        <path d="M13,7L13,11L14,11L14,7L13,7Z" style="fill:rgb(212,79,38);"/>
+        <path d="M24,8L24,11L25,11L25,8L24,8Z" style="fill:rgb(212,79,38);"/>
+        <rect x="17" y="11" width="1" height="1" style="fill:rgb(240,193,136);"/>
+        <rect x="21" y="11" width="1" height="1" style="fill:rgb(240,193,136);"/>
+        <path d="M24,8L21,8L21,9L20,9L20,8L19,8L19,7L18,7L18,8L17,8L17,7L16,7L16,8L15,8L15,7L14,7L14,11L13,11L13,12L15,12L15,11L16,11L16,12L17,12L17,11L18,11L18,12L19,12L19,11L20,11L20,12L21,12L21,11L22,11L22,12L23,12L23,11L24,11L24,8Z" style="fill:rgb(239,126,69);"/>
+        <path d="M12,11L12,14L13,14L13,11L12,11Z" style="fill:rgb(239,126,69);"/>
+        <rect x="17" y="13" width="1" height="1" style="fill:rgb(133,144,149);"/>
+        <rect x="20" y="13" width="1" height="1" style="fill:rgb(133,144,149);"/>
+        <path d="M24,12L25,12L25,14L26,14L26,11L24,11L24,12Z" style="fill:rgb(239,126,69);"/>
+        <path d="M18,12L16,12L16,15L17,15L17,13L18,13L18,12Z" style="fill:rgb(147,183,186);"/>
+        <rect x="17" y="14" width="1" height="1" style="fill:rgb(119,144,151);"/>
+        <rect x="20" y="14" width="1" height="1" style="fill:rgb(119,144,151);"/>
+        <path d="M20,13L21,13L21,15L22,15L22,12L20,12L20,13Z" style="fill:rgb(147,183,186);"/>
+        <path d="M12,14L12,16L13,16L13,14L12,14Z" style="fill:rgb(222,176,119);"/>
+        <path d="M25,14L25,16L26,16L26,14L25,14Z" style="fill:rgb(222,176,119);"/>
+        <path d="M13,16L13,18L14,18L14,16L13,16Z" style="fill:rgb(222,176,119);"/>
+        <path d="M18,18L20,18L20,17L18,17L18,18Z" style="fill:rgb(222,176,119);"/>
+        <path d="M24,16L24,18L25,18L25,16L24,16Z" style="fill:rgb(222,176,119);"/>
+        <rect x="14" y="18" width="1" height="1" style="fill:rgb(222,176,119);"/>
+        <path d="M15,19L17,19L17,18L15,18L15,19Z" style="fill:rgb(229,182,125);"/>
+        <path d="M20,18L20,17L18,17L18,18L20,18ZM14,16L14,18L17,18L17,19L21,19L21,18L24,18L24,16L25,16L25,12L24,12L24,11L23,11L23,12L22,12L22,15L20,15L20,11L19,11L19,12L18,12L18,15L16,15L16,11L15,11L15,12L13,12L13,16L14,16Z" style="fill:rgb(240,193,136);"/>
+        <path d="M21,19L23,19L23,18L21,18L21,19Z" style="fill:rgb(229,182,125);"/>
+        <rect x="23" y="18" width="1" height="1" style="fill:rgb(222,176,119);"/>
+        <path d="M15,20L17,20L17,19L15,19L15,20Z" style="fill:rgb(222,176,119);"/>
+        <path d="M17,20L21,20L21,19L17,19L17,20Z" style="fill:rgb(229,182,125);"/>
+        <path d="M21,20L23,20L23,19L21,19L21,20Z" style="fill:rgb(222,176,119);"/>
+        <rect x="13" y="20" width="1" height="1" style="fill:rgb(192,187,176);"/>
+        <path d="M14,21L17,21L17,20L14,20L14,21Z" style="fill:rgb(216,213,207);"/>
+        <path d="M17,21L21,21L21,20L17,20L17,21Z" style="fill:rgb(222,176,119);"/>
+        <path d="M21,21L24,21L24,20L21,20L21,21Z" style="fill:rgb(216,213,207);"/>
+        <rect x="24" y="20" width="1" height="1" style="fill:rgb(192,187,176);"/>
+        <path d="M11,22L13,22L13,21L11,21L11,22Z" style="fill:rgb(168,161,146);"/>
+        <rect x="13" y="21" width="1" height="1" style="fill:rgb(201,196,185);"/>
+        <path d="M17,22L21,22L21,21L17,21L17,22Z" style="fill:rgb(216,213,207);"/>
+        <rect x="24" y="21" width="1" height="1" style="fill:rgb(201,196,185);"/>
+        <path d="M25,22L27,22L27,21L25,21L25,22Z" style="fill:rgb(168,161,146);"/>
+        <path d="M21,21L21,23L23,23L23,22L24,22L24,21L21,21Z" style="fill:rgb(235,232,226);"/>
+        <rect x="25" y="22" width="1" height="1" style="fill:rgb(187,182,165);"/>
+        <path d="M10,22L10,24L11,24L11,22L10,22Z" style="fill:rgb(168,161,146);"/>
+        <rect x="25" y="23" width="1" height="1" style="fill:rgb(187,182,165);"/>
+        <path d="M27,22L27,24L28,24L28,22L27,22Z" style="fill:rgb(168,161,146);"/>
+        <path d="M12,22L12,25L13,25L13,22L12,22Z" style="fill:rgb(187,182,165);"/>
+        <path d="M16,23L17,23L17,25L18,25L18,23L19,23L19,22L17,22L17,21L14,21L14,22L16,22L16,23Z" style="fill:rgb(235,232,226);"/>
+        <rect x="25" y="24" width="1" height="1" style="fill:rgb(187,182,165);"/>
+        <path d="M9,24L9,27L10,27L10,24L9,24Z" style="fill:rgb(168,161,146);"/>
+        <path d="M28,24L28,27L29,27L29,24L28,24Z" style="fill:rgb(168,161,146);"/>
+        <path d="M11,27L12,27L12,22L11,22L11,24L10,24L10,27L9,27L9,28L11,28L11,27Z" style="fill:rgb(207,203,184);"/>
+        <path d="M29,27L28,27L28,24L27,24L27,22L26,22L26,27L27,27L27,28L29,28L29,27Z" style="fill:rgb(207,203,184);"/>
+        <path d="M11,27L11,28L9,28L9,27L8,27L8,28L7,28L7,29L12,29L12,27L11,27Z" style="fill:rgb(168,161,146);"/>
+        <path d="M29,27L29,28L27,28L27,27L26,27L26,29L31,29L31,28L30,28L30,27L29,27Z" style="fill:rgb(168,161,146);"/>
+        <path d="M10,30L12,30L12,29L10,29L10,30Z" style="fill:rgb(206,128,82);"/>
+        <path d="M26,30L28,30L28,29L26,29L26,30Z" style="fill:rgb(206,128,82);"/>
+        <path d="M8,29L8,31L9,31L9,29L8,29Z" style="fill:rgb(102,51,60);"/>
+        <path d="M10,30L10,29L9,29L9,31L12,31L12,30L10,30Z" style="fill:rgb(154,90,71);"/>
+        <path d="M12,29L12,31L13,31L13,29L12,29Z" style="fill:rgb(102,51,60);"/>
+        <path d="M25,29L25,31L26,31L26,29L25,29Z" style="fill:rgb(102,51,60);"/>
+        <path d="M26,31L29,31L29,29L28,29L28,30L26,30L26,31Z" style="fill:rgb(154,90,71);"/>
+        <path d="M29,29L29,31L30,31L30,29L29,29Z" style="fill:rgb(102,51,60);"/>
+        <path d="M9,32L12,32L12,31L9,31L9,32Z" style="fill:rgb(102,51,60);"/>
+        <path d="M26,32L29,32L29,31L26,31L26,32Z" style="fill:rgb(102,51,60);"/>
+        <path d="M16,22L14,22L14,43L24,43L24,22L23,22L23,23L21,23L21,22L19,22L19,23L18,23L18,25L17,25L17,23L16,23L16,22Z" style="fill:rgb(207,203,184);"/>
+        <path d="M13,44L25,44L25,27L26,27L26,25L25,25L25,22L24,22L24,43L14,43L14,22L13,22L13,25L12,25L12,27L13,27L13,44Z" style="fill:rgb(168,161,146);"/>
+    </g>
+</svg>
