@@ -1,9 +1,11 @@
-# Candella
+<div align="center">
+<h1><img alt="Candella" src="./res/logomark.svg" width=376 /></h1>
+</div>
 
 ![Lint Candella Project](https://github.com/UnscriptedVN/candella/workflows/Lint%20Candella%20Project/badge.svg) 
 ![Run Project Tests](https://github.com/UnscriptedVN/candella/workflows/Run%20Project%20Tests/badge.svg)
 
-Candella is a refreshed fork of the [AliceOS](https://aliceos.app) framework for Ren'Py. Candella is primarily targeted for Unscripted, but maintains compatibility with AliceOS APIs for other Ren'Py distributions.
+Candella is a fork of the [AliceOS framework](https://aliceos.app), a Ren'Py framework that provides an operating environment to visual novels. This operating environment includes utilities, classes, and other code that lets developers and players write and use apps designed for the system.
 
 ![Caberto Shell in Candella](./.github/release.png)
 
