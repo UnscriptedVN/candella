@@ -68,3 +68,5 @@ init 7 python in CAFrameworkLoader:
                 ASHalt.halt("REQUISITE_FRAMEWORK_MISSING")
             except:
                 renpy.quit()
+        else:
+            clog.info("Requirements for framework %s have been meet.", framework)

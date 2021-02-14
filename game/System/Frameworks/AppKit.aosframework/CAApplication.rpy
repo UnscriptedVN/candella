@@ -142,7 +142,7 @@ init python:
                 if requisite not in all_frameworks:
                     clog.error("Requisite framework for %s is missing: %s.", self.id, requisite)
                     continue
-            clog.debug("Requisites have been validated for app %s.", self.id)
+            clog.info("Requisites have been validated for app %s.", self.id)
 
         def get_name(self):
             """Returns the name of the app, or its bundle name."""

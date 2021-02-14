@@ -67,7 +67,7 @@ init python:
                 if requisite not in all_frameworks:
                     clog.error("Requisite framework for %s is missing: %s.", self.id, requisite)
                     continue
-            clog.debug("Requisites have been validated for service %s.", self.id)
+            clog.info("Requisites have been validated for service %s.", self.id)
 
         def launch_at_login(self):
             self.serviceWillLaunchAtLogin()

@@ -24,11 +24,11 @@ init python:
                 callable (callable): The method that will listen for changes.
             """
             self._observers.append(callable)
-            clog.debug("Registered new event to class %s.", self.__class__.__name__)
+            clog.info("Registered new event to class %s.", self.__class__.__name__)
             return callable
 
         def emit_signal(self, *args, **kwargs):
             """Emit a signal to all known observers of this class."""
-            clog.debug("Emitting signal %s to observers of %s.", args, self.__class__.__name__)
+            clog.debug("Emitting signal '%s' to observers of %s.", args[0], self.__class__.__name__)
             for emit in self._observers:
                 emit(*args, **kwargs)
