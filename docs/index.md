@@ -4,21 +4,15 @@
 ## What makes Candella different?
 
 - **Release compatibility**: Candella's release cycle syncs up with feature releases of Unscripted and the Ren'Py SDK, respectively.
-- **Responsive feedback**: AliceOS follows a release schedule and doesn't update as quickly with bug fixes or improvements, Candella gets feedback from the public as well as playtesters in the [Unscripted Playtesting Program][uvn-beta].
+- **Responsive feedback**: [AliceOS][aliceos] follows a strict release schedule and doesn't update as quickly with bug fixes or improvements, Candella gets feedback from the public as well as playtesters in the [Unscripted Playtesting Program][uvn-beta].
 - **Targeted for Unscripted**: Candella will add new features and improvements that will be helpful for Unscripted, such as native support for the NadiaVM language.
-- **Simplified app development**: Candella's application framework extensions make it easier to develop apps quickly without fiddling through delegate calls.
+- **Simplified app development**: Candella's application framework extensions make it easier to develop apps quickly without fiddling through delegate calls, making projects from scratch, or remembering what keys are valid.
 
-## Included packages
+## Try Candella today
 
-### Frameworks
-- **Observable**: Add observable features to services, apps, and other classes.
-- **Multiuser**: Add multi-user support with custom configuration files.
-### Core Services
-- **Caberto Shell**: A Lomiri-inspired desktop environment with support for multiple users, custom wallpapers, a launcher, and more.
-- **Accounts**: Manage different users on a Candella system with ease.
-- **Roland Boot Manager**: A modular approach to booting and shutting down Candella.
-### Apps
-- **Glossary**: Look up words that you may not be familiar with as you play through the game.
+Candella is available in pre-release form via the [**Unscripted Playtesting Program**][uvn-beta], but you can also build the source code locally to test drive the project.
+
+[Build from source &rsaquo;](./01-getting-started/)
 
 [aliceos]: https://aliceos.app
 [uvn-beta]: https://beta.unscriptedvn.dev
