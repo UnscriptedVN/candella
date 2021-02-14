@@ -16,10 +16,12 @@
 
         {% for nav_item in nav %}
         <ul class="p-side-navigation__list">
+            {% if nav_item.title %}
             <li class="p-side-navigation__item--title">
                 <a class="p-side-navigation__link" href="{{ nav_item.url|url }}" {% if nav_item.active
                     %}aria-current="page" {% endif %}>{{ nav_item.title }}</a>
             </li>
+            {% endif %}
 
             {% for toc_item in nav_item.toc %}
             {% for toc_child in toc_item.children %}

@@ -1,3 +1,12 @@
+function getAllExternalLinks() {
+    let main = document.getElementById("main-content");
+    for (const link of main.getElementsByTagName("a")) {
+        if (link.href.search(window.location.hostname) === -1) {
+            link.classList.add("p-link--external")
+        }
+    }
+}
+
 function addTitleSeparator() {
     let main = document.getElementById("main-content");
     let firstTitle = main.getElementsByTagName("h1");
@@ -36,5 +45,6 @@ function convertAdmonitions() {
     }
 }
 
+getAllExternalLinks();
 addTitleSeparator();
 convertAdmonitions();
