@@ -42,7 +42,7 @@ init python:
         def __launch_app(self, app):
             return app.launch_at_login()
 
-        def get_os_log_data(self, cutoff=41):
+        def get_os_log_data(self, cutoff=44):
             with open(os.path.join(config.savedir, "candella.log"), "r") as log:
                 return log.readlines()[-cutoff:]
 

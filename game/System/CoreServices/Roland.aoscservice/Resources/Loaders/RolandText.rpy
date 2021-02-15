@@ -20,7 +20,7 @@ screen RolandTextLoader():
 
     default log_data = []
 
-    timer 0.1 action SetScreenVariable("log_data", roland.get_os_log_data(41)) repeat True
+    timer 0.1 action SetScreenVariable("log_data", roland.get_os_log_data()) repeat True
 
     frame:
         vbox:
@@ -41,7 +41,7 @@ style RolandText_frame is frame:
     padding (4, 4)
 
 style RolandText_text is text:
-    font get_font("Ubuntu", variant="Mono")
+    font get_font("Unicode")
     line_spacing 0
     antialias False
     size 16
