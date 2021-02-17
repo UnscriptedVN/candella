@@ -8,6 +8,7 @@
 init offset = -10
 
 init python:
+    from store.CADeprecated import deprecated
     import logging
 
     class AppStorage():
@@ -18,6 +19,7 @@ init python:
         """
 
         _data_store = {}
+
 
         def __init__(self, app, user=persistent.playername):
             """Initialize an AppStorage unit.
@@ -40,6 +42,22 @@ init python:
             except:
                 self._data_store = {}
 
+
+        def get_entry(self, field, raise_falsy=False):
+            """Returns the entry in a specified field.
+
+            Arguments:
+                field (str): The field to retrieve a value for.
+                raise_falsy (bool): Whether to raise an Exception when there is no value associated with the field.
+                    Defaults to False.
+            """
+            entry = self._data_store.get(field, None)
+            if not entry and raise_falsy:
+                raise KeyError
+            return entry
+
+
+        @deprecated('21.02', renamed="get_entry")
         def read(self, field):
             """Returns the value of a field in the storage, or None if the value doesn't exist.
 
@@ -47,6 +65,8 @@ init python:
             """
             return self._data_store.get(field, None)
 
+
+        @deprecated('21.02', reason="Use get_entry with the argument 'raise_falsy' set to True.")
         def read_not_none(self, field):
             """Returns the value of a field in the storage.
 
@@ -59,10 +79,27 @@ init python:
                 raise KeyError
             return self._data_store[field]
 
+
+        def set_entry(self, field, result):
+            """Sets the field to the result in the current storage."""
+            self._data_store[field] = result
+
+
+        @deprecated("21.02", renamed="set_entry")
         def write_field(self, field, result):
             """Sets the field to the result in the current storage."""
             self._data_store[field] = result
 
+
+        def commit(self):
+            """Write the app data to the current user's file."""
+            try:
+                CAUserData.write_data_to_current_user(self._bundle_id, self._data_store)
+            except Exception as error:
+                logging.error("Data could not be written. Reason: %s", error)
+
+
+        @deprecated("21.02", renamed="commit")
         def write(self):
             """Write the app data to the current user's file."""
             try:

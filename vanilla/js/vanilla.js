@@ -19,9 +19,9 @@ function getAllExternalLinks() {
 function getLabels() {
     let main = document.getElementById("main-content");
     main.innerHTML = main.innerHTML
-        .replace("\{label:deprecated\}", "<span class=\"p-label--deprecated\">Deprecated</span>")
-        .replace("\{label:new\}", "<span class=\"p-label--new\">New</span>")
-        .replace("\{label:updated\}", "<span class=\"p-label--updated\">Updated</span>");
+        .replace(/\{label:deprecated\}/g, "<span class=\"p-label--deprecated\">Deprecated</span>")
+        .replace(/\{label:new\}/g, "<span class=\"p-label--new\">New</span>")
+        .replace(/\{label:updated\}/g, "<span class=\"p-label--updated\">Updated</span>");
 }
 
 function addTitleSeparator() {
