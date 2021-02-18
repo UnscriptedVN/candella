@@ -10,7 +10,7 @@ screen ASAppManagerView():
     style_prefix "ASInterface"
 
     python:
-        apps = CabertoShell.get_all_applications()
+        apps = CelesteShell.get_all_applications()
 
     default currentAppView = None
 
@@ -67,17 +67,17 @@ screen ASAppManagerView():
                                     style "ASAppManager_DetailedAppAuthor_text"
                                 text "Version [currentAppView.bundleVersion] ([currentAppView.bundleId])"
                                 null height 8
-                                
+
                                 hbox:
                                     spacing 8
 
                                     textbutton "Launch" action Function(currentAppView.applicationWillLaunch):
                                         style "ASInterfacePushButton"
-                                    
+
                                     vbox:
                                         style_prefix "ASInterfaceCheckbox"
                                         textbutton "Pin to launcher" action Function(appman._pin_to_shell_dock, app_id=currentAppView.bundleId):
-                                            selected caberto.app_exists_in_current_launcher(currentAppView.bundleId)
+                                            selected celeste.app_exists_in_current_launcher(currentAppView.bundleId)
 
                         null height 8
 
@@ -113,14 +113,14 @@ screen ASAppManagerView():
                                             style "ASAppManager_text"
                             else:
                                 text "This app doesn't require any permissions."
-                                
+
 screen ASAppManagerDetailButton(app):
     button action SetScreenVariable("currentAppView", app):
         ymaximum 56
         xsize 300
         has hbox:
             spacing 8
-    
+
             add app.icons[48]
             vbox:
                 python:

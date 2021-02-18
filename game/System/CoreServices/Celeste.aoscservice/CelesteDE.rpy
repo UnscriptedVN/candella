@@ -1,6 +1,6 @@
 #
-# CabertoDE.rpy
-# Caberto Desktop Shell
+# CelesteDE.rpy
+# Celeste Desktop Shell
 #
 # (C) 2021 Marquis Kurt. All rights reserved.
 #
@@ -17,15 +17,15 @@ init python:
     from os import listdir, path
     from time import gmtime, strftime
 
-    class CabertoShell(CACoreService):
+    class CelesteShell(CACoreService):
         _wallpaper = AS_LIBRARY_DIR + "Desktop Pictures/Candella.png"
         _dock = []
         _drawer_open = False
-        _current_app_name = "Caberto Desktop"
+        _current_app_name = "Celeste Desktop"
         _acct_switcher_open = False
 
         def __init__(self):
-            CACoreService.__init__(self, AS_CORESERVICES_DIR + "Caberto.aoscservice/")
+            CACoreService.__init__(self, AS_CORESERVICES_DIR + "Celeste.aoscservice/")
             self._acct_mgr = CAAccountsService(self)
 
             self.settings = ServiceStorage(self)
@@ -40,8 +40,8 @@ init python:
                 self.settings.commit()
             self._wallpaper = self.settings.get_entry("wallpaper", raise_falsy=True)
 
-            apps = CabertoShell.get_all_applications()
-            for app in CabertoShell.get_all_applications():
+            apps = CelesteShell.get_all_applications()
+            for app in CelesteShell.get_all_applications():
                 if not isinstance(app, CAApplication):
                     clog.warn("%s cannot emit signals and will be ignored.", app.bundleName)
                     continue
@@ -87,13 +87,13 @@ init python:
             if transient:
                 renpy.run(
                     ShowTransient(
-                        "CabertoShellView", wallpaper=self._wallpaper,
+                        "CelesteShellView", wallpaper=self._wallpaper,
                         apps=apps
                     )
                 )
             else:
                 renpy.call_screen(
-                    "CabertoShellView", wallpaper=self._wallpaper,
+                    "CelesteShellView", wallpaper=self._wallpaper,
                     apps=apps
                 )
             self.serviceDidLaunch()
@@ -105,7 +105,7 @@ init python:
             Arguments:
                 app_id (str): The bundle ID of the app to launch.
             """
-            app_target = [app for app in CabertoShell.get_all_applications() if app.bundleId == app_id]
+            app_target = [app for app in CelesteShell.get_all_applications() if app.bundleId == app_id]
             if not app_target:
                 clog.error("Failed to launch app '%s'", app_id)
             app = app_target[0]
@@ -130,9 +130,9 @@ init python:
             self._drawer_open = not self._drawer_open
 
             if self._drawer_open:
-                renpy.run(ShowTransient("CabertoDrawer"))
+                renpy.run(ShowTransient("CelesteDrawer"))
             else:
-                renpy.run(Hide("CabertoDrawer"))
+                renpy.run(Hide("CelesteDrawer"))
 
         def start_acct_manager(self):
             """Call the account switcher dialog."""
@@ -146,7 +146,7 @@ init python:
 
             self._acct_switcher_open = True
             username = renpy.invoke_in_new_context(
-                renpy.call_screen, "CabertoAccountSwitcher", users=CAAccountsService.get_all_users()
+                renpy.call_screen, "CelesteAccountSwitcher", users=CAAccountsService.get_all_users()
             )
             self._acct_switcher_open = False
 
@@ -156,8 +156,8 @@ init python:
 
             self._acct_mgr.change_current_user(username)
 
-            renpy.run([Hide("CabertoShellView"), Hide("CabertoLauncher")])
-            clog.debug("Reloading Caberto settings to current user.")
+            renpy.run([Hide("CelesteShellView"), Hide("CelesteLauncher")])
+            clog.debug("Reloading Celeste settings to current user.")
 
             self._init_settings()
             self.launch(transient=True)
@@ -184,7 +184,7 @@ init python:
 
         def _get_dock_apps(self, apps):
             """Returns the list of app objects that is in the dock."""
-            return [app for app in CabertoShell.get_all_applications() if app.bundleId in apps]
+            return [app for app in CelesteShell.get_all_applications() if app.bundleId in apps]
 
         def _set_wallpaper(self, name):
             """Set the wallpaper and save the preference."""
@@ -197,7 +197,7 @@ init python:
             if "application_launched" in args:
                 self._current_app_name = kwargs["name"]
             elif "application_terminated" in args:
-                self._current_app_name = "Caberto Desktop"
+                self._current_app_name = "Celeste Desktop"
 
             # Handle app pinning from the App Manager.
             elif "__appman_pin" in args:
@@ -209,6 +209,6 @@ init python:
                     self._dock.append(app_id)
                 self.settings.set_entry("apps_list", self._dock)
                 self.settings.commit()
-                renpy.run([Hide("CabertoShellView"), Function(self.launch, transient=True)])
+                renpy.run([Hide("CelesteShellView"), Function(self.launch, transient=True)])
 
-    caberto = CabertoShell()
+    celeste = CelesteShell()

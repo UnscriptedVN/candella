@@ -1,6 +1,6 @@
 #
-# CabertoSettings.rpy
-# Caberto Desktop Shell
+# CelesteSettings.rpy
+# Celeste Desktop Shell
 #
 # (C) 2021 Marquis Kurt. All rights reserved.
 #
@@ -9,9 +9,9 @@
 # file, You can obtain one at https://mozilla.org/MPL/2.0/.
 #
 
-screen CabertoSettings():
+screen CelesteSettings():
     zorder 100
-    style_prefix "CabertoSettings"
+    style_prefix "CelesteSettings"
     modal False
 
     default wallpaper = "Candella"
@@ -25,14 +25,14 @@ screen CabertoSettings():
             xalign 0.5
             yfit True
 
-            use ASInterfaceTitlebar("", onClose=Hide("CabertoSettings"))
+            use ASInterfaceTitlebar("", onClose=Hide("CelesteSettings"))
 
             vbox:
                 label "Settings"
 
                 hbox:
                     vbox:
-                        style_prefix "CabertoSettings_panel"
+                        style_prefix "CelesteSettings_panel"
                         xsize 420
 
                         label "Desktop Background"
@@ -41,32 +41,32 @@ screen CabertoSettings():
                             spacing 8
                             box_wrap True
 
-                            for _wall in CabertoShell.wallpapers():
-                                use CabertoSettingsWallpaperButton(_wall)
+                            for _wall in CelesteShell.wallpapers():
+                                use CelesteSettingsWallpaperButton(_wall)
 
-style CabertoSettings_frame is ASInterface_frame
-style CabertoSettings_vbox is ASInterface_vbox
+style CelesteSettings_frame is ASInterface_frame
+style CelesteSettings_vbox is ASInterface_vbox
 
-style CabertoSettings_label is ASInterface_label
-style CabertoSettings_label_text is ASInterface_label_text:
+style CelesteSettings_label is ASInterface_label
+style CelesteSettings_label_text is ASInterface_label_text:
     font get_font("Interface", variant="Bold")
 
-style CabertoSettings_text is ASInterface_text:
+style CelesteSettings_text is ASInterface_text:
     size 14
 
-style CabertoSettings_panel_label is ASInterface_label
-style CabertoSettings_panel_label_text is ASInterface_label_text:
+style CelesteSettings_panel_label is ASInterface_label
+style CelesteSettings_panel_label_text is ASInterface_label_text:
     font get_font("Interface", variant="Medium")
     size 18
 
 
-screen CabertoSettingsWallpaperButton(wallpaper):
-    style_prefix "CabertoSettingsWallpaperButton"
-    button action [SetScreenVariable("wallpaper", wallpaper), Function(caberto._set_wallpaper, name=wallpaper)]:
+screen CelesteSettingsWallpaperButton(wallpaper):
+    style_prefix "CelesteSettingsWallpaperButton"
+    button action [SetScreenVariable("wallpaper", wallpaper), Function(celeste._set_wallpaper, name=wallpaper)]:
         xysize (144, 90)
         vbox:
             add AS_LIBRARY_DIR + "Desktop Pictures/" + wallpaper + ".png":
                 size (144, 82)
 
-style CabertoSettingsWallpaperButton_text is ASInterface_text:
+style CelesteSettingsWallpaperButton_text is ASInterface_text:
     size 12

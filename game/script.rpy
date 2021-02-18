@@ -13,7 +13,7 @@ label quit:
 # Open the desktop.
 
 label start:
-    $ caberto.launch()
+    $ celeste.launch()
     return
 
 # Show an example Stop screen.

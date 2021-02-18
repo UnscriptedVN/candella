@@ -7,7 +7,7 @@
 
 Candella is a fork of the [AliceOS framework](https://aliceos.app), a Ren'Py framework that provides an operating environment to visual novels. This operating environment includes utilities, classes, and other code that lets developers and players write and use apps designed for the system.
 
-![Caberto Shell in Candella](./.github/release.png)
+![Celeste Shell in Candella](./.github/release.png)
 
 ## Differences between AliceOS
 

@@ -1,6 +1,6 @@
 #
-# CabertoShellView.rpy
-# Caberto Desktop Shell
+# CelesteShellView.rpy
+# Celeste Desktop Shell
 #
 # (C) 2021 Marquis Kurt. All rights reserved.
 #
@@ -9,7 +9,7 @@
 # file, You can obtain one at https://mozilla.org/MPL/2.0/.
 #
 
-screen CabertoShellView(wallpaper, apps):
+screen CelesteShellView(wallpaper, apps):
     tag desktop
     modal False
 
@@ -19,8 +19,8 @@ screen CabertoShellView(wallpaper, apps):
         size (1280, 720)
 
     # Display the top bar and the launcher on the side.
-    use CabertoLauncher(apps=apps)
-    use CabertoTopBar
+    use CelesteLauncher(apps=apps)
+    use CelesteTopBar
 
     # Listen for changes on the set wallpaper and refresh the wallpaper.
-    timer 0.25 action SetScreenVariable("wall", caberto._wallpaper) repeat True
+    timer 0.25 action SetScreenVariable("wall", celeste._wallpaper) repeat True

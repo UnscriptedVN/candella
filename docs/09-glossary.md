@@ -32,7 +32,7 @@ If no arguments are passed in `load_glossary`, the app will default to the built
 
 ## Overriding the default glossary
 
-If you need to override the default glossary with your own, you can change the `default_glossary` property of the `glossary` instance. This may be used in scenarios where you want the Glossary app to open your default glossary when the user opens it in a launcher like Caberto Shell.
+If you need to override the default glossary with your own, you can change the `default_glossary` property of the `glossary` instance. This may be used in scenarios where you want the Glossary app to open your default glossary when the user opens it in a launcher like Celeste Shell.
 
 ```py
 glossary.default_glossary = "path/to/default_glossary.json"

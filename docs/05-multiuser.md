@@ -7,7 +7,7 @@ Multi-user support in Candella is provided by the Multiuser framework. This fram
 A user is defined by a username and is represented as the `CAUser` data class. In most cases, developers will not need to create an instance of this class as core services and applications will provide this automatically.
 
 - `CAUser.username` contains the username of the user. Usernames must be in lowercase with no spaces or special characters.
-- `CAUser.display_name` contains the user-facing display name for the user. This display name is used by core services such as Caberto Shell to display the user's name. By default, this name defaults to the username.
+- `CAUser.display_name` contains the user-facing display name for the user. This display name is used by core services such as Celeste Shell to display the user's name. By default, this name defaults to the username.
 
 `CAUser` provides methods for checking equality and string representation.
 

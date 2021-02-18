@@ -1,6 +1,6 @@
 #
-# CabertoAccountSwitcher.rpy
-# Caberto Shell - Account Switcher
+# CelesteAccountSwitcher.rpy
+# Celeste Shell - Account Switcher
 #
 # (C) 2021 Marquis Kurt. All rights reserved.
 #
@@ -11,8 +11,8 @@
 
 init offset = 5
 
-screen CabertoAccountSwitcher(users):
-    tag CabertoAccounts
+screen CelesteAccountSwitcher(users):
+    tag CelesteAccounts
     zorder 105
     modal True
     style_prefix "ASInterface"
@@ -55,4 +55,3 @@ screen CabertoAccountSwitcher(users):
 
             textbutton "Cancel" action [Return(None)]:
                 xalign 0.5
-

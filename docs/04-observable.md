@@ -8,7 +8,7 @@ Candella uses Observable in a few places:
 
 - In **AppKit**, all apps inherit the `CAObservable` class and can emit signals to observers.
 - In **ServiceKit**, core services inherit `CAObservable` and emit signals to observers.
-- In **Caberto Shell**, the service listens for signal emissions and acts as an observer with a callback method.
+- In **Celeste Shell**, the service listens for signal emissions and acts as an observer with a callback method.
 
 ## Logic
 
