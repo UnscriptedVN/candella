@@ -30,15 +30,15 @@ init python:
 
             self.settings = ServiceStorage(self)
 
-            if not self.settings.read("apps_list"):
-                self.settings.write_field("apps_list", self._default_apps())
-                self.settings.write()
-            self._dock = self.settings.read_not_none("apps_list")
+            if not self.settings.get_entry("apps_list"):
+                self.settings.set_entry("apps_list", self._default_apps())
+                self.settings.commit()
+            self._dock = self.settings.get_entry("apps_list", raise_falsy=True)
 
-            if not self.settings.read("wallpaper"):
-                self.settings.write_field("wallpaper", AS_LIBRARY_DIR + "Desktop Pictures/Candella.png")
-                self.settings.write()
-            self._wallpaper = self.settings.read_not_none("wallpaper")
+            if not self.settings.get_entry("wallpaper"):
+                self.settings.set_entry("wallpaper", AS_LIBRARY_DIR + "Desktop Pictures/Candella.png")
+                self.settings.commit()
+            self._wallpaper = self.settings.get_entry("wallpaper", raise_falsy=True)
 
             apps = CabertoShell.get_all_applications()
             for app in CabertoShell.get_all_applications():
@@ -165,15 +165,15 @@ init python:
         def _init_settings(self):
             self.settings = ServiceStorage(self)
 
-            if not self.settings.read("apps_list"):
-                self.settings.write_field("apps_list", self._default_apps())
-                self.settings.write()
-            self._dock = self.settings.read_not_none("apps_list")
+            if not self.settings.get_entry("apps_list"):
+                self.settings.set_entry("apps_list", self._default_apps())
+                self.settings.commit()
+            self._dock = self.settings.get_entry("apps_list", raise_falsy=True)
 
-            if not self.settings.read("wallpaper"):
-                self.settings.write_field("wallpaper", AS_LIBRARY_DIR + "Desktop Pictures/Candella.png")
-                self.settings.write()
-            self._wallpaper = self.settings.read_not_none("wallpaper")
+            if not self.settings.get_entry("wallpaper"):
+                self.settings.set_entry("wallpaper", AS_LIBRARY_DIR + "Desktop Pictures/Candella.png")
+                self.settings.commit()
+            self._wallpaper = self.settings.get_entry("wallpaper", raise_falsy=True)
 
         def _default_apps(self):
             """Returns the list of default apps to load into the launcher."""
@@ -189,8 +189,8 @@ init python:
         def _set_wallpaper(self, name):
             """Set the wallpaper and save the preference."""
             self._wallpaper = AS_LIBRARY_DIR + "Desktop Pictures/" + name + ".png"
-            self.settings.write_field("wallpaper", self._wallpaper)
-            self.settings.write()
+            self.settings.set_entry("wallpaper", self._wallpaper)
+            self.settings.commit()
 
         def _app_listen(self, *args, **kwargs):
             # Handle the title section on the desktop.
@@ -207,8 +207,8 @@ init python:
                     self._dock.remove(app_id)
                 else:
                     self._dock.append(app_id)
-                self.settings.write_field("apps_list", self._dock)
-                self.settings.write()
+                self.settings.set_entry("apps_list", self._dock)
+                self.settings.commit()
                 renpy.run([Hide("CabertoShellView"), Function(self.launch, transient=True)])
 
     caberto = CabertoShell()

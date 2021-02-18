@@ -98,7 +98,7 @@ init python:
 
         def applicationWillTerminate(self):
             if isinstance(self.data, AppStorage):
-                self.data.write()
+                self.data.commit()
             self.emit_signal("application_terminated")
 
         def _initialize_manifest(self):
