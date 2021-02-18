@@ -22,8 +22,9 @@ screen ASSysInfoView():
             hbox:
                 spacing 32
 
-                add ASSysInfo.bundleDir + "Resources/Elements/SystemIcon.png":
-                    size (256, 256)
+                add "System/Library/Branding/sprite.png":
+                    size (202.24, 256)
+                    nearest True
                     xoffset 16
 
                 vbox:
