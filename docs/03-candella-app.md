@@ -119,9 +119,11 @@ Apps can also store data for the currently logged-in user on the system; this da
 
 There are three methods in `AppStorage` to help read and write data accordingly:
 
-- {label:new} `AppStorage.get_entry(field, raise_falsy=False)` will fetch the value for a field or return `None` if no value for the field was found. If `raise_falsy` is set to `True`, the method will instead raise an exception.
-- {label:new} `AppStorage.set_entry(field, value)` will write the value `value` into the specified `field`.
-- {label:new} `AppStorage.commit()` will commit all written changes to the current user's data file.
+{label:new}
+
+- `AppStorage.get_entry(field, raise_falsy=False)` will fetch the value for a field or return `None` if no value for the field was found. If `raise_falsy` is set to `True`, the method will instead raise an exception.
+- `AppStorage.set_entry(field, value)` will write the value `value` into the specified `field`.
+- `AppStorage.commit()` will commit all written changes to the current user's data file.
 
 !!! danger "Sensitive Information"
     Do _**not**_ store sensitive information in app storage unless you are using cryptography to encrypt the information. App storage is provided in the user's data file in a human-readable format and may be easily compromised if not encrypted properly.

@@ -35,7 +35,15 @@ For Candella apps, the `AppStorage` class is used to manage data. More informati
 
 Likewise, core services in Candella utilize the `ServiceStorage` class. Like `AppStorage`, data is separated by bundle ID and is accessible via the `data` field of the `CACoreService` class.
 
-There are four methods available in `ServiceStorage` to manage data:
+There are three methods available for managing service data:
+
+- `ServiceStorage.get_entry(field, raise_falsy=False)` will fetch the value for a field or return `None` if no value for the field was found. If `raise_falsy` is set to `True`, the method will instead raise an exception.
+- `ServiceStorage.set_entry(field, value)` will write the value `value` into the specified `field`.
+- `ServiceStorage.commit()` will commit all written changes to the current user's data file.
+
+#### {label:deprecated}
+
+The following methods are deprecated and should not be used.
 
 - `ServiceStorage.read(field)` will fetch the value for a field or return `None` if no value for the field was found.
 - `ServiceStorage.read_not_none(field)` will fetch the value for a field or throw an exception if there is no value.
