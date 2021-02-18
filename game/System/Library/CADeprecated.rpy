@@ -29,17 +29,16 @@ init python in CADeprecated:
         """
         def __deprecated(method):
             if renamed:
-                __msg = method.__name__ + " has been renamed in version " + version + " to: " + renamed
+                dep_msg = method.__name__ + " has been renamed in version " + version + " to: " + renamed
             elif reason:
-                __msg = method.__name__ + " has been deprecated in version " + version + ": " + reason
+                dep_msg = method.__name__ + " has been deprecated in version " + version + ": " + reason
             else:
-                __msg = method.__name__ + " has been deprecated in version " + version
-
-            warnings.warn(__msg)
-            clog.warn(__msg)
+                dep_msg = method.__name__ + " has been deprecated in version " + version
 
             @wraps(method)
             def __wrapped_call(*args, **kwargs):
+                warnings.warn(dep_msg)
+                clog.warn(dep_msg)
                 method(*args, **kwargs)
 
             return __wrapped_call
