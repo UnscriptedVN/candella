@@ -129,8 +129,6 @@ There are three methods in `AppStorage` to help read and write data accordingly:
     Do _**not**_ store sensitive information in app storage unless you are using cryptography to encrypt the information. App storage is provided in the user's data file in a human-readable format and may be easily compromised if not encrypted properly.
 ### {label:deprecated}
 
-The following methods have been deprecated in this release of Candella and should not be used.
-
 - `AppStorage.read(field)` will fetch the value for a field or return `None` if no value for the field was found.
 - `AppStorage.read_not_none(field)` will fetch the value for a field or throw an exception if there is no value.
 - `AppStorage.write_field(field, value)` will write the value `value` into the specified `field`.
