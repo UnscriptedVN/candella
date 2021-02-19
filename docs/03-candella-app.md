@@ -141,6 +141,27 @@ User interfaces for Candella apps utilize ScreenKit, an AliceOS framework that u
 
 More information on generating user interfaces with ScreenKit [can be found in the AliceOS documentation][screenkit].
 
+### Creating draggable windows {label:new}
+
+It is recommended that, if possible, to give your app windows the ability to be dragged across the screen. This can be achieved by wrapping the window's content in a `drag` screen, supplying the following properties like in the example below:
+
+```rpy
+drag:
+    drag_name "NameOfScreenGoesHere"
+    drag_handle (0, 0, WindowMaxWidthHere, 64)
+    xalign 0.5
+    yalign 0.5
+
+    ...
+```
+
+- `drag_name` should contain the name of the screen your app's window resides in
+- `drag_handle` will set the draggability from the title bar. We recommend keeping the default values of 0, 0 for the X and Y values, as well as setting the last value (height) to 64px. The third element in the tuple should correspond to the width of the window.
+- Other transform properties on the alignment must also appear in the draggable to set the default position. In most cases, this is in the center of the screen.
+
+!!! important "Remember window modality rules"
+    Keep in mind your window's modality when making the window draggable. Windows in Candella should not be draggable if they are modal (`modal True` in screen properties) unless there is a backdrop behind it. Leaving a window with draggable properties as a modal window may cause unexpected issues for players when trying to rearrange other windows.
+
 ## Sending notifications
 
 Candella offer two types of notifications: banners and alerts. Sending a banner or alert is easy with a simple method call. These method calls handle notification delegates and permission requests for you and will return the response provided, as well as emit it in a signal.
