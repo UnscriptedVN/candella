@@ -1,6 +1,4 @@
-# {HIDE} Celeste Shell
-
-<meta http-equiv="refresh" content="0; url=../02-celeste-shell/">
+# Celeste Shell
 
 The default desktop shell for Candella is **Celeste** (formerly known as Caberto Shell). Celeste's interface is mainly inspired from the [Lomiri][lomiri] desktop environment and comes with per-user customizations.
 
@@ -28,6 +26,9 @@ Click on the gear in the top bar to open the Settings pane for Celeste Shell. Th
 ### Switching users
 
 To switch the current user that's logged in to the system, click on the current user's name in the top bar and then select the user to switch to.
+
+!!! important
+    {label:updated} User-switching via Celeste Shell is available when there is more than one user present. Otherwise, the user's name will not appear.
 
 ### Pinning apps to the launcher
 
