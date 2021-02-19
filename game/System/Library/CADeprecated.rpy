@@ -39,7 +39,7 @@ init python in CADeprecated:
             def __wrapped_call(*args, **kwargs):
                 warnings.warn(dep_msg)
                 clog.warn(dep_msg)
-                method(*args, **kwargs)
+                return method(*args, **kwargs)
 
             return __wrapped_call
 

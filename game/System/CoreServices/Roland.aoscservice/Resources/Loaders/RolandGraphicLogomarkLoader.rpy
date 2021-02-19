@@ -37,5 +37,5 @@ screen RolandGraphicalLogomarkLoader():
             spacing 8
 
             for service in services:
-                add AlphaMask(service.icons[32], celeste.get_app_mask(), xysize=(32, 32)):
+                add CADesign.get_app_mask(service.icons[32], 32):
                     size (32, 32)

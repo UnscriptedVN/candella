@@ -16,6 +16,8 @@ init python:
     import logging
     from os import listdir, path
     from time import gmtime, strftime
+    from store.CADeprecated import deprecated
+    from store import CADesign as design
 
     class CelesteShell(CACoreService):
         _wallpaper = AS_LIBRARY_DIR + "Desktop Pictures/Candella.png"
@@ -74,8 +76,9 @@ init python:
             """Returns the current time of the system."""
             return strftime("%I:%M%p")
 
+        @deprecated('21.02', renamed='CADesign.get_app_mask_frame')
         def get_app_mask(self):
-            return Frame(self.bundleDir + "Resources/app_mask.png")
+            return design.get_app_mask_frame()
 
         def app_exists_in_current_launcher(self, app_id):
             """Returns if a given app bundle ID is in the current user's dock."""
