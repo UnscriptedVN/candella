@@ -39,7 +39,9 @@ screen CelesteTopBar():
                 xalign 1.0
                 spacing 8
 
-                textbutton "[_Username]" action Function(celeste.start_acct_manager)
+                if len(CAAccountsService.get_all_users()) > 1:
+                    textbutton "[_Username]" action Function(celeste.start_acct_manager)
+
                 text "[_CurrentTime]"
 
                 button action Show("CelesteSettings"):
