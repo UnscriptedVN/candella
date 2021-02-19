@@ -15,26 +15,30 @@ screen GlossaryAppUIView(glossary):
     zorder 100
     modal True
 
-    frame:
+    drag:
+        drag_name "GlossaryAppUIView"
+        drag_handle (0, 0, 800, 64)
         xalign 0.5
         yalign 0.5
-        xmaximum 800
-        ymaximum 450
 
-        has vbox:
-            use ASInterfaceTitlebar("Glossary", onClose=[Hide("GlossaryAppUIView"), Function(glossary_app.terminate)])
+        frame:
+            xmaximum 800
+            ymaximum 450
 
-            viewport:
-                mousewheel True
-                scrollbars "vertical"
-                style_prefix "ASInterfaceScrollbar"
+            has vbox:
+                use ASInterfaceTitlebar("Glossary", onClose=[Hide("GlossaryAppUIView"), Function(glossary_app.terminate)])
 
-                vbox:
-                    spacing 16
-                    if glossary:
-                        use GlossaryView(glossary=glossary)
-                    else:
-                        text "The glossary is empty or could not be loaded."
+                viewport:
+                    mousewheel True
+                    scrollbars "vertical"
+                    style_prefix "ASInterfaceScrollbar"
+
+                    vbox:
+                        spacing 16
+                        if glossary:
+                            use GlossaryView(glossary=glossary)
+                        else:
+                            text "The glossary is empty or could not be loaded."
 
 screen GlossaryView(glossary):
     style_prefix "glossary"

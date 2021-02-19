@@ -14,105 +14,110 @@ screen ASAppManagerView():
 
     default currentAppView = None
 
-    frame:
+    drag:
+        drag_name "ASAppManagerView"
+        drag_handle (0, 0, 900, 64)
         xalign 0.5
         yalign 0.5
-        xmaximum 900
-        ysize 600
 
-        has vbox:
-            xalign 0.5
-            yfit True
 
-            use ASInterfaceTitlebar("App Manager", onClose=[Hide("ASAppManagerView"), appManager.terminate])
+        frame:
+            xmaximum 900
+            ysize 600
 
-            hbox:
-                style_prefix "ASAppManager"
-                spacing 8
+            has vbox:
+                xalign 0.5
+                yfit True
 
-                vbox:
+                use ASInterfaceTitlebar("App Manager", onClose=[Hide("ASAppManagerView"), appManager.terminate])
+
+                hbox:
+                    style_prefix "ASAppManager"
                     spacing 8
-                    label "Applications"
 
-                    viewport:
-                        style_prefix "ASInterfaceScrollbar"
-                        mousewheel True
-                        scrollbars "vertical"
-                        style "ASAppManager_viewport"
+                    vbox:
+                        spacing 8
+                        label "Applications"
 
-                        vbox:
-                            for app in apps:
-                                use ASAppManagerDetailButton(app)
-
-
-                vbox:
-                    xfill True
-                    if currentAppView == None:
-                        text "Select an app from the left side to view its properties.":
-                            xalign 0.5
-
-
-                    else:
-                        hbox:
-                            spacing 12
-
-                            add currentAppView.icons[128]:
-                                zoom 0.9
+                        viewport:
+                            style_prefix "ASInterfaceScrollbar"
+                            mousewheel True
+                            scrollbars "vertical"
+                            style "ASAppManager_viewport"
 
                             vbox:
-                                $ _app_name = appManager.get_app_name(currentAppView)
-                                label "[_app_name]":
-                                    style "ASAppManager_DetailedAppName"
-                                text "[currentAppView.bundleAuthor]":
-                                    style "ASAppManager_DetailedAppAuthor_text"
-                                text "Version [currentAppView.bundleVersion] ([currentAppView.bundleId])"
-                                null height 8
+                                for app in apps:
+                                    use ASAppManagerDetailButton(app)
 
-                                hbox:
-                                    spacing 8
 
-                                    textbutton "Launch" action Function(currentAppView.applicationWillLaunch):
-                                        style "ASInterfacePushButton"
+                    vbox:
+                        xfill True
+                        if currentAppView == None:
+                            text "Select an app from the left side to view its properties.":
+                                xalign 0.5
+
+
+                        else:
+                            hbox:
+                                spacing 12
+
+                                add currentAppView.icons[128]:
+                                    zoom 0.9
+
+                                vbox:
+                                    $ _app_name = appManager.get_app_name(currentAppView)
+                                    label "[_app_name]":
+                                        style "ASAppManager_DetailedAppName"
+                                    text "[currentAppView.bundleAuthor]":
+                                        style "ASAppManager_DetailedAppAuthor_text"
+                                    text "Version [currentAppView.bundleVersion] ([currentAppView.bundleId])"
+                                    null height 8
+
+                                    hbox:
+                                        spacing 8
+
+                                        textbutton "Launch" action Function(currentAppView.applicationWillLaunch):
+                                            style "ASInterfacePushButton"
+
+                                        vbox:
+                                            style_prefix "ASInterfaceCheckbox"
+                                            textbutton "Pin to launcher" action Function(appman._pin_to_shell_dock, app_id=currentAppView.bundleId):
+                                                selected celeste.app_exists_in_current_launcher(currentAppView.bundleId)
+
+                            null height 8
+
+                            vbox:
+                                $ currentAppView_description = currentAppView.bundleDescription.strip()
+                                text "About this app":
+                                    style "ASAppManager_DetailedEmphasis_text"
+                                text "[currentAppView_description]"
+                                null height 16
+
+                                if currentAppView.requires:
+
+                                    text "Allow this app to:":
+                                        style "ASAppManager_DetailedEmphasis_text"
 
                                     vbox:
                                         style_prefix "ASInterfaceCheckbox"
-                                        textbutton "Pin to launcher" action Function(appman._pin_to_shell_dock, app_id=currentAppView.bundleId):
-                                            selected celeste.app_exists_in_current_launcher(currentAppView.bundleId)
+                                        spacing 8
 
-                        null height 8
+                                        if AS_REQUIRES_NOTIFICATIONKIT in currentAppView.requires:
+                                            textbutton "Send notifications" action ToggleDict(persistent.AS_PERMISSIONS[currentAppView.bundleId], AS_REQUIRES_NOTIFICATIONKIT, True, False)
+                                            text "Notifications may include banners, alerts, and sounds.":
+                                                style "ASAppManager_text"
 
-                        vbox:
-                            $ currentAppView_description = currentAppView.bundleDescription.strip()
-                            text "About this app":
-                                style "ASAppManager_DetailedEmphasis_text"
-                            text "[currentAppView_description]"
-                            null height 16
+                                        if AS_REQUIRES_FULL_DISK_ACCESS in currentAppView.requires:
+                                            textbutton "Access your files" action ToggleDict(persistent.AS_PERMISSIONS[currentAppView.bundleId], AS_REQUIRES_FULL_DISK_ACCESS, True, False)
+                                            text "File access may include your Home directory and your Candella installation.":
+                                                style "ASAppManager_text"
 
-                            if currentAppView.requires:
-
-                                text "Allow this app to:":
-                                    style "ASAppManager_DetailedEmphasis_text"
-
-                                vbox:
-                                    style_prefix "ASInterfaceCheckbox"
-                                    spacing 8
-
-                                    if AS_REQUIRES_NOTIFICATIONKIT in currentAppView.requires:
-                                        textbutton "Send notifications" action ToggleDict(persistent.AS_PERMISSIONS[currentAppView.bundleId], AS_REQUIRES_NOTIFICATIONKIT, True, False)
-                                        text "Notifications may include banners, alerts, and sounds.":
-                                            style "ASAppManager_text"
-
-                                    if AS_REQUIRES_FULL_DISK_ACCESS in currentAppView.requires:
-                                        textbutton "Access your files" action ToggleDict(persistent.AS_PERMISSIONS[currentAppView.bundleId], AS_REQUIRES_FULL_DISK_ACCESS, True, False)
-                                        text "File access may include your Home directory and your Candella installation.":
-                                            style "ASAppManager_text"
-
-                                    if AS_REQUIRES_SYSTEM_EVENTS in currentAppView.requires:
-                                        textbutton "Change settings and watch system events" action ToggleDict(persistent.AS_PERMISSIONS[currentAppView.bundleId], AS_REQUIRES_SYSTEM_EVENTS, True, False)
-                                        text "This may include changing Candella settings or watching system events such as startup.":
-                                            style "ASAppManager_text"
-                            else:
-                                text "This app doesn't require any permissions."
+                                        if AS_REQUIRES_SYSTEM_EVENTS in currentAppView.requires:
+                                            textbutton "Change settings and watch system events" action ToggleDict(persistent.AS_PERMISSIONS[currentAppView.bundleId], AS_REQUIRES_SYSTEM_EVENTS, True, False)
+                                            text "This may include changing Candella settings or watching system events such as startup.":
+                                                style "ASAppManager_text"
+                                else:
+                                    text "This app doesn't require any permissions."
 
 screen ASAppManagerDetailButton(app):
     button action SetScreenVariable("currentAppView", app):

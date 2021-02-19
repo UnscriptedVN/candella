@@ -15,105 +15,109 @@ screen ASInventoryManagerView(currentItem=None):
 
     default currentItemView = currentItem
 
-    frame:
+    drag:
+        drag_name "ASInventoryManagerView"
+        drag_handle (0, 0, 1000, 64)
         xalign 0.5
         yalign 0.5
-        xmaximum 1000
-        ysize 650
 
-        has vbox:
-            xalign 0.5
-            yfit True
+        frame:
+            xmaximum 1000
+            ysize 650
 
-            use ASInterfaceTitlebar("Inventories", onClose=Hide("ASInventoryManagerView"))
+            has vbox:
+                xalign 0.5
+                yfit True
 
-            if len(inv) == 0:
-                vbox:
-                    xfill True
-                    yfill True
-                    yalign 0.5
+                use ASInterfaceTitlebar("Inventories", onClose=Hide("ASInventoryManagerView"))
 
-                    null height 1
-
-                    vbox:
-                        style_prefix "ASInventories"
-                        xalign 0.5
-
-                        add AS_DEFAULT_APP_DIR + "Inventories.aosapp/Resources/Item.png":
-                            xalign 0.5
-                        label "No items available.":
-                            xalign 0.5
-                        text "You don't have any items in your inventory yet.":
-                            xalign 0.5
-
-                    null height 1
-            else:
-                hbox:
-                    style_prefix "ASInventories"
-                    spacing 8
-
-                    vbox:
-                        spacing 8
-                        label "Inventory"
-
-                        viewport:
-                            style_prefix "ASInterfaceScrollbar"
-                            mousewheel True
-                            scrollbars "vertical"
-                            style "ASInventories_viewport"
-
-                            vbox:
-                                for item in inv:
-                                    button action SetScreenVariable("currentItemView", item):
-                                        ymaximum 56
-                                        xsize 300
-                                        sensitive True
-                                        style "ASInventories_button"
-
-                                        has hbox:
-                                            yalign 0.5
-
-                                            add item.imageName:
-                                                zoom 0.5
-                                                yalign 0.5
-
-                                            label "[item.name]":
-                                                yalign 0.5
-                                                style "ASInventoriesItemName"
-
-
+                if len(inv) == 0:
                     vbox:
                         xfill True
+                        yfill True
+                        yalign 0.5
 
-                        if currentItemView == None:
-                            text "Select an item from the left side to view and use it.":
+                        null height 1
+
+                        vbox:
+                            style_prefix "ASInventories"
+                            xalign 0.5
+
+                            add AS_DEFAULT_APP_DIR + "Inventories.aosapp/Resources/Item.png":
+                                xalign 0.5
+                            label "No items available.":
+                                xalign 0.5
+                            text "You don't have any items in your inventory yet.":
                                 xalign 0.5
 
-                        else:
-                            hbox:
-                                spacing 12
+                        null height 1
+                else:
+                    hbox:
+                        style_prefix "ASInventories"
+                        spacing 8
 
-                                add currentItemView.imageName:
-                                    zoom 0.9
+                        vbox:
+                            spacing 8
+                            label "Inventory"
+
+                            viewport:
+                                style_prefix "ASInterfaceScrollbar"
+                                mousewheel True
+                                scrollbars "vertical"
+                                style "ASInventories_viewport"
 
                                 vbox:
-                                    label "[currentItemView.name]"
-                                    null height 8
+                                    for item in inv:
+                                        button action SetScreenVariable("currentItemView", item):
+                                            ymaximum 56
+                                            xsize 300
+                                            sensitive True
+                                            style "ASInventories_button"
 
-                                    $ ItemAction = Function(inventory.useItem, currentItemView) if currentItemView.canBeUsed else NullAction()
+                                            has hbox:
+                                                yalign 0.5
 
-                                    textbutton "Use Item" action ItemAction:
-                                        style "ASInterfacePushButton"
-                                        sensitive currentItemView.canBeUsed
+                                                add item.imageName:
+                                                    zoom 0.5
+                                                    yalign 0.5
 
-                                    if not currentItemView.canBeUsed:
-                                        text "This item can't be used."
+                                                label "[item.name]":
+                                                    yalign 0.5
+                                                    style "ASInventoriesItemName"
 
-                            null height 8
-                            vbox:
-                                $ ItemDescription = currentItemView.description.strip()
-                                text "[currentItemView.description]"
+
+                        vbox:
+                            xfill True
+
+                            if currentItemView == None:
+                                text "Select an item from the left side to view and use it.":
+                                    xalign 0.5
+
+                            else:
+                                hbox:
+                                    spacing 12
+
+                                    add currentItemView.imageName:
+                                        zoom 0.9
+
+                                    vbox:
+                                        label "[currentItemView.name]"
+                                        null height 8
+
+                                        $ ItemAction = Function(inventory.useItem, currentItemView) if currentItemView.canBeUsed else NullAction()
+
+                                        textbutton "Use Item" action ItemAction:
+                                            style "ASInterfacePushButton"
+                                            sensitive currentItemView.canBeUsed
+
+                                        if not currentItemView.canBeUsed:
+                                            text "This item can't be used."
+
                                 null height 8
+                                vbox:
+                                    $ ItemDescription = currentItemView.description.strip()
+                                    text "[currentItemView.description]"
+                                    null height 8
 
 
 
