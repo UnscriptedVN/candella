@@ -22,7 +22,7 @@ init python:
         def __init__(self):
             CACoreService.__init__(self, AS_CORESERVICES_DIR + "Roland.aoscservice/")
 
-        def __get_services(self):
+        def _get_services(self):
             return [
                 service for service in get_objects() if \
                 isinstance(service, CACoreService) and service.id != self.id
@@ -60,7 +60,7 @@ init python:
             self.__check_userland_service()
 
             # Launch services.
-            for service in self.__get_services():
+            for service in self._get_services():
                 try:
                     self.__launch_service(service)
                 except Exception as error:
@@ -118,7 +118,7 @@ init python:
                     clog.error("Loader screen %s could not be found.", loader)
 
             clog.debug("Terminating services.")
-            for service in self.__get_services():
+            for service in self._get_services():
                 try:
                     service.terminate()
                 except:

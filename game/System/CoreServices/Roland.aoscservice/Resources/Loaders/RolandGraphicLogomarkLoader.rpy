@@ -17,8 +17,25 @@ screen RolandGraphicalLogomarkLoader():
 
     add "#191919"
 
+    default services = []
+
+    python:
+        services = roland._get_services()
+
     vbox:
-        align (0.5, 0.5)
+        xfill True
+        yfill True
+
+        null height 8
 
         add "System/Library/Branding/logomark.png":
+            align (0.5, 0.5)
             zoom 0.5
+
+        hbox:
+            align (0.5, 0.9)
+            spacing 8
+
+            for service in services:
+                add AlphaMask(service.icons[32], celeste.get_app_mask(), xysize=(32, 32)):
+                    size (32, 32)
