@@ -61,7 +61,7 @@ screen ASAppManagerView():
                             hbox:
                                 spacing 12
 
-                                add currentAppView.icons[128]:
+                                add CADesign.get_app_mask(currentAppView.icons[128], 128):
                                     zoom 0.9
 
                                 vbox:
@@ -126,7 +126,7 @@ screen ASAppManagerDetailButton(app):
         has hbox:
             spacing 8
 
-            add app.icons[48]
+            add CADesign.get_app_mask(app.icons[48], 48)
             vbox:
                 python:
                     _name = appManager.get_app_name(app)
