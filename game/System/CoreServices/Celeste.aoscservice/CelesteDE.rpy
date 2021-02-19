@@ -191,9 +191,10 @@ init python:
 
         def _default_apps(self):
             """Returns the list of default apps to load into the launcher."""
-            # TODO: Complete this stub.
             return [
-                "dev.unscriptedvn.candella.app-manager"
+                "dev.unscriptedvn.candella.app-manager",
+                "dev.unscriptedvn.candella.inventories",
+                "dev.unscriptedvn.candella.glossary"
             ]
 
         def _get_dock_apps(self, apps):
@@ -224,11 +225,19 @@ init python:
             # Handle app pinning from the App Manager.
             elif "__appman_pin" in args:
                 app_id = kwargs["app"]
-
                 if app_id in self._dock:
-                    self._dock.remove(app_id)
-                else:
-                    self._dock.append(app_id)
+                    return
+                self._dock.append(app_id)
+                self.settings.set_entry("apps_list", self._dock)
+                self.settings.commit()
+                renpy.run([Hide("CelesteShellView"), Function(self.launch, transient=True)])
+
+            # Handle app unpinning from the App Manager.
+            elif "__appman_unpin" in args:
+                app_id = kwargs["app"]
+                if app_id not in self._dock:
+                    return
+                self._dock.remove(app_id)
                 self.settings.set_entry("apps_list", self._dock)
                 self.settings.commit()
                 renpy.run([Hide("CelesteShellView"), Function(self.launch, transient=True)])

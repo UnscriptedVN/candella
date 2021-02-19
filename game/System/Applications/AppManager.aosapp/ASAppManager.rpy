@@ -26,7 +26,10 @@ init 5 python:
 
         def _pin_to_shell_dock(self, app_id):
             """Prompt Celeste Shell to add/remove an app to/from the Dock."""
-            self.emit_signal("__appman_pin", app=app_id)
+            if celeste.app_exists_in_current_launcher(app_id):
+                self.emit_signal("__appman_unpin", app=app_id)
+            else:
+                self.emit_signal("__appman_pin", app=app_id)
 
         def __init__(self):
             CAApplication.__init__(self, AS_DEFAULT_APP_DIR + "AppManager.aosapp/")

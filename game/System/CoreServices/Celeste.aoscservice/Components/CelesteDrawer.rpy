@@ -15,6 +15,8 @@ init screen CelesteDrawer():
 
     $ all_apps = sorted(celeste.get_all_applications(), key=lambda app: app.get_name() if isinstance(app, CAApplication) else app.bundleName)
 
+    key "K_ESCAPE" action Function(celeste.drawer)
+
     frame:
         xsize 700
         yfill True
