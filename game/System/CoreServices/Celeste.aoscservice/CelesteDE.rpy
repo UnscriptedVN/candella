@@ -19,6 +19,7 @@ init python:
 
     class CelesteShell(CACoreService):
         _wallpaper = AS_LIBRARY_DIR + "Desktop Pictures/Candella.png"
+        _wall_display_mode = "cover"
         _dock = []
         _drawer_open = False
         _current_app_name = "Celeste Desktop"
@@ -39,6 +40,11 @@ init python:
                 self.settings.set_entry("wallpaper", AS_LIBRARY_DIR + "Desktop Pictures/Candella.png")
                 self.settings.commit()
             self._wallpaper = self.settings.get_entry("wallpaper", raise_falsy=True)
+
+            if not self.settings.get_entry("display_mode"):
+                self.settings.set_entry("display_mode", "cover")
+                self.settings.commit()
+            self._wall_display_mode = self.settings.get_entry("display_mode", raise_falsy=True)
 
             apps = CelesteShell.get_all_applications()
             for app in CelesteShell.get_all_applications():
@@ -190,6 +196,14 @@ init python:
             """Set the wallpaper and save the preference."""
             self._wallpaper = AS_LIBRARY_DIR + "Desktop Pictures/" + name + ".png"
             self.settings.set_entry("wallpaper", self._wallpaper)
+            self.settings.commit()
+
+        def _update_wallpaper_display_mode(self, mode):
+            if mode not in ["contain", "cover", "fill"]:
+                clog.error("Not a valid display mode: %s.", mode)
+                return
+            self._wall_display_mode = mode
+            self.settings.set_entry("display_mode", self._wall_display_mode)
             self.settings.commit()
 
         def _app_listen(self, *args, **kwargs):

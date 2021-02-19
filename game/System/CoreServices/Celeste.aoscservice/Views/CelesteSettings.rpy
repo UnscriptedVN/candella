@@ -16,33 +16,58 @@ screen CelesteSettings():
 
     default wallpaper = "Candella"
 
-    frame:
+    drag:
+        drag_name "CelesteSettings"
+        drag_handle (0, 0, 800, 64)
         xalign 0.5
         yalign 0.5
-        xysize (800, 400)
 
-        has vbox:
-            xalign 0.5
-            yfit True
+        frame:
+            xysize (800, 400)
 
-            use ASInterfaceTitlebar("", onClose=Hide("CelesteSettings"))
+            has vbox:
+                xalign 0.5
+                yfit True
 
-            vbox:
-                label "Settings"
+                use ASInterfaceTitlebar("", onClose=Hide("CelesteSettings"))
 
-                hbox:
-                    vbox:
-                        style_prefix "CelesteSettings_panel"
-                        xsize 420
+                vbox:
+                    label "Settings"
 
-                        label "Desktop Background"
+                    hbox:
+                        spacing 8
+                        vbox:
+                            style_prefix "CelesteSettings_panel"
+                            xsize 360
 
-                        hbox:
-                            spacing 8
-                            box_wrap True
+                            label "Desktop Background"
 
-                            for _wall in CelesteShell.wallpapers():
-                                use CelesteSettingsWallpaperButton(_wall)
+                            viewport:
+                                style_prefix "ASInterfaceScrollbar"
+                                scrollbars "vertical"
+
+                                hbox:
+                                    spacing 8
+                                    box_wrap True
+
+                                    for _wall in CelesteShell.wallpapers():
+                                        use CelesteSettingsWallpaperButton(_wall)
+
+                        vbox:
+                            style_prefix "CelesteSettings_panel"
+                            xsize 360
+
+                            label "Display wallpaper mode"
+
+                            vbox:
+                                style_prefix "ASInterfaceRadio"
+
+                                textbutton "Scaled to fit" action Function(celeste._update_wallpaper_display_mode, "contain"):
+                                    selected celeste._wall_display_mode == "contain"
+                                textbutton "Centered" action Function(celeste._update_wallpaper_display_mode, "cover"):
+                                    selected celeste._wall_display_mode == "cover"
+                                textbutton "Stretch to fill" action Function(celeste._update_wallpaper_display_mode, "fill"):
+                                    selected celeste._wall_display_mode == "fill"
 
 style CelesteSettings_frame is ASInterface_frame
 style CelesteSettings_vbox is ASInterface_vbox
@@ -63,10 +88,10 @@ style CelesteSettings_panel_label_text is ASInterface_label_text:
 screen CelesteSettingsWallpaperButton(wallpaper):
     style_prefix "CelesteSettingsWallpaperButton"
     button action [SetScreenVariable("wallpaper", wallpaper), Function(celeste._set_wallpaper, name=wallpaper)]:
-        xysize (144, 90)
+        xysize (156, 110)
         vbox:
             add AS_LIBRARY_DIR + "Desktop Pictures/" + wallpaper + ".png":
-                size (144, 82)
+                size (156, 108)
 
 style CelesteSettingsWallpaperButton_text is ASInterface_text:
     size 12

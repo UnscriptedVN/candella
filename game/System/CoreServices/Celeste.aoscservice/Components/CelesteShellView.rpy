@@ -15,8 +15,9 @@ screen CelesteShellView(wallpaper, apps):
 
     # Display the desktop wallpaper of choice.
     default wall = wallpaper
-    add wall:
+    add wall at truecenter:
         size (1280, 720)
+        fit celeste._wall_display_mode
 
     # Display the top bar and the launcher on the side.
     use CelesteLauncher(apps=apps)
