@@ -13,9 +13,13 @@ There are two major components to Celeste Shell: the top bar and the launcher on
 
 ![Celeste Shell drawer](./images/celeste/drawer.png)
 
-### Customizing the desktop
+### Customizing the desktop {label:updated}
 
-Click on the gear in the top bar to open the Settings pane for Celeste Shell. Currently, the only setting available in this panel is the wallpaper selection.
+Click on the gear in the top bar to open the Settings pane for Celeste Shell. There are two sections in the settings: wallpaper selection, followed by the wallpaper display mode, which can be one of three options:
+
+- `Scaled to fit` will try to fill the entire area of the display along the image's width and center it in the screen.
+- `Centered` will center the image and fit the entire area of the display along the image's height.
+- `Stretch to fill` will stretch the image to fit the display.
 
 ![Celeste Shell settings](./images/celeste/settings.png)
 
