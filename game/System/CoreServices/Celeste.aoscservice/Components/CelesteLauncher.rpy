@@ -33,7 +33,7 @@ screen CelesteLauncher(apps):
 
                     button action Function(celeste.launch_app_bundle, app_bundle=app):
                         xysize (78, 68)
-                        add AlphaMask(_icon, celeste.get_app_mask(), xysize=(64, 64)):
+                        add CADesign.get_app_mask(_icon, 64):
                             size (60, 60)
                             xalign 0.5
 

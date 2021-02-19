@@ -45,7 +45,7 @@ init screen CelesteDrawer():
                             xfill True
                             yfill True
 
-                            add AlphaMask(app.icons[64], celeste.get_app_mask(), xysize=(64, 64)):
+                            add CADesign.get_app_mask(app.icons[64], 64):
                                 xalign 0.5
                             text "[_app_name]":
                                 xalign 0.5
