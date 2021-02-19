@@ -80,6 +80,11 @@ init python:
         def get_app_mask(self):
             return design.get_app_mask_frame()
 
+        def get_distributor_logo(self):
+            if not renpy.loadable("System/Library/Branding/sprite_alt.png"):
+                return self.bundleDir + "Resources/distributor_logo.png"
+            return "System/Library/Branding/sprite_alt.png"
+
         def app_exists_in_current_launcher(self, app_id):
             """Returns if a given app bundle ID is in the current user's dock."""
             return app_id in self._dock

@@ -32,15 +32,19 @@ screen CelesteLauncher(apps):
                         _name = app.product_name if isinstance(app, CAApplication) else app.bundleName
 
                     button action Function(celeste.launch_app_bundle, app_bundle=app):
-                        xysize (72, 68)
+                        xysize (78, 68)
                         add AlphaMask(_icon, celeste.get_app_mask(), xysize=(64, 64)):
                             size (60, 60)
                             xalign 0.5
 
             button action Function(celeste.drawer):
-                ysize 72
-                add "#FC9856" # TODO: Replace this with the Celeste/Candella logo.
-                add celeste.bundleDir + "Resources/distributor_logo.png":
+                xysize (78, 78)
+
+                add "#FC9856"
+
+                add celeste.get_distributor_logo():
+                    size (64, 64)
+                    fit "contain"
                     align (0.5, 0.5)
 
 style CelesteLauncher_frame is frame:
