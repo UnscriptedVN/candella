@@ -22,9 +22,11 @@ There are two additional parameters that can be passed into the boot function:
 
 The Roland Boot Manager comes with a few loading screens by default:
 
-- `RolandGraphicalLoader`: A graphical loader with the game's window icon, if the file is present. Otherwise, the Candella logo is displayed.
-- `RolandGraphicalLogomarkLoader`: A graphical loader that displays the Candella logomark.
-- `RolandTextLoader`: A text-based loader that displays the contents of the Candella log file.
+| Preview | Loader name | Description |
+| ------- | ----------- | ----------- |
+| ![](/images/roland/graphic.png) | `RolandGraphicalLoader` | A graphical loader with the game's window icon, if the file is present. Otherwise, the Candella logo is displayed. |
+| ![](/images/roland/graphic-logomark.png) | `RolandGraphicalLogomarkLoader` | A graphical loader that displays the Candella logomark, as well as a row of icons at the bottom for all of the core services installed. |
+| ![](/images/roland/text.png) | `RolandTextLoader` | A text-based loader that displays the contents of the Candella log file. |
 
 ### Creating a custom loading screen
 

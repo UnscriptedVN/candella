@@ -41,7 +41,7 @@ style RolandText_frame is frame:
     padding (4, 4)
 
 style RolandText_text is text:
-    font get_font("Unicode")
+    font get_font("Unicode", variant="Fixed")
     line_spacing 0
     antialias False
     size 16
