@@ -19,11 +19,11 @@ theme:
     - json
 
 extra:
-    social:
-    - type: 'github'
-      link: 'https://github.com/UnscriptedVN/candella'
-    - type: 'twitter'
-      link: 'https://twitter.com/UnscriptedVN'
+    navbar:
+      - name: 'GitHub'
+        link: "https://github.com/UnscriptedVN/candella"
+      # - name: "Apps"
+      #   link: "https://candella-appdb.unscriptedvn.dev"
 
 plugins:
   - search

@@ -20,6 +20,13 @@
                     <li class="p-navigation__item is-selected">
                         <a class="p-navigation__link" href="/index.html">Docs</a>
                     </li>
+                    {% if 'extra' in config and 'navbar' in config['extra'] %}
+                    {% for item in config['extra']['navbar'] %}
+                    <li class="p-navigation__item">
+                        <a class="p-navigation__link" href="{{ item.link }}">{{ item.name }}</a>
+                    </li>
+                    {% endfor %}
+                    {% endif %}
                 </ul>
                 {% if 'search' in config['plugins'] %}
                 <form class="p-search-box" action="{{ base_url }}/search.html" method="get">
