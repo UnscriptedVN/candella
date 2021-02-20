@@ -74,14 +74,14 @@ style CelesteSettings_vbox is ASInterface_vbox
 
 style CelesteSettings_label is ASInterface_label
 style CelesteSettings_label_text is ASInterface_label_text:
-    font get_font("Interface", variant="Bold")
+    font get_font("Ubuntu", variant="Bold")
 
 style CelesteSettings_text is ASInterface_text:
     size 14
 
 style CelesteSettings_panel_label is ASInterface_label
 style CelesteSettings_panel_label_text is ASInterface_label_text:
-    font get_font("Interface", variant="Medium")
+    font get_font("Ubuntu", variant="Medium")
     size 18
 
 

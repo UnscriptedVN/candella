@@ -8,14 +8,15 @@
 
 style ASAppManager_label is gui_label
 style ASAppManager_label_text is ASInterface_text:
-    font get_font("Interface", variant="Bold")
+    font get_font("Ubuntu", variant="Bold")
     size 28
 
 style ASAppManager_AppName_text is ASInterface_text:
-    font get_font("Interface", variant="Bold")
+    font get_font("Ubuntu", variant="Bold")
     size 16
 
 style ASAppManager_text is ASInterface_text:
+    font get_font("Ubuntu")
     size 14
 
 style ASAppManager_button is gui_button:
@@ -29,7 +30,7 @@ style ASAppManager_DetailedAppAuthor_text is ASAppManager_text:
     size 20
 
 style ASAppManager_DetailedEmphasis_text is ASAppManager_text:
-    font get_font("Interface", variant="Bold")
+    font get_font("Ubuntu", variant="Bold")
 
 style ASAppManager_viewport is ASInterfaceScrollbar:
     xsize 300

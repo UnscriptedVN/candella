@@ -123,7 +123,7 @@ screen ASInventoryManagerView(currentItem=None):
 
 style ASInventories_label is gui_label
 style ASInventories_label_text is ASInterface_text:
-    font get_font("Interface", variant="Bold")
+    font get_font("Ubuntu", variant="Bold")
     size 32
 
 style ASInventories_viewport is ASInterfaceScrollbar:
@@ -137,4 +137,5 @@ style ASInventoriesItemName is ASInventories_label
 style ASInventoriesItemName_text is ASInventories_label_text:
     size 20
 
-style ASInventories_text is ASInterface_text
+style ASInventories_text is ASInterface_text:
+    font get_font("Ubuntu")
