@@ -43,22 +43,18 @@ init python:
 
 The manifest file contains information about your app, as well as what the app needs from Candella to run. The manifest file is located in the root of the app as `manifest.json`. Candella will automatically fill in the information of the app for you as the Ren'Py project initializes.
 
-- `name`: A short name of your app. This can also be used as the command name.
-- `productName`: (Optional) A human-readable version of the app name.
-- `id`: An identifier for the app. It is recommended to use reverse domain notation.
-- `author`: The author of the app. It is recommended to use the `Name <name@email.server>` format.
-- `version`: The current version of the app.
-- `description`: A summary of what your app does.
-- `license`: The license your app falls under as an SPDX expression.
-- `permissions`: A list of strings containing what permissions your app requires:
-    - `file_system`: Requires access to the Candella "file system"
-    - `notifications`: Requires access to NotificationKit to send notifications
-    - `system_events`: Requires access to System Events
-    - `manage_users`: Requires access to the accounts service to manage users
-    - `virtual_platform`: Requires access to the MeteorVM platform
-- `requisites`: (Optional) A list of strings containing the names of the frameworks this app relies on.
-
-The following is an example manifest:
+| Field | What it does |
+| ----- | ------------ |
+| `name` | A short name of your app. This can also be used as the command name. |
+| `productName` | (Optional) A human-readable version of the app name. |
+| `id` | An identifier for the app. It is recommended to use reverse domain notation. |
+| `author` | The author of the app. It is recommended to use the `Name <name@email.server>` format. |
+| `version` | The current version of the app. |
+| `description` | A summary of what your app does. |
+| `license` | The license your app falls under as an SPDX expression. |
+| `permissions` | A list of strings containing what permissions your app requires. See [permissions in the app manifest](#manifest-permissions). |
+| `requisites` | (Optional) A list of strings containing the names of the frameworks this app relies on. |
+The following is an example manifest: |
 
 ```json
 {
@@ -72,6 +68,19 @@ The following is an example manifest:
     "requires": ["file_system"]
 }
 ```
+
+#### Manifest permissions
+
+The following is a list of the available permissions for apps and core services.
+
+| Permission name | What it grants |
+| - | - |
+| `file_system` | Requires access to the Candella "file system" |
+| `notifications` | Requires access to NotificationKit to send notifications |
+| `system_events` | Requires access to System Events |
+| `manage_users` | Requires access to the accounts service to manage users |
+| `virtual_platform` | Requires access to the MeteorVM platform |
+
 
 ## App lifecycle
 
@@ -212,12 +221,15 @@ class ArcadeShooter(CAApplication):
         self.emit_signal("score_submitted", score=score)
 ```
 
-The following signals are automatically emitted by `CAApplication`:
+The following signals are emitted by default:
 
-- `application_launched` (`name=self.get_name()`)
-- `application_terminated`
-- `banner_sent` (`response=any`)
-- `alert_sent` (`response=any`)
+| Signal | Arguments | Purpose |
+| ------ | --------- | ------- |
+| `application_launched` | `name=self.get_name()` | Indicates that the application launched successfully. |
+| `application_launched_at_login` | `name=self.get_name()` | Indicates that the application launched during the boot process successfully. |
+| `application_terminated` | None | Indicates that the application terminated successfully. |
+| `banner_sent` | `response=any` |  Indicates that the application sent a banner notification request and received a response from the user. |
+| `alert_sent` | `response=any` |  Indicates that the application sent an alert notification request and received a response from the user. |
 
 ## `CAApplication`
 
