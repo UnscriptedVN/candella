@@ -20,6 +20,8 @@ theme:
 
 extra:
     navbar:
+      - name: Download
+        link: 'https://marquiskurt.itch.io/candella'
       - name: 'GitHub'
         link: "https://github.com/UnscriptedVN/candella"
       # - name: "Apps"

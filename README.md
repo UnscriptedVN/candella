@@ -22,7 +22,7 @@ Candella is a fork of the [AliceOS framework](https://aliceos.app), a Ren'Py fra
 
 Unscripted comes bundled with the latest release of Candella and can be copied to any Ren'Py project. In the game's files, copy the 'candella.rpa' archive to your Ren'Py project.
 
-You can additionally download a release from [the Releases page][releases].
+You can additionally download a release from [the Releases page][releases], as well as [download the project from Itch.io](https://marquiskurt.itch.io/candella).
 
 ### Build from source
 

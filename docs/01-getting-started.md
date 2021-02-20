@@ -4,7 +4,7 @@
 
 Unscripted comes bundled with the latest release of Candella and can be copied to any Ren'Py project. In the game's files, copy the 'candella.rpa' archive to your Ren'Py project.
 
-You can additionally download a release from [the Releases page][releases].
+You can additionally download a release from [the Releases page][releases], or you can grab the latest release from [Itch.io][itch].
 
 ## Build from source
 
@@ -24,3 +24,4 @@ If you want to test out some of the features without building anything, clone th
 
 [renpy]: https://renpy.org/latest
 [releases]: https://github.com/UnscriptedVN/candella/releases
+[itch]: https://marquiskurt.itch.io/candella
