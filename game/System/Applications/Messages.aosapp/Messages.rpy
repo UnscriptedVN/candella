@@ -19,8 +19,8 @@ init 5 python:
 
         def applicationWillLaunch(self):
             self.send_banner(
-                "Messages Not Ready",
-                "You'll still be able to receive notifications from characters in-game, but you won't be able to send any."
+                "Messages app functionality not implemented.",
+                "You will still be able to receive message notifications from characters in-game."
             )
 
     messages = ASMessages()
