@@ -13,7 +13,7 @@
 screen GlossaryAppUIView(glossary):
     style_prefix "ASInterface"
     zorder 100
-    modal True
+    # modal True
 
     drag:
         drag_name "GlossaryAppUIView"
@@ -54,6 +54,6 @@ style glossary_label is help_label
 style glossary_label_text is help_label_text:
     font get_font("Ubuntu", variant="Bold")
     size 16
-style glossary_text is help_text:
+style glossary_text is ASInterface_text:
     font get_font("Ubuntu", variant="Light")
     size 16

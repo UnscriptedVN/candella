@@ -29,7 +29,7 @@ screen CelesteSettings():
                 xalign 0.5
                 yfit True
 
-                use ASInterfaceTitlebar("", onClose=Hide("CelesteSettings"))
+                use ASInterfaceTitlebar("Celeste Settings", onClose=Hide("CelesteSettings"))
 
                 vbox:
                     label "Settings"
@@ -75,12 +75,13 @@ style CelesteSettings_vbox is ASInterface_vbox
 style CelesteSettings_label is ASInterface_label
 style CelesteSettings_label_text is ASInterface_label_text:
     font get_font("Ubuntu", variant="Bold")
+    color "#212121"
 
 style CelesteSettings_text is ASInterface_text:
     size 14
 
-style CelesteSettings_panel_label is ASInterface_label
-style CelesteSettings_panel_label_text is ASInterface_label_text:
+style CelesteSettings_panel_label is CelesteSettings_label
+style CelesteSettings_panel_label_text is CelesteSettings_label_text:
     font get_font("Ubuntu", variant="Medium")
     size 18
 

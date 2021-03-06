@@ -93,7 +93,7 @@ screen ASAppManagerView():
                                 text "[currentAppView_description]"
                                 null height 16
 
-                                if currentAppView.requires:
+                                if currentAppView.permissions:
 
                                     text "Allow this app to:":
                                         style "ASAppManager_DetailedEmphasis_text"
@@ -102,19 +102,11 @@ screen ASAppManagerView():
                                         style_prefix "ASInterfaceCheckbox"
                                         spacing 8
 
-                                        if AS_REQUIRES_NOTIFICATIONKIT in currentAppView.requires:
-                                            textbutton "Send notifications" action ToggleDict(persistent.AS_PERMISSIONS[currentAppView.bundleId], AS_REQUIRES_NOTIFICATIONKIT, True, False)
-                                            text "Notifications may include banners, alerts, and sounds.":
-                                                style "ASAppManager_text"
-
-                                        if AS_REQUIRES_FULL_DISK_ACCESS in currentAppView.requires:
-                                            textbutton "Access your files" action ToggleDict(persistent.AS_PERMISSIONS[currentAppView.bundleId], AS_REQUIRES_FULL_DISK_ACCESS, True, False)
-                                            text "File access may include your Home directory and your Candella installation.":
-                                                style "ASAppManager_text"
-
-                                        if AS_REQUIRES_SYSTEM_EVENTS in currentAppView.requires:
-                                            textbutton "Change settings and watch system events" action ToggleDict(persistent.AS_PERMISSIONS[currentAppView.bundleId], AS_REQUIRES_SYSTEM_EVENTS, True, False)
-                                            text "This may include changing Candella settings or watching system events such as startup.":
+                                        for _permission in currentAppView.permissions:
+                                            $ _perm_class = CA_PERMISSIONS[_permission]
+                                            $ _desc = _perm_class.description.split(".")[0]
+                                            textbutton "[_perm_class.name!cl]" action ToggleDict(persistent.AS_PERMISSIONS[currentAppView.bundleId], _perm_class.key, True, False)
+                                            text "[_desc].":
                                                 style "ASAppManager_text"
                                 else:
                                     text "This app doesn't require any permissions."

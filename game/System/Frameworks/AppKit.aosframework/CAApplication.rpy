@@ -121,10 +121,11 @@ init python:
             if "requisites" in manifest:
                 self.requisites = manifest["requisites"]
 
+            self.permissions = manifest["permissions"]
+
             if self.bundleId in persistent.AS_PERMISSIONS:
                 return
 
-            self.permissions = manifest["permissions"]
             for permission in manifest["permissions"]:
                 if permission not in CA_PERMISSIONS:
                     continue

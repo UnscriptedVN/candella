@@ -6,7 +6,7 @@
 # Copyright © 2019 Marquis Kurt. All rights reserved.
 #
 
-style ASInterfaceCheckbox_button is bui_button
+style ASInterfaceCheckbox_button is gui_button
 
 style ASInterfaceCheckbox_button:
     foreground AS_FRAMEWORK_DIR("ScreenKit") + "Resources/Checkboxes/Idle.png"

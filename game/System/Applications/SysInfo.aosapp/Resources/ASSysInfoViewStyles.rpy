@@ -6,7 +6,7 @@
 # Copyright © 2019 ProjectAliceDev. All rights reserved.
 #
 
-style ASSysInfoTitle_text:
+style ASSysInfoTitle_text is ASInterface_text:
     font get_font("Ubuntu", variant="Bold")
     size 34
 
@@ -17,7 +17,7 @@ style ASSysInfoVersion_text is ASInterface_text:
     font get_font("Ubuntu", variant="Mono")
     size 24
 
-style ASSysInfoProperty_text:
+style ASSysInfoProperty_text is ASInterface_text:
     font get_font("Ubuntu", variant="Mono")
     size 17
 

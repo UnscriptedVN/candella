@@ -23,9 +23,10 @@ style ASInterface_hbox is hbox:
     spacing 8
 
 style ASInterface_text:
-    font get_font("Interface")
+    font get_font("Ubuntu")
+    color "#212121"
     size 14
 
 style ASInterface_button is gui_button
 style ASInterface_button_text:
-    font get_font("Interface", variant="Bold")
+    font get_font("Ubuntu", variant="Bold")
