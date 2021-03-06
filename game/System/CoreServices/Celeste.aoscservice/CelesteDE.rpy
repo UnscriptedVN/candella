@@ -89,6 +89,11 @@ init python:
             """Returns if a given app bundle ID is in the current user's dock."""
             return app_id in self._dock
 
+        def include_in_search(self, query, app):
+            """Returns whether an app is included in a particular search query."""
+            name = app.get_name() if isinstance(app, CAApplication) else app.bundleName
+            return query.lower() in name.lower() or query.lower() in app.bundleId
+
         def launch(self, transient=False):
             """Launch the desktop with the user's settings.
 

@@ -13,7 +13,15 @@ init screen CelesteDrawer():
     style_prefix "CelesteDrawer"
     modal False
 
-    $ all_apps = sorted(celeste.get_all_applications(), key=lambda app: app.get_name() if isinstance(app, CAApplication) else app.bundleName)
+    default all_apps = []
+    default app_filter = ""
+
+    python:
+        X = sorted(
+            celeste.get_all_applications(),
+            key=lambda app: app.get_name() if isinstance(app, CAApplication) else app.bundleName
+        )
+        all_apps = [app for app in X if celeste.include_in_search(app_filter, app)]
 
     key "K_ESCAPE" action Function(celeste.drawer)
 
@@ -22,10 +30,17 @@ init screen CelesteDrawer():
         yfill True
 
         has vbox:
-            spacing 48
+            spacing 32
 
-            # TODO: Put a search bar here.
-            # text "Search..."
+            $ _search_offset = 0 if app_filter else -22
+            vbox:
+                yoffset _search_offset
+                if not app_filter:
+                    text "Search...":
+                        style "CelesteDrawer_input"
+                        yoffset 22
+                input default "" value ScreenVariableInputValue("app_filter"):
+                    xfill True
 
             hbox:
                 box_wrap True
@@ -65,3 +80,7 @@ style CelesteDrawer_frame is frame:
 style CelesteDrawer_text is text:
     font get_font("Ubuntu", "Regular")
     size 16
+
+style CelesteDrawer_input is CelesteDrawer_text:
+    color "#999999"
+    size 20

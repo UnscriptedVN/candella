@@ -1,10 +1,10 @@
-# 
+#
 # version_inject.py
 # Candella
-# 
+#
 # Created by Marquis Kurt on 02/10/21.
 # Copyright © 2021 Marquis Kurt. All rights reserved.
-# 
+#
 # This Source Code Form is subject to the terms of the Mozilla Public
 # License, v. 2.0. If a copy of the MPL was not distributed with this
 # file, You can obtain one at https://mozilla.org/MPL/2.0/.
@@ -15,6 +15,7 @@ from datetime import datetime
 import os
 import json
 from typing import Dict
+
 
 def stamp_channel(build_id: str, lsb_release: Dict, id_hashed: bool = False):
     if "beta" in build_id:
@@ -41,8 +42,8 @@ def update_release_information(writable: bool = False) -> Dict:
     if "tag" in os.environ and os.environ["tag"]:
         tag = os.environ["tag"]
         print(f"Tag {tag} found. Using tag as Build ID.")
-        tag = tag.replace("refs/tags", "")
-        lsb_release["distribution"]["build_id"] = os.environ["tag"]
+        tag = tag.replace("refs/tags/", "")
+        lsb_release["distribution"]["build_id"] = tag
 
         # Update the channel based on the tag information.
         stamp_channel(tag, lsb_release)
