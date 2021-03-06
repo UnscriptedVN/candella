@@ -1,0 +1,13 @@
+/*
+    Candella Changelog
+    All notable changes to Candella will be documented in this file.
+
+    The format is loosely based on Keep a Changelog, and this project adheres to Semantic Versioning.
+*/
+[Unreleased]
+- Adds search functionality to Celeste Desktop's app drawer, filtered by name or bundle ID.
+- Fixes a tagging issue in version injection scripts.
+- Adds new CHANGELOG file to builds.
+
+[v21.02-refs/tags/21.02-beta1]
+- Initial beta release.

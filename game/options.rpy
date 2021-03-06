@@ -170,10 +170,10 @@ init python:
         "candella_system",
         description="Candella System Distributable"
     )
-    
+
     build.archive("candella", "all candella_system")
     build.classify("game/System/**", "candella")
-    
+
     build.classify('**~', None)
     build.classify('**.bak', None)
     build.classify('**/.**', None)
@@ -183,9 +183,10 @@ init python:
     build.classify('.github/**', None)
     build.classify('res/**', None)
     build.classify('scripts/**', None)
-    
+
     build.documentation('*.html')
     build.documentation('*.txt')
+    build.documentation('*.changes')
 
     build.include_old_themes = False
 

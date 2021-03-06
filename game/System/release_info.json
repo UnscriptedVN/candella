@@ -1,10 +1,10 @@
 {
     "distribution": {
         "name": "Candella",
-        "version": "21.02",
-        "build_id": "refs/tags/21.02-beta1",
+        "version": "21.03",
+        "build_id": "2021036-131324",
         "channel": "beta",
         "codename": "apple_cinnamon"
     },
-    "build_date": "2021-02-20T20:28:38.923758"
+    "build_date": "2021-03-06T13:13:24.344880"
 }
