@@ -18,7 +18,7 @@ init 5 python:
             return True
 
         def applicationWillLaunch(self):
-            self.applicationWillRequestBasicAlert(
+            self.send_banner(
                 "Messages Not Ready",
                 "You'll still be able to receive notifications from characters in-game, but you won't be able to send any."
             )

@@ -15,31 +15,30 @@ init screen ASNotificationBanner(applet=None, message, withDetails, responseCall
 
     frame at ASNotificationBannerTransition:
         style "ASNotificationBannerFrame"
-        xpadding 24
-        ypadding 16
-        xalign 0.5
-        yalign 0.025
-        xsize 676
+        padding (24, 16)
+        align (1.0, 0.025)
+        xsize 550
 
         vbox:
+            python:
+                _app_icon = CADesign.get_app_mask(
+                    applet.icons[24] if applet else AS_FRAMEWORK_DIR("NotificationKit") + "Resources/appMissingIcon.png",
+                    24
+                )
+                _app_name = (
+                    applet.get_name() if isinstance(applet, CAApplication) else applet.bundleName) if applet \
+                    else "Unknown Bundle"
             hbox:
-                xsize 628
+                xfill True
 
-                if not applet:
-                    hbox:
-                        add AS_FRAMEWORK_DIR("NotificationKit") + "Resources/appMissingIcon.png"
-                        text "Unknown Bundle":
-                            style "ASNotificationBannerSource"
-                else:
-                    hbox:
-                        add applet.icons[24]
-                        text applet.bundleName:
-                            style "ASNotificationBannerSource"
-
-                textbutton _("Respond") action responseCallback:
+                hbox:
+                    add _app_icon
+                    text "[_app_name]":
+                        style "ASNotificationBannerSource"
+                textbutton _("Respond") action [Hide("ASNotificationBanner"), responseCallback]:
                     style "ASNotificationBannerButton"
                     xalign 1.0
-            null height 2
+
             text message:
                 style "ASNotificationBannerTitle"
             text withDetails:
