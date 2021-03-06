@@ -9,6 +9,7 @@
 - Fixes a tagging issue in version injection scripts.
 - Adds new CHANGELOG file to builds.
 - Updates design language of notification banners in NotificationKit.
+- Updates ScreenKit to new Candella design language.
 
 [v21.02-refs/tags/21.02-beta1]
 - Initial beta release.
