@@ -179,19 +179,36 @@ Send an alert with respect to the user's settings.
 
 - response (any): The response from the alert, if any. This response is also emitted as a signal.
 
-### `CAApplication.send_banner(title, supporting, callback=Return('didClickRespond'))`
+### `CAApplication.send_banner(title, supporting, callback=Return('didClickRespond'))` {label:updated}
 Send a notification banner with respect to the user's settings.
+
+The banner request can be used in one of two ways: automatic, which utilizes the CANotificationBanner class
+    to create a notification banner, and manual, which uses keyword arguments at call time to generate a
+    banner on the fly. In most cases, it is recommended to use the automatic mode since the
+    CANotificationBanner class offers more granular control over the appearance of the banner such as the
+    action button text.
 
 **Arguments**
 
-- title (str): The title of the banner.
-- supporting (str): The supporting text for the banner.
-- callback (callable): The response callback function to run when clicking the 'Respond' button.
+- mode (str): The means of sending the request. 'automatic' utilizes the [`CANotificationBanner`](./11-notifications.md#creating-modular-banners-labelnew) class to
+    create a banner, and 'manual' uses to the old style. By default, this method uses manual mode to
+    ensure backwards-compatibility with AliceOS and older Candella versions.
+
+**Keyword Arguments**
+
+- banner (CANotificationBanner): The banner object to send through this app. Required in automatic
+    mode.
+- title (str): The title of the banner. Required in manual mode.
+- supporting (str): The supporting text for the banner. Required in manual mode.
+- callback (callable): The response callback function to run when clicking the 'Respond' button. Required
+    in manual mode.
 
 **Returns**
 
-- response (any): The response from the banner request, if any. This response is also emitted as a signal.
+- response (any): The response from the banner request, if any.
 
+!!! warning "Add keyword arguments"
+    For Candella apps that use the manual mode or have supplied the contents of the banner as arguments, make sure that these are changed to keyword arguments, appropriately.
 ## Sending app signals
 
 Apps can send information to other services and even other apps. Candella apps adopt the Observable framework, which allows for signal emission.

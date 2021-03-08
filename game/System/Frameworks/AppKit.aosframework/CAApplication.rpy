@@ -175,18 +175,40 @@ init python:
             self.application_did_terminate()
             self.emit_signal("application_terminated")
 
-        def send_banner(self, title, supporting, callback=Return('didClickRespond')):
+        def send_banner(self, mode='manual', **kwargs):
             """Send a notification banner with respect to the user's settings.
 
+            The banner request can be used in one of two ways: automatic, which utilizes the CANotificationBanner class
+                to create a notification banner, and manual, which uses keyword arguments at call time to generate a
+                banner on the fly. In most cases, it is recommended to use the automatic mode since the
+                CANotificationBanner class offers more granular control over the appearance of the banner such as the
+                action button text.
+
             Arguments:
-                title (str): The title of the banner.
-                supporting (str): The supporting text for the banner.
-                callback (callable): The response callback function to run when clicking the 'Respond' button.
+                mode (str): The means of sending the request. 'automatic' utilizes the CANotificationBanner class to
+                    create a banner, and 'manual' uses to the old style. By default, this method uses manual mode to
+                    ensure backwards-compatibility with AliceOS and older Candella versions.
+
+            Keyword Arguments:
+                banner (CANotificationBanner): The banner object to send through this app. Required in automatic
+                    mode.
+                title (str): The title of the banner. Required in manual mode.
+                supporting (str): The supporting text for the banner. Required in manual mode.
+                callback (callable): The response callback function to run when clicking the 'Respond' button. Required
+                    in manual mode.
 
             Returns:
                 response (any): The response from the banner request, if any.
             """
-            response = self.application_will_request_notification(title, supporting, response_callback=callback)
+
+            if mode not in ["automatic", "manual"]:
+                raise TypeError("mode must be 'automatic' or 'manual, but received %s" % (mode))
+
+            if mode == "automatic" and self.application_should_request_notification():
+                response = kwargs['banner']._send(self)
+            else:
+                response = self.application_will_request_notification(
+                    kwargs["title"], kwargs["supporting"], response_callback=kwargs["callback"])
             self.application_did_request_notification()
             self.emit_signal("banner_sent", response=response)
             return response

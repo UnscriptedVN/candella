@@ -6,7 +6,7 @@
 # Copyright © 2019 ProjectAliceDev. All rights reserved.
 #
 
-init screen ASNotificationBanner(applet=None, message, withDetails, responseCallback=Return('didClickRespond')):
+init screen ASNotificationBanner(applet=None, message, withDetails, r_text="Respond", responseCallback=Return('didClickRespond')):
     tag ASNotificationBanner
     zorder 100
     style_prefix "ASNotificationBanner"
@@ -35,7 +35,7 @@ init screen ASNotificationBanner(applet=None, message, withDetails, responseCall
                     add _app_icon
                     text "[_app_name]":
                         style "ASNotificationBannerSource"
-                textbutton _("Respond") action [Hide("ASNotificationBanner"), responseCallback]:
+                textbutton _("[r_text]") action [Hide("ASNotificationBanner"), responseCallback]:
                     style "ASNotificationBannerButton"
                     xalign 1.0
 
