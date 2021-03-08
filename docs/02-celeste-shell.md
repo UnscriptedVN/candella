@@ -9,11 +9,15 @@ The default desktop shell for Candella is **Celeste** (formerly known as Caberto
 
 ## Using Celeste Shell
 
-There are two major components to Celeste Shell: the top bar and the launcher on the left-hand side of the screen. In the top bar, you can view the currently-running application's name, the current user, the time, and a few status indicators for settings and exiting the desktop. The launcher on the left displays favorite apps and provides the main entry point to access all apps. Users can search for a specific app in the drawer by name or its identifier.
+There are two major components to Celeste Shell: the top bar and the launcher on the left-hand side of the screen. In the top bar, you can view the currently-running application's name, the current user, the time, and a few status indicators for settings and exiting the desktop. The launcher on the left displays favorite apps and provides the main entry point to access all apps.
 
 ![Celeste Shell drawer](./images/celeste/drawer.png)
 
-### Customizing the desktop {label:updated}
+### {label:new}
+
+- As of 21.03-beta2, it is now possible to search for apps in the drawer by name or identifier.
+
+### Customizing the desktop
 
 Click on the gear in the top bar to open the Settings pane for Celeste Shell. There are two sections in the settings: wallpaper selection, followed by the wallpaper display mode, which can be one of three options:
 
@@ -28,7 +32,7 @@ Click on the gear in the top bar to open the Settings pane for Celeste Shell. Th
 To switch the current user that's logged in to the system, click on the current user's name in the top bar and then select the user to switch to.
 
 !!! important
-    {label:updated} User-switching via Celeste Shell is available when there is more than one user present. Otherwise, the user's name will not appear.
+    User-switching via Celeste Shell is available when there is more than one user present. Otherwise, the user's name will not appear.
 
 ### Pinning apps to the launcher
 
