@@ -37,21 +37,12 @@ Likewise, core services in Candella utilize the `ServiceStorage` class. Like `Ap
 
 There are three methods available for managing service data:
 
-{label:new}
-
 - `ServiceStorage.get_entry(field, raise_falsy=False)` will fetch the value for a field or return `None` if no value for the field was found. If `raise_falsy` is set to `True`, the method will instead raise an exception.
 - `ServiceStorage.set_entry(field, value)` will write the value `value` into the specified `field`.
 - `ServiceStorage.commit()` will commit all written changes to the current user's data file.
 
 !!! danger "Sensitive Information"
     Do _**not**_ store sensitive information in service storage unless you are using cryptography to encrypt the information. Service storage is provided in the user's data file in a human-readable format and may be easily compromised if not encrypted properly.
-#### {label:deprecated}
-
-- `ServiceStorage.read(field)` will fetch the value for a field or return `None` if no value for the field was found.
-- `ServiceStorage.read_not_none(field)` will fetch the value for a field or throw an exception if there is no value.
-- `ServiceStorage.write_field(field, value)` will write the value `value` into the specified `field`.
-- `ServiceStorage.write()` will commit all written changes to the current user's data file.
-
 
 ### Global scope access
 
