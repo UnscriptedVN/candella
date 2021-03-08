@@ -14,11 +14,6 @@ init 5 python:
             renpy.show_screen("ASAppManagerView")
             pass
 
-        @deprecated('21.02', renamed="CelesteShell.get_all_applications")
-        def gather_applications(self):
-            """Returns a list of all of the gathered applications."""
-            return CelesteShell.get_all_applications()
-
         def get_app_name(self, app):
             if isinstance(app, CAApplication):
                 return app.get_name()

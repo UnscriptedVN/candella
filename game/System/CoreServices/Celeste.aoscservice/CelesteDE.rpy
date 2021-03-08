@@ -76,10 +76,6 @@ init python:
             """Returns the current time of the system."""
             return strftime("%I:%M%p")
 
-        @deprecated('21.02', renamed='CADesign.get_app_mask_frame')
-        def get_app_mask(self):
-            return design.get_app_mask_frame()
-
         def get_distributor_logo(self):
             if not renpy.loadable("System/Library/Branding/sprite_alt.png"):
                 return self.bundleDir + "Resources/distributor_logo.png"

@@ -57,50 +57,12 @@ init python:
             return entry
 
 
-        @deprecated('21.02', renamed="get_entry")
-        def read(self, field):
-            """Returns the value of a field in the storage, or None if the value doesn't exist.
-
-            Use `AppStorage.read_not_none` if the value in question cannot be None.
-            """
-            return self._data_store.get(field, None)
-
-
-        @deprecated('21.02', reason="Use get_entry with the argument 'raise_falsy' set to True.")
-        def read_not_none(self, field):
-            """Returns the value of a field in the storage.
-
-            Raises:
-                If the value does not exist, KeyError will be raised.
-            """
-            if field not in self._data_store:
-                raise KeyError
-            if self._data_store[field] is None:
-                raise KeyError
-            return self._data_store[field]
-
-
         def set_entry(self, field, result):
             """Sets the field to the result in the current storage."""
             self._data_store[field] = result
 
 
-        @deprecated("21.02", renamed="set_entry")
-        def write_field(self, field, result):
-            """Sets the field to the result in the current storage."""
-            self._data_store[field] = result
-
-
         def commit(self):
-            """Write the app data to the current user's file."""
-            try:
-                CAUserData.write_data_to_current_user(self._bundle_id, self._data_store)
-            except Exception as error:
-                logging.error("Data could not be written. Reason: %s", error)
-
-
-        @deprecated("21.02", renamed="commit")
-        def write(self):
             """Write the app data to the current user's file."""
             try:
                 CAUserData.write_data_to_current_user(self._bundle_id, self._data_store)

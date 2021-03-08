@@ -53,34 +53,9 @@ init python:
             return entry
 
 
-        @deprecated('21.02', renamed="get_entry")
-        def read(self, field):
-            """Returns the value of a field in the storage, or None if the value doesn't exist.
-
-            Use `AppStorage.read_not_none` if the value in question cannot be None.
-            """
-            return self.get_entry(field)
-
-
-        @deprecated('21.02', reason="Use get_entry with the argument 'raise_falsy' set to True.")
-        def read_not_none(self, field):
-            """Returns the value of a field in the storage.
-
-            Raises:
-                If the value does not exist, KeyError will be raised.
-            """
-            return self.get_entry(field, raise_falsy=True)
-
-
         def set_entry(self, field, result):
             """Sets the field to the result in the current storage."""
             self._data_store[field] = result
-
-
-        @deprecated('21.02', renamed="set_entry")
-        def write_field(self, field, result):
-            """Sets the field to the result in the current storage."""
-            self.set_entry(field, result)
 
 
         def commit(self):
@@ -93,8 +68,3 @@ init python:
                     error,
                     error.__class__.__name__
                 )
-
-        @deprecated('21.02', renamed="commit")
-        def write(self):
-            """Write the app data to the current user's file."""
-            self.commit()
