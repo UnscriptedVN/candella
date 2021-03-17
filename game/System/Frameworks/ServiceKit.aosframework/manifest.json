@@ -1,7 +1,7 @@
 {
     "name": "ServiceKit",
     "id": "dev.unscriptedvn.candella.servicekit",
-    "author": ["Project Alice <hello@aliceos.app>", "Marquis Kurt <software@marquiskurt.net>"],
+    "author": "Project Alice <hello@aliceos.app>, Marquis Kurt <software@marquiskurt.net>",
     "version": "21.01",
     "license": "BSD-2-Clause",
     "description": "Create core services built into AliceOS/Candella.",
