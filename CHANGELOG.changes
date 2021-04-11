@@ -4,7 +4,10 @@
 
     The format is loosely based on Keep a Changelog, and this project adheres to Semantic Versioning.
 */
-[Unreleased]
+[v21.04-beta3]
+- Rebuilds Candella against the Ren'Py 7.4.4 SDK.
+
+[v21.03-beta2]
 - Adds search functionality to Celeste Desktop's app drawer, filtered by name or bundle ID.
 - Fixes a tagging issue in version injection scripts.
 - Adds new CHANGELOG file to builds.
