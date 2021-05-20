@@ -24,8 +24,8 @@ extra:
         link: 'https://marquiskurt.itch.io/candella'
       - name: 'GitHub'
         link: "https://github.com/UnscriptedVN/candella"
-      # - name: "Apps"
-      #   link: "https://candella-appdb.unscriptedvn.dev"
+      - name: 'AppDB'
+        link: 'https://appdb.unscriptedvn.dev'
 
 plugins:
   - search

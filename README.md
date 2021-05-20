@@ -14,7 +14,7 @@ Candella is a fork of the [AliceOS framework](https://aliceos.app), a Ren'Py fra
 - **Release compatibility**: Candella's release cycle syncs up with feature releases of Unscripted and the Ren'Py SDK, respectively.
 - **Responsive feedback**: AliceOS follows a release schedule and doesn't update as quickly with bug fixes or improvements, Candella gets feedback from the public as well as playtesters in the [Unscripted Playtesting Program][uvn-beta].
 - **Targeted for Unscripted**: Candella will add new features and improvements that will be helpful for Unscripted, such as native support for the NadiaVM language.
-- **Simplified app development**: Candella's application framework extensions make it easier to develop apps quickly without fiddling through delegate calls.
+- **Simplified app development**: Candella's application framework extensions make it easier to develop apps quickly without fiddling through delegate calls, and there's a curated project repository that players can download from and where developers can upload releases.
 
 ## Getting started
 
