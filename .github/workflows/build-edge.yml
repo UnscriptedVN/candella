@@ -1,43 +1,26 @@
-name: Build Candella Archive
+name: Build Candella Archive (Edge)
 on:
-  push:
-    branches:
-      - '*'
-    tags-ignore:
-      - '*'
-  pull_request:
-    paths:
-      - '*'
-  release:
-    types: [published]
+  schedule:
+    - cron: '10 0 * * 2'
+
 
 jobs:
   build:
-    name: Ren'Py SDK Build
+    name: Build Edge Release
     runs-on: ubuntu-latest
     strategy:
       matrix:
         renpy-versions:
           - '7.4.6'
-
     steps:
       - name: Clone source
         uses: actions/checkout@v1
         with:
           fetch-depth: 50 
-      - name: Add release tag to Build ID
-        shell: bash
-        run: |
-          python3 ./scripts/version_inject.py
-        if: github.event.release
-        env:
-          tag: ${{ github.ref }}
-          sdk: ${{ matrix.renpy-versions }}
       - name: Add build hash to Build ID
         shell: bash
         run: |
           python3 ./scripts/version_inject.py
-        if: contains(github.event_name, 'push')
         env:
           commit: ${{ github.sha }}
           sdk: ${{ matrix.renpy-versions }}
@@ -55,30 +38,21 @@ jobs:
         with:
           name: ${{ steps.buildseq.outputs.dir }}
           path: ${{ format('{0}/{1}-System.zip', steps.buildseq.outputs.dir, steps.buildseq.outputs.version) }}
-      - name: Release artifacts to GitHub Release
-        uses: skx/github-action-publish-binaries@master
-        if: github.event.release
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          args: ${{ format('{0}/{1}-System.zip', steps.buildseq.outputs.dir, steps.buildseq.outputs.version) }}
       - name: Upload release to Itch.io
         uses: josephbmanley/butler-publish-itchio-action@v1.0.2
-        if: github.event.release
         with:
           BUTLER_CREDENTIALS: ${{ secrets.ITCH_API_KEY }}
-          CHANNEL: framework
+          CHANNEL: framework-edge
           ITCH_GAME: candella
           ITCH_USER: marquiskurt
-          VERSION: ${{ github.event.release.tag_name }}
+          VERSION: ${{ github.sha }}
           PACKAGE: ${{ format('{0}/{1}-System.zip', steps.buildseq.outputs.dir, steps.buildseq.outputs.version) }}
       - name: Upload showcase to Itch.io
         uses: josephbmanley/butler-publish-itchio-action@v1.0.2
-        if: github.event.release
         with:
           BUTLER_CREDENTIALS: ${{ secrets.ITCH_API_KEY }}
-          CHANNEL: showcase
+          CHANNEL: showcase-edge
           ITCH_GAME: candella
           ITCH_USER: marquiskurt
-          VERSION: ${{ github.event.release.tag_name }}
+          VERSION: ${{ github.sha }}
           PACKAGE: ${{ format('{0}/{1}-market.zip', steps.buildseq.outputs.dir, steps.buildseq.outputs.version) }}
