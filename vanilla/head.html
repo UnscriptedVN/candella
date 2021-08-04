@@ -6,6 +6,10 @@
     <link href="/css/style.css" rel="stylesheet" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <meta property="og:title" content="{{ page.title }}" />
+    <meta property="og:type" content="article" />
+    <meta property="og:author" content="Candella Team" />
+    <meta property="og:url" content="{{ site.url }}" />
     {%- if config.theme.highlightjs %}
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
     {%- for lang in config.theme.hljs_languages %}
