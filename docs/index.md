@@ -1,5 +1,6 @@
-!!! warning "Prerelease Notice"
-    Candella is in a pre-release state and may change over time. This documentation tries to reflect the most current pre-release version of Candella.
+!!! info "Documentation Notice"
+    The following documentation is written according to the latest release, **v21.07 (Apple Cinnamon)**. View the changelog
+    for information about previous releases and APIs.
 
 ## What makes Candella different?
 

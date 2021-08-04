@@ -8,7 +8,7 @@ Banners in Candella have been moved to the right side of the screen and take up 
 
 ![Banners in Candella](./images/design/banner.png)
 
-## Creating modular banners {label:new}
+## Creating modular banners
 
 Notification banners can be generated automatically using the `CANotificationBanner` class, rather than at call time when invoking `CANotification.send_banner`. This class offers more control over the appearance of the banner and is typically easier to use than the manual mode in previous releases.
 

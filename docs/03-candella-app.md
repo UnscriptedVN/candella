@@ -141,7 +141,7 @@ User interfaces for Candella apps utilize ScreenKit, an AliceOS framework that u
 
 More information on generating user interfaces with ScreenKit [can be found in the AliceOS documentation][screenkit].
 
-### Creating draggable windows {label:new}
+### Creating draggable windows
 
 It is recommended that, if possible, to give your app windows the ability to be dragged across the screen. This can be achieved by wrapping the window's content in a `drag` screen, supplying the following properties like in the example below:
 
@@ -179,7 +179,7 @@ Send an alert with respect to the user's settings.
 
 - response (any): The response from the alert, if any. This response is also emitted as a signal.
 
-### `CAApplication.send_banner(title, supporting, callback=Return('didClickRespond'))` {label:updated}
+### `CAApplication.send_banner(title, supporting, callback=Return('didClickRespond'))`
 Send a notification banner with respect to the user's settings.
 
 The banner request can be used in one of two ways: automatic, which utilizes the CANotificationBanner class

@@ -2,9 +2,6 @@
 
 The default desktop shell for Candella is **Celeste** (formerly known as Caberto Shell). Celeste's interface is mainly inspired from the [Lomiri][lomiri] desktop environment and comes with per-user customizations.
 
-!!! warning
-    Celeste is currently in a pre-release state and the documentation here may change as the project evolves.
-
 ![Default Celeste Shell desktop](./images/celeste/default.png)
 
 ## Using Celeste Shell
@@ -12,10 +9,6 @@ The default desktop shell for Candella is **Celeste** (formerly known as Caberto
 There are two major components to Celeste Shell: the top bar and the launcher on the left-hand side of the screen. In the top bar, you can view the currently-running application's name, the current user, the time, and a few status indicators for settings and exiting the desktop. The launcher on the left displays favorite apps and provides the main entry point to access all apps.
 
 ![Celeste Shell drawer](./images/celeste/drawer.png)
-
-### {label:new}
-
-- As of 21.03-beta2, it is now possible to search for apps in the drawer by name or identifier.
 
 ### Customizing the desktop
 

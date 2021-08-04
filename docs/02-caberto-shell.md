@@ -15,7 +15,7 @@ There are two major components to Celeste Shell: the top bar and the launcher on
 
 ![Celeste Shell drawer](./images/celeste/drawer.png)
 
-### Customizing the desktop {label:updated}
+### Customizing the desktop
 
 Click on the gear in the top bar to open the Settings pane for Celeste Shell. There are two sections in the settings: wallpaper selection, followed by the wallpaper display mode, which can be one of three options:
 
