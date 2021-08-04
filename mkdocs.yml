@@ -32,3 +32,4 @@ plugins:
 
 markdown_extensions:
   - markdown.extensions.admonition
+  - meta
