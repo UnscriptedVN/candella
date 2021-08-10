@@ -40,7 +40,7 @@ jobs:
           path: ${{ format('{0}/{1}-System.zip', steps.buildseq.outputs.dir, steps.buildseq.outputs.version) }}
       - name: Upload release to Itch.io
         uses: josephbmanley/butler-publish-itchio-action@v1.0.2
-        with:
+        env:
           BUTLER_CREDENTIALS: ${{ secrets.ITCH_API_KEY }}
           CHANNEL: framework-edge
           ITCH_GAME: candella
@@ -49,7 +49,7 @@ jobs:
           PACKAGE: ${{ format('{0}/{1}-System.zip', steps.buildseq.outputs.dir, steps.buildseq.outputs.version) }}
       - name: Upload showcase to Itch.io
         uses: josephbmanley/butler-publish-itchio-action@v1.0.2
-        with:
+        env:
           BUTLER_CREDENTIALS: ${{ secrets.ITCH_API_KEY }}
           CHANNEL: showcase-edge
           ITCH_GAME: candella

@@ -68,7 +68,7 @@ jobs:
       - name: Upload release to Itch.io
         uses: josephbmanley/butler-publish-itchio-action@v1.0.2
         if: github.event.release
-        with:
+        env:
           BUTLER_CREDENTIALS: ${{ secrets.ITCH_API_KEY }}
           CHANNEL: framework
           ITCH_GAME: candella
@@ -78,7 +78,7 @@ jobs:
       - name: Upload showcase to Itch.io
         uses: josephbmanley/butler-publish-itchio-action@v1.0.2
         if: github.event.release
-        with:
+        env:
           BUTLER_CREDENTIALS: ${{ secrets.ITCH_API_KEY }}
           CHANNEL: showcase
           ITCH_GAME: candella
