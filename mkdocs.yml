@@ -26,9 +26,12 @@ extra:
         link: "https://github.com/UnscriptedVN/candella"
       - name: 'AppDB'
         link: 'https://appdb.unscriptedvn.dev'
+    version:
+        provider: mike
 
 plugins:
   - search
+  - mike
 
 markdown_extensions:
   - markdown.extensions.admonition

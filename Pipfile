@@ -15,6 +15,7 @@ pytest = "*"
 autopep8 = "*"
 candella-sdk = "*"
 mkdocs = "*"
+mike = "*"
 
 [requires]
 python_version = "3.9"
