@@ -1,3 +1,6 @@
+!!! warning
+    The following documentation is for a pre-release version of Candella. Some features and APIs may change over time and are not guaranteed to be stable.
+
 ## What makes Candella different?
 
 - **Release compatibility**: Candella's release cycle syncs up with feature releases of Unscripted and the Ren'Py SDK, respectively.
