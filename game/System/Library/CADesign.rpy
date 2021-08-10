@@ -13,10 +13,14 @@
 init offset = -50
 init python in CADesign:
     from store import Frame, AlphaMask
+    from store.CADeprecated import available
 
+    @available("*", introduced="apple-cinnamon")
     def get_app_mask_frame():
+        """Returns a frame with a mask of an application's borders."""
         return Frame("System/Library/Design/app_mask.png")
 
-
+    @available("*", introduced="apple-cinnamon")
     def get_app_mask(image, size):
+        """Returns an AlphaMask of an application's borders."""
         return AlphaMask(image, get_app_mask_frame(), xysize=(size, size))

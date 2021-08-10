@@ -7,6 +7,8 @@
 #
 # MARK: Dynamic Blur Effects
 init -1 python:
+    from store.CADeprecated import available
+
     def SetThumbnailFull():
         config.thumbnail_width = config.screen_width
         config.thumbnail_height = config.screen_height
@@ -15,6 +17,7 @@ init -1 python:
         config.thumbnail_width = 256
         config.thumbnail_height = 144
         
+    @available('*', introduced="apple-cinnamon")
     def ca_supports_blur():
         return renpy.version(tuple=True) > (7, 4, 0) and config.gl2
 

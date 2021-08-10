@@ -51,6 +51,17 @@ init python in CADeprecated:
                 if deprecated and __version_meets_minimum_requirements(current, deprecated):
                     warnings.warn(deprecated_msg)
                     clog.warn(deprecated_msg)
+
+                if method.__doc__ is None:
+                    method.__doc__ = method.__name__ + " Documentation\n"
+                
+                if introduced:
+                    method.__doc__ += "\nCandella Verison Introduced: %s" % (introduced)
+                if deprecated:
+                    method.__doc__ += "\nCandella Version Deprecated: %s" % (deprecated)
+                    if message:
+                        method.__doc__ += " (%s)" % (message)
+
                 return method(*args, **kwargs)
             return __wrapped_call
         return __available
