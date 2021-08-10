@@ -2,7 +2,10 @@
 
 Candella includes a small module that facilitates deprecating functions or restricting function to specific OS versions.
 
-## `available` {label:new}
+## `available`
+
+{label:new}
+
 Restrict usage of a function to specific OS versions. This can be used to determine if a method or function should be marked as deprecated, or if a function is only available on a specific minimum OS version. This decorator is inspired by the `@available` property wrapper in Swift.
 
 ```py
@@ -30,7 +33,9 @@ def is_truthy():
 - deprecated (str): The OS version that this function was deprecated. Defaults to None.
 - message (str): A message used to mark why something is deprecated or introduced. Defaults to None.
 
-## `@deprecated` {label:deprecated}
+## `@deprecated`
+
+{label:deprecated}
 
 ```py
 from store.CADeprecated import deprecated
