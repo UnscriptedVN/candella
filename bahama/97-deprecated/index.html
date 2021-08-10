@@ -426,7 +426,7 @@
             
             
             <li class="p-side-navigation__item">
-                <a class="p-side-navigation__link" href="./#available">available</a>
+                <a class="p-side-navigation__link" href="./#available">@available</a>
             </li>
             
             <li class="p-side-navigation__item">
@@ -498,9 +498,10 @@
             <main id="main-content" class="col-9">
                 <h1 id="deprecations">Deprecations</h1>
 <p>Candella includes a small module that facilitates deprecating functions or restricting function to specific OS versions.</p>
-<h2 id="available"><code>available</code></h2>
+<h2 id="available"><code>@available</code></h2>
 <p>{label:new}</p>
 <p>Restrict usage of a function to specific OS versions. This can be used to determine if a method or function should be marked as deprecated, or if a function is only available on a specific minimum OS version. This decorator is inspired by the <code>@available</code> property wrapper in Swift.</p>
+<p>Information about when the method or function was introduced and deprecated is added to the function's docstring.</p>
 <pre><code class="language-py">from store.CADeprecated import available
 
 # To mark a function as available for all OS versions.
