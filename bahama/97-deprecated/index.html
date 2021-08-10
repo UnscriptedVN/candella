@@ -426,11 +426,11 @@
             
             
             <li class="p-side-navigation__item">
-                <a class="p-side-navigation__link" href="./#available-labelnew">available {label:new}</a>
+                <a class="p-side-navigation__link" href="./#available">available</a>
             </li>
             
             <li class="p-side-navigation__item">
-                <a class="p-side-navigation__link" href="./#deprecated-labeldeprecated">@deprecated {label:deprecated}</a>
+                <a class="p-side-navigation__link" href="./#deprecated">@deprecated</a>
             </li>
             
             <li class="p-side-navigation__item">
@@ -498,7 +498,8 @@
             <main id="main-content" class="col-9">
                 <h1 id="deprecations">Deprecations</h1>
 <p>Candella includes a small module that facilitates deprecating functions or restricting function to specific OS versions.</p>
-<h2 id="available-labelnew"><code>available</code> {label:new}</h2>
+<h2 id="available"><code>available</code></h2>
+<p>{label:new}</p>
 <p>Restrict usage of a function to specific OS versions. This can be used to determine if a method or function should be marked as deprecated, or if a function is only available on a specific minimum OS version. This decorator is inspired by the <code>@available</code> property wrapper in Swift.</p>
 <pre><code class="language-py">from store.CADeprecated import available
 
@@ -524,7 +525,8 @@ def is_truthy():
 <li>deprecated (str): The OS version that this function was deprecated. Defaults to None.</li>
 <li>message (str): A message used to mark why something is deprecated or introduced. Defaults to None.</li>
 </ul>
-<h2 id="deprecated-labeldeprecated"><code>@deprecated</code> {label:deprecated}</h2>
+<h2 id="deprecated"><code>@deprecated</code></h2>
+<p>{label:deprecated}</p>
 <pre><code class="language-py">from store.CADeprecated import deprecated
 
 @deprecated('21.02')
