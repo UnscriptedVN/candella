@@ -35,29 +35,29 @@ init python:
     CA_PERMISSIONS = {
         "notifications": CAPermission(
             "REQ_NOTIFICATIONKIT",
-            "Send Notifications",
-            "Notifications may include banners, alerts, and sounds. These can be configured in App Manager."
+            _("Send Notifications"),
+            _("Notifications may include banners, alerts, and sounds. These can be configured in App Manager.")
         ),
         "file_system": CAPermission(
             "REQ_FULL_DISK",
-            "Access The File System",
-            "File access includes your user configuration file and may include other files present in Candella. This"
-                + " can be configured in App Manager."
+            _("Access The File System"),
+            _("File access includes your user configuration file and may include other files present in Candella. This"
+                + " can be configured in App Manager.")
         ),
         "system_events": CAPermission(
             "REQ_SYSTEM_EVENTS",
-            "Control System Events",
-            "System events include login, shutdown, or user switching. This can be configured in App Manager."
+            _("Control System Events"),
+            _("System events include login, shutdown, or user switching. This can be configured in App Manager.")
         ),
         "manage_users": CAPermission(
             "REQ_USERS_MANAGEMENT",
-            "Manage Users",
-            "User management includes adding, modifying, and removing users. This can be configured in App Manager."
+            _("Manage Users"),
+            _("User management includes adding, modifying, and removing users. This can be configured in App Manager.")
         ),
         "virtual_platform": CAPermission(
             "REQ_METEORVM",
-            "Run Apps in a Virtual Environment",
-            "This app runs additional code in the Meteor VM platform. This can be configured in App Manager."
+            _("Run Apps in a Virtual Environment"),
+            _("This app runs additional code in the Meteor VM platform. This can be configured in App Manager.")
         ),
 
     }

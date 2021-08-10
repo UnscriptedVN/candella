@@ -36,7 +36,7 @@ init screen CelesteDrawer():
             vbox:
                 yoffset _search_offset
                 if not app_filter:
-                    text "Search...":
+                    text _("Search..."):
                         style "CelesteDrawer_input"
                         yoffset 22
                 input default "" value ScreenVariableInputValue("app_filter"):

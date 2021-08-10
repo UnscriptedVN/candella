@@ -29,7 +29,7 @@ screen ASInventoryManagerView(currentItem=None):
                 xalign 0.5
                 yfit True
 
-                use ASInterfaceTitlebar("Inventories", onClose=Hide("ASInventoryManagerView"))
+                use ASInterfaceTitlebar(_("Inventories"), onClose=Hide("ASInventoryManagerView"))
 
                 if len(inv) == 0:
                     vbox:
@@ -45,9 +45,9 @@ screen ASInventoryManagerView(currentItem=None):
 
                             add AS_DEFAULT_APP_DIR + "Inventories.aosapp/Resources/Item.png":
                                 xalign 0.5
-                            label "No items available.":
+                            label _("No items available."):
                                 xalign 0.5
-                            text "You don't have any items in your inventory yet.":
+                            text _("You don't have any items in your inventory yet."):
                                 xalign 0.5
 
                         null height 1
@@ -58,7 +58,7 @@ screen ASInventoryManagerView(currentItem=None):
 
                         vbox:
                             spacing 8
-                            label "Inventory"
+                            label _("Inventory")
 
                             viewport:
                                 style_prefix "ASInterfaceScrollbar"
@@ -90,7 +90,7 @@ screen ASInventoryManagerView(currentItem=None):
                             xfill True
 
                             if currentItemView == None:
-                                text "Select an item from the left side to view and use it.":
+                                text _("Select an item from the left side to view and use it."):
                                     xalign 0.5
 
                             else:
@@ -106,12 +106,12 @@ screen ASInventoryManagerView(currentItem=None):
 
                                         $ ItemAction = Function(inventory.useItem, currentItemView) if currentItemView.canBeUsed else NullAction()
 
-                                        textbutton "Use Item" action ItemAction:
+                                        textbutton _("Use Item") action ItemAction:
                                             style "ASInterfacePushButton"
                                             sensitive currentItemView.canBeUsed
 
                                         if not currentItemView.canBeUsed:
-                                            text "This item can't be used."
+                                            text _("This item can't be used.")
 
                                 null height 8
                                 vbox:

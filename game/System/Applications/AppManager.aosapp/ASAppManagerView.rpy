@@ -29,7 +29,7 @@ screen ASAppManagerView():
                 xalign 0.5
                 yfit True
 
-                use ASInterfaceTitlebar("App Manager", onClose=[Hide("ASAppManagerView"), appManager.terminate])
+                use ASInterfaceTitlebar(_("App Manager"), onClose=[Hide("ASAppManagerView"), appManager.terminate])
 
                 hbox:
                     style_prefix "ASAppManager"
@@ -37,7 +37,7 @@ screen ASAppManagerView():
 
                     vbox:
                         spacing 8
-                        label "Applications"
+                        label _("Applications")
 
                         viewport:
                             style_prefix "ASInterfaceScrollbar"
@@ -53,7 +53,7 @@ screen ASAppManagerView():
                     vbox:
                         xfill True
                         if currentAppView == None:
-                            text "Select an app from the left side to view its properties.":
+                            text _("Select an app from the left side to view its properties."):
                                 xalign 0.5
 
 
@@ -76,26 +76,26 @@ screen ASAppManagerView():
                                     hbox:
                                         spacing 8
 
-                                        textbutton "Launch" action Function(currentAppView.applicationWillLaunch):
+                                        textbutton _("Launch") action Function(currentAppView.applicationWillLaunch):
                                             style "ASInterfacePushButton"
 
                                         vbox:
                                             style_prefix "ASInterfaceCheckbox"
-                                            textbutton "Pin to launcher" action Function(appman._pin_to_shell_dock, app_id=currentAppView.bundleId):
+                                            textbutton _("Pin to launcher") action Function(appman._pin_to_shell_dock, app_id=currentAppView.bundleId):
                                                 selected celeste.app_exists_in_current_launcher(currentAppView.bundleId)
 
                             null height 8
 
                             vbox:
                                 $ currentAppView_description = currentAppView.bundleDescription.strip()
-                                text "About this app":
+                                text _("About this app"):
                                     style "ASAppManager_DetailedEmphasis_text"
                                 text "[currentAppView_description]"
                                 null height 16
 
                                 if currentAppView.permissions:
 
-                                    text "Allow this app to:":
+                                    text _("Allow this app to:"):
                                         style "ASAppManager_DetailedEmphasis_text"
 
                                     vbox:
@@ -109,7 +109,7 @@ screen ASAppManagerView():
                                             text "[_desc].":
                                                 style "ASAppManager_text"
                                 else:
-                                    text "This app doesn't require any permissions."
+                                    text _("This app doesn't require any permissions.")
 
 screen ASAppManagerDetailButton(app):
     button action SetScreenVariable("currentAppView", app):

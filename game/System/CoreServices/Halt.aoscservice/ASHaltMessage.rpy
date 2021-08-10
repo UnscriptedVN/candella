@@ -43,10 +43,10 @@ init screen ASHaltMessage(error=""):
                 xfill True
                 spacing 10
 
-                text "Candella needs to restart because a critical error has occured.":
+                text _("Candella needs to restart because a critical error has occured."):
                     style "ASHaltMessageTitle"
                     xalign 0.5
-                text "You can search the Error Database for more information by going to https://errordb.aliceos.app or by scanning the QR code below. The system will automatically restart in 10 seconds.":
+                text _("You can search the Error Database for more information by going to https://errordb.aliceos.app or by scanning the QR code below. The system will automatically restart in 10 seconds."):
                     style "ASHaltMessageDetails"
                     xalign 0.5
 

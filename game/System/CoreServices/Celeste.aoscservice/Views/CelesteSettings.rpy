@@ -29,10 +29,10 @@ screen CelesteSettings():
                 xalign 0.5
                 yfit True
 
-                use ASInterfaceTitlebar("Celeste Settings", onClose=Hide("CelesteSettings"))
+                use ASInterfaceTitlebar(_("Celeste Settings"), onClose=Hide("CelesteSettings"))
 
                 vbox:
-                    label "Settings"
+                    label _("Settings")
 
                     hbox:
                         spacing 8
@@ -40,7 +40,7 @@ screen CelesteSettings():
                             style_prefix "CelesteSettings_panel"
                             xsize 360
 
-                            label "Desktop Background"
+                            label _("Desktop Background")
 
                             viewport:
                                 style_prefix "ASInterfaceScrollbar"
@@ -57,16 +57,16 @@ screen CelesteSettings():
                             style_prefix "CelesteSettings_panel"
                             xsize 360
 
-                            label "Display wallpaper mode"
+                            label _("Display wallpaper mode")
 
                             vbox:
                                 style_prefix "ASInterfaceRadio"
 
-                                textbutton "Scaled to fit" action Function(celeste._update_wallpaper_display_mode, "contain"):
+                                textbutton _("Scaled to fit") action Function(celeste._update_wallpaper_display_mode, "contain"):
                                     selected celeste._wall_display_mode == "contain"
-                                textbutton "Centered" action Function(celeste._update_wallpaper_display_mode, "cover"):
+                                textbutton _("Centered") action Function(celeste._update_wallpaper_display_mode, "cover"):
                                     selected celeste._wall_display_mode == "cover"
-                                textbutton "Stretch to fill" action Function(celeste._update_wallpaper_display_mode, "fill"):
+                                textbutton _("Stretch to fill") action Function(celeste._update_wallpaper_display_mode, "fill"):
                                     selected celeste._wall_display_mode == "fill"
 
 style CelesteSettings_frame is ASInterface_frame

@@ -54,10 +54,10 @@ screen ThoraxStepScreen(name, detail, show_input=False):
                     if show_input:
                         input default "" value ScreenVariableInputValue("input_result")
 
-                    textbutton "Next ›" action return_action:
+                    textbutton _("Next ›") action return_action:
                         xalign 1.0
 
-                    text "Click 'Next' or press Return/Enter on your keyboard to continue.":
+                    text _("Click 'Next' or press Return/Enter on your keyboard to continue."):
                         xalign 0.5
                         style "thorax_setup_hidden"
 

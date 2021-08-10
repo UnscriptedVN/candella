@@ -45,7 +45,7 @@ screen ASInventorySubView():
                         yfit True
                         add AS_DEFAULT_APP_DIR + "Inventories.aosapp/Resources/OpenMore.png"
 
-                        text "More Items...":
+                        text _("More Items..."):
                             xalign 0.5
 
 style ASInventorySubButton:

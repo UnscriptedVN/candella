@@ -38,7 +38,7 @@ init screen ASPermissionRequest(bundleName="AS_APP_BUNDLE", requestingFor, onDec
             xsize 656
             spacing 16
 
-            text bundleName + " Would Like To " + AS_REQUIRE_PERMS_NAME[requestingFor]:
+            text bundleName + _(" Would Like To ") + AS_REQUIRE_PERMS_NAME[requestingFor]:
                 style "ASPermissionRequestTitle"
             text AS_REQUIRE_PERMS_DESC[requestingFor]:
                 style "ASPermissionRequestDetail"
