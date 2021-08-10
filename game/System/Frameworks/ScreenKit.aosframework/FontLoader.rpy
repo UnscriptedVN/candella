@@ -8,7 +8,9 @@
 
 init offset = -100
 init python:
+    from store.CADeprecated import available
 
+    @available('*', introduced="apple-cinnamon")
     def get_font(name, variant="Regular"):
         path = AS_FONTS_DIR + name + "/" + variant + ".ttf"
         if not renpy.loadable(path):

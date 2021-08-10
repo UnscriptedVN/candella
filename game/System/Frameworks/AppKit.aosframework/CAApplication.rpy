@@ -8,6 +8,7 @@
 
 init python:
     from store.CAFrameworkLoader import get_framework_names
+    from store.CADeprecated import available
     import json
     import logging
 
@@ -44,6 +45,7 @@ init python:
         permissions = []
         data = None
 
+        @available('*', introduced="apple-cinnamon")
         def __init__(self, app_path):
             """Initialize a Candella app.
 
@@ -145,14 +147,17 @@ init python:
                     continue
             clog.info("Requisites have been validated for app %s.", self.id)
 
+        @available('*', introduced="apple-cinnamon")
         def get_name(self):
             """Returns the name of the app, or its bundle name."""
             return self.product_name or self.bundleName
 
+        @available('*', introduced="apple-cinnamon")
         def get_app_icon(self, size=16):
             """Returns the path for a given icon size."""
             return self.bundleDir + ("Resources/Iconset/%s.png" % (size))
 
+        @available('*', introduced="apple-cinnamon")
         def launch_at_login(self):
             if "system_events" not in self.permissions or not self.applicationShouldLaunchAtLogin():
                 clog.warn(
@@ -163,6 +168,7 @@ init python:
             self.application_will_launch_at_login()
             self.emit_signal("application_launched_at_login", name=self.get_name())
 
+        @available('*', introduced="apple-cinnamon")
         def launch(self):
             """Launch the app."""
 
@@ -170,11 +176,13 @@ init python:
             self.application_did_launch()
             self.emit_signal("application_launched", name=self.get_name())
 
+        @available('*', introduced="apple-cinnamon")
         def terminate(self):
             self.application_will_terminate()
             self.application_did_terminate()
             self.emit_signal("application_terminated")
 
+        @available('*', introduced="apple-cinnamon")
         def send_banner(self, mode='manual', **kwargs):
             """Send a notification banner with respect to the user's settings.
 
@@ -213,6 +221,7 @@ init python:
             self.emit_signal("banner_sent", response=response)
             return response
 
+        @available('*', introduced="apple-cinnamon")
         def send_alert(self, title, details, callback=Return('didDismissAlert')):
             """Send an alert with respect to the user's settings.
 

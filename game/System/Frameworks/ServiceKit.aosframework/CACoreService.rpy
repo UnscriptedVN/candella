@@ -9,6 +9,7 @@ init offset = -20
 
 init python:
     from store.CAFrameworkLoader import get_framework_names
+    from store.CADeprecated import available
     import logging
 
     class CACoreService(ASCoreServiceRepresentative, CAObservable):
@@ -69,21 +70,25 @@ init python:
                     continue
             clog.info("Requisites have been validated for service %s.", self.id)
 
+        @available('*', introduced="apple-cinnamon")
         def launch_at_login(self):
             self.serviceWillLaunchAtLogin()
             self.serviceDidLaunchAtLogin()
             self.emit_signal("service_launched_at_login", name=self.__class__.__name__)
 
+        @available('*', introduced="apple-cinnamon")
         def launch(self):
             self.serviceWillLaunch()
             self.serviceDidLaunch()
             self.emit_signal("service_launched", name=self.name)
 
+        @available('*', introduced="apple-cinnamon")
         def terminate(self):
             self.serviceWillTerminate()
             self.serviceDidTerminate()
             self.emit_signal("service_terminated")
 
+        @available('*', introduced="apple-cinnamon")
         def request_notification(self, message, details, callback=Return(0)):
             response = self.serviceWillRequestNotification(message, details, responseCallback=callback)
             self.serviceDidRequestNotification()

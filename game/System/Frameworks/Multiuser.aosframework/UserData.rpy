@@ -8,6 +8,7 @@
 init offset = -10
 
 init python:
+    from store.CADeprecated import available
     import os
     import json
     
@@ -58,6 +59,7 @@ init python:
             return bundle_id in _perms and "REQ_FULL_DISK" in _perms[bundle_id] and _perms[bundle_id]["REQ_FULL_DISK"]
             
         @staticmethod
+        @available('*', introduced="apple-cinnamon")
         def get_current_user_data(bundle_id):
             """Returns the application data for the current user.
             
@@ -88,6 +90,7 @@ init python:
             return app_data
             
         @staticmethod
+        @available('*', introduced="apple-cinnamon")
         def write_data_to_current_user(bundle_id, data={}):
             """Writes the specified app data to the current user's file.
             

@@ -6,7 +6,7 @@
 #
 
 init python:
-    from store.CADeprecated import deprecated
+    from store.CADeprecated import available
     import logging
 
     class ServiceStorage():
@@ -38,7 +38,7 @@ init python:
         def __str__(self):
             return str(self._data_store)
 
-
+        @available('*', introduced="apple-cinnamon")
         def get_entry(self, field, raise_falsy=False):
             """Returns the entry in a specified field.
 
@@ -52,12 +52,12 @@ init python:
                 raise KeyError
             return entry
 
-
+        @available('*', introduced="apple-cinnamon")
         def set_entry(self, field, result):
             """Sets the field to the result in the current storage."""
             self._data_store[field] = result
 
-
+        @available('*', introduced="apple-cinnamon")
         def commit(self):
             """Write the app data to the current user's file."""
             try:
