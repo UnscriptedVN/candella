@@ -13,10 +13,49 @@
 init offset = -50
 init python in CADeprecated:
     from functools import wraps
-    from store import clog
+    from store import clog, AS_SYS_INFO
     import logging
     import warnings
 
+    __OS_VERSIONS = ["*", "apple-cinnamon", "bahama"]
+
+    class CAMinimumVersionNotSupportedError(Exception):
+        """The current OS version doesn't meet the minimum requirements."""
+
+    def __version_meets_minimum_requirements(version, minimum_version):
+        minimum_idx = __OS_VERSIONS.index(minimum_version)
+        current_idx = __OS_VERSIONS.index(version)
+        return current_idx >= minimum_idx
+
+    def available(minimum_codename, introduced="apple-cinnamon", deprecated=None, message=None):
+        """Restrict usage of a function to specific OS versions.
+
+        This can be used to determine if a method or function should be marked as deprecated, or if a function is only
+            available on a specific minimum OS version.
+        
+        Args:
+            minimum_codename (str): The minimum OS version that this function supports. To support all, use '*'.
+            introduced (str): The OS version that this function was introduced. Defaults to apple-cinnamon.
+            deprecated (str): The OS version that this function was deprecated. Defaults to None.
+            message (str): A message used to mark why something is deprecated or introduced. Defaults to None.
+        """
+        def __available(method):
+            deprecated_msg = "%s has been deprecated in version %s: %s" % (method.__name__, deprecated, message)
+            minimum_ver_msg = "%s requires OS version %s or greater. (%s)" % (
+                method.__name__, minimum_codename, AS_SYS_INFO["COMMON_NAME"])
+
+            @wraps(method)
+            def __wrapped_call(*args, **kwargs):
+                if not __version_meets_minimum_requirements(AS_SYS_INFO["COMMON_NAME"], minimum_codename):
+                    raise CAMinimumVersionNotSupportedError(minimum_ver_msg)
+                if deprecated and __version_meets_minimum_requirements(current, deprecated):
+                    warnings.warn(deprecated_msg)
+                    clog.warn(deprecated_msg)
+                return method(*args, **kwargs)
+            return __wrapped_call
+        return __available
+
+    @available('*', introduced="apple-cinnamon", deprecated="bahama", message="Use @available decorator instead.")
     def deprecated(version, renamed=None, reason=None):
         """Mark a function or method as deprecated.
 

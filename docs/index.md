@@ -1,7 +1,3 @@
-!!! info "Documentation Notice"
-    The following documentation is written according to the latest release, **v21.07 (Apple Cinnamon)**. View the changelog
-    for information about previous releases and APIs.
-
 ## What makes Candella different?
 
 - **Release compatibility**: Candella's release cycle syncs up with feature releases of Unscripted and the Ren'Py SDK, respectively.
