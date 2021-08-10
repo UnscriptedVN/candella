@@ -31,7 +31,8 @@ extra:
 
 plugins:
   - search
-  - mike
+  - mike:
+      version_selector: false
 
 markdown_extensions:
   - markdown.extensions.admonition
