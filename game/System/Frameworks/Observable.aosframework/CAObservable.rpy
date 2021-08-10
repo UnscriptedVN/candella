@@ -5,7 +5,7 @@
 # (C) 2021 Marquis Kurt. All rights reserved.
 #
 
-init offset = -50
+init offset = -49
 
 init python:
     import logging
