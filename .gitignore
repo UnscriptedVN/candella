@@ -7,8 +7,10 @@ traceback.txt
 errors.txt
 game/cache/**
 game/saves/**
+candella_stop.txt
 
 .vscode/
 .pytest_cache/
 **/__pycache__/
 site/
+.idea/
