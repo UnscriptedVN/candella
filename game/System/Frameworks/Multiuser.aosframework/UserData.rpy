@@ -46,7 +46,7 @@ init python:
                     letters, the username will automatically be lowercased and spaces will be removed.
             """
             ca_username = username.lower().replace(" ", "")
-            data = { "name": username, "prettyName": pretty_name if pretty_name else username }
+            data = { "name": ca_username, "prettyName": pretty_name if pretty_name else username }
             if not os.path.isdir(config.savedir + "/.causerland/"):
                 os.mkdir("%s/.causerland" % (config.savedir))
             with open("%s/.causerland/%s" % (config.savedir, username), 'wb+') as file:

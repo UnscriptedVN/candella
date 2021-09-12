@@ -69,15 +69,21 @@ init python:
 
             # Re-run the Setup Assistant, if necessary.
             if not persistent.AS_COMPLETED_SETUP and run_setup:
+                assistant_detected = False
                 try:
                     clog.debug("Launching Thorax.")
                     setup.launch()
+                    assistant_detected = True
                 except NameError:
                     pass
                 try:
                     clog.debug("Launching AliceOS Setup Assistant.")
                     ASSetup.startSetup()
+                    assistant_detected = True
                 except:
+                    pass
+
+                if not assistant_detected:
                     ASHalt.halt("MISSING_OOBE_SERVICE")
 
             # Launch apps that have permission to do so.

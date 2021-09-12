@@ -25,9 +25,20 @@ screen ThoraxStepScreen(name, detail, show_input=False):
 
     key "K_RETURN" action return_action
 
+    if not ca_supports_blur():
+        add "System/Library/Desktop Pictures/McWay Falls.png" at blur, truecenter:
+            size (1280, 720)
+            fit "cover"
+    else:
+        add "System/Library/Desktop Pictures/McWay Falls.png" at truecenter:
+            blur CABlurType["strong"]
+            size (1280, 720)
+            fit "cover"
+
     frame:
         xalign 0.5
         yalign 0.5
+        maximum 750, 650
         xfill True
         yfill True
 
@@ -53,6 +64,7 @@ screen ThoraxStepScreen(name, detail, show_input=False):
 
                     if show_input:
                         input default "" value ScreenVariableInputValue("input_result")
+                        null height 48
 
                     textbutton _("Next ›") action return_action:
                         xalign 1.0
@@ -69,7 +81,7 @@ style thorax_setup_frame is frame:
 
 style thorax_setup_text is ASSystemRegularFont:
     color "#191919"
-    size 24
+    size 22
 
 style thorax_setup_hidden is thorax_setup_text:
     color "#666666"
@@ -83,7 +95,7 @@ style thorax_setup_header_frame is frame:
 
 style thorax_setup_header_label is label
 style thorax_setup_header_label_text is ASSystemMediumFont:
-    size 48
+    size 36
     color "#191919"
 
 style thorax_setup_detail_frame is frame:
@@ -96,3 +108,6 @@ style thorax_setup_button_text is ASSystemRegularFont:
     size 28
     idle_color "#EF7E45"
     hover_color "#EF7E45"
+
+style thorax_setup_input is input:
+    color "#333333"
