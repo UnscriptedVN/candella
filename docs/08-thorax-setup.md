@@ -2,6 +2,8 @@
 
 Candella utilizes a new setup assistant called **Thorax**. Thorax is a modern, modular implementation for setup assistants in Candella and defines steps with a simple JSON file as a script.
 
+![Thorax Setup assistant screen](./images/thorax/interface.png)
+
 ## Running the default setup
 
 In most cases, you'll want to use the default set of setup instructions, which lets users know about Candella, set up a new user, and finish setup (this set is equivalent to AliceOS's Express Mode in their setup assistant).

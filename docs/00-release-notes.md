@@ -3,7 +3,7 @@
 The following document contains information about the changes made, release per release, of Candella.
 
 ## v21.07 (Apple Cinnamon)
-This is the first initial relase of Candella. The following information contains the changes rolled up from all beta releases.
+This is the first initial release of Candella. The following information contains the changes rolled up from all beta releases.
 
 - Adds search functionality to Celeste Desktop's app drawer, filtered by name or bundle ID.
 - Fixes a tagging issue in version injection scripts.
