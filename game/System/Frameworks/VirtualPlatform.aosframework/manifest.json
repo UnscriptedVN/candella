@@ -1,0 +1,12 @@
+{
+    "name": "Virtual Platform",
+    "id": "dev.unscriptedvn.candella.virtual-platform",
+    "author": "Marquis Kurt <software@marquiskurt.net>",
+    "version": "22.01",
+    "license": "MPL-2.0",
+    "description": "A virtual machine platform that integrates with Candella.",
+    "requisites": [
+        "AppKit",
+        "Observable"
+    ]
+}
