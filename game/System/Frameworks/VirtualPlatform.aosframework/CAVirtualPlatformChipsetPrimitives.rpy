@@ -33,8 +33,8 @@ init python in CAVirtualPlatform:
         def __init__(self, inp):
             self.inp = inp
 
-        def evaluate(CAVirtualChip):
-            return not inp
+        def evaluate(self):
+            return not self.inp
 
     class CAVirtualAndPrimitive(CAVirtualChip):
         """A primitive chip that performs a logical AND operation."""
