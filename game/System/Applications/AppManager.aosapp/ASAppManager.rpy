@@ -8,8 +8,6 @@
 
 init 5 python:
     class ASAppManager(CAApplication):
-        from store.CADeprecated import deprecated
-
         def applicationWillLaunch(self):
             renpy.show_screen("ASAppManagerView")
             pass

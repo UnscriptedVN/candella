@@ -21,7 +21,7 @@ screen ASSysInfoView():
             xmaximum 800
 
             has vbox:
-                use ASInterfaceTitlebar(_("About [AS_SYS_INFO[NAME]]"), onClose=Hide("ASSysInfoView"))
+                use ASInterfaceTitlebar(_("About [AS_SYS_INFO[NAME]]"), onClose=[Hide("ASSysInfoView"), ASSysInfo.terminate])
 
                 hbox:
                     spacing 32
