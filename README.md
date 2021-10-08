@@ -27,7 +27,7 @@ You can additionally download a release from [the Releases page][releases], as w
 ### Build from source
 
 #### Requirements
-- [Ren'Py SDK][renpy] v7.4.0 or greater
+- [Ren'Py SDK][renpy] v7.4.8 or greater
 - Python 3
 - Pipenv
 
