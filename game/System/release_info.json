@@ -1,10 +1,10 @@
 {
     "distribution": {
         "name": "Candella",
-        "version": "21.12",
-        "build_id": "2021121-187",
+        "version": "22.01",
+        "build_id": "2022011-11028",
         "channel": "beta",
         "codename": "bahama"
     },
-    "build_date": "2021-12-01T01:08:07.185380"
+    "build_date": "2022-01-01T01:10:28.480685"
 }
