@@ -5,13 +5,13 @@ docs_dir: docs/
 
 edit_uri: ""
 
-repo_name: 'UnscriptedVN/candella'
-repo_url: 'https://github.com/UnscriptedVN/candella'
+repo_name: "UnscriptedVN/candella"
+repo_url: "https://github.com/UnscriptedVN/candella"
 
-copyright: 'Copyright &copy; 2021 Unscripted VN Team.'
+copyright: "Copyright &copy; 2021-2022 Unscripted VN Team."
 theme:
   name: null
-  custom_dir: 'vanilla/'
+  custom_dir: "vanilla/"
   include_search_page: true
   highlightjs: true
   hljs_languages:
@@ -19,15 +19,15 @@ theme:
     - json
 
 extra:
-    navbar:
-      - name: Download
-        link: 'https://marquiskurt.itch.io/candella'
-      - name: 'GitHub'
-        link: "https://github.com/UnscriptedVN/candella"
-      - name: 'AppDB'
-        link: 'https://appdb.unscriptedvn.dev'
-    version:
-        provider: mike
+  navbar:
+    - name: Download
+      link: "https://marquiskurt.itch.io/candella"
+    - name: "GitHub"
+      link: "https://github.com/UnscriptedVN/candella"
+    - name: "AppDB"
+      link: "https://appdb.unscriptedvn.dev"
+  version:
+    provider: mike
 
 plugins:
   - search
