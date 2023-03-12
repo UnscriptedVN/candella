@@ -8,7 +8,7 @@ edit_uri: ""
 repo_name: "UnscriptedVN/candella"
 repo_url: "https://github.com/UnscriptedVN/candella"
 
-copyright: "Copyright &copy; 2021-2022 Unscripted VN Team."
+copyright: "Copyright &copy; 2021-2023 Unscripted VN Team."
 theme:
   name: null
   custom_dir: "vanilla/"

@@ -35,7 +35,7 @@ init python:
                 self._data = { "name": user, "prettyName": user }
             else:
                 with open(data_file, 'r') as data_object:
-                    self._data = json.load(data_object)
+                    self._data = json.loads(data_object.read())
         
         @staticmethod
         def _create_user_file(username, pretty_name=None):
@@ -50,7 +50,8 @@ init python:
             if not os.path.isdir(config.savedir + "/.causerland/"):
                 os.mkdir("%s/.causerland" % (config.savedir))
             with open("%s/.causerland/%s" % (config.savedir, username), 'wb+') as file:
-                json.dump(data, file)
+                filedata = json.dumps(data).encode('utf-8')
+                file.write(filedata)
                 
         @staticmethod
         def __file_permissible(bundle_id):

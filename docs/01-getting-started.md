@@ -9,9 +9,12 @@ You can additionally download a release from [the Releases page][releases], or y
 ## Build from source
 
 ### Requirements
-- [Ren'Py SDK][renpy] v7.4.8 or greater
+- [Ren'Py SDK][renpy] v8.0.3 or greater
 - Python 3
 - Pipenv
+
+!!! warning
+    Starting with the Bahama release, Candella builds for Python 3. Make sure you have the appropriate tooling to ensure a successful build.
 
 Clone the repository from GitHub, then run `pipenv install -d` in the root of the project to fetch dependencies for making the project.
 
