@@ -10,6 +10,7 @@ jobs:
         renpy-versions:
           - '7.4.6'
           - '7.4.8'
+          - '8.0.3'
     steps:
       - name: Clone source
         uses: actions/checkout@v1
