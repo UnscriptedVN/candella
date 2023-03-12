@@ -10,9 +10,8 @@
 
 <head>
     <title>Candella Documentation - Deprecations</title>
-    <link href="../css/vanilla.min.css" rel="stylesheet" />
-    <link href="../css/style.css" rel="stylesheet" />
-    <link href="../css/version-select.css" rel="stylesheet" />
+    <link href="/css/vanilla.min.css" rel="stylesheet" />
+    <link href="/css/style.css" rel="stylesheet" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
     <meta property="og:type" content="website" />
@@ -27,9 +26,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/python.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/json.min.js"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="../search/main.js" defer=""></script>
+    <script src="./search/main.js" defer=""></script>
     <script src="../js/vanilla.js" defer=""></script>
-    <script src="../js/version-select.js" defer=""></script>
 </head>
 
 <div class="cc-header">
@@ -46,8 +44,8 @@
             <div class="p-navigation__banner">
                 <div class="p-navigation__logo">
                     <a class="p-navigation__item" href="/index.html">
-                        <img class="p-navigation__image" src="../img/logomark-dark.svg"
-                            alt="Candella Documentation" width="95">
+                        <img class="p-navigation__image" src="/img/logomark-dark.svg" alt="Candella Documentation"
+                            width="95">
                     </a>
                 </div>
                 <a href="#navigation" class="p-navigation__toggle--open" title="menu">Menu</a>
@@ -100,6 +98,7 @@
     <a href="#drawer" class="p-side-navigation__toggle js-drawer-toggle" aria-controls="drawer">
         Toggle side navigation
     </a>
+
     <div class="p-side-navigation__overlay js-drawer-toggle" aria-controls="drawer"></div>
 
     <nav class="p-side-navigation__drawer" aria-label="Example side navigation">
@@ -108,8 +107,6 @@
                 Toggle side navigation
             </a>
         </div>
-
-        <div id="version-selector"></div>
 
         
         
@@ -426,14 +423,6 @@
             
             
             <li class="p-side-navigation__item">
-                <a class="p-side-navigation__link" href="./#available">@available</a>
-            </li>
-            
-            <li class="p-side-navigation__item">
-                <a class="p-side-navigation__link" href="./#deprecated">@deprecated</a>
-            </li>
-            
-            <li class="p-side-navigation__item">
                 <a class="p-side-navigation__link" href="./#deprecated-arguments">deprecated arguments</a>
             </li>
             
@@ -491,62 +480,13 @@
         </ul>
         
         
-        
-        <ul class="p-side-navigation__list">
-            <li class="p-side-navigation__item--title">
-                <a class="p-side-navigation__link" href="../migrate/" >Migration from AliceOS</a>
-            </li>
-            
-            
-            <li class="p-side-navigation__item">
-                <a class="p-side-navigation__link" href="../migrate/#full-announcement-from-project-alice">Full Announcement from Project Alice</a>
-            </li>
-            
-            <li class="p-side-navigation__item">
-                <a class="p-side-navigation__link" href="../migrate/#how-do-i-migrate">How do I migrate?</a>
-            </li>
-            
-            
-        </ul>
-        
-        
     </nav>
 </div>
 
 
             <main id="main-content" class="col-9">
                 <h1 id="deprecations">Deprecations</h1>
-<p>Candella includes a small module that facilitates deprecating functions or restricting function to specific OS versions.</p>
-<h2 id="available"><code>@available</code></h2>
-<p>{label:new}</p>
-<p>Restrict usage of a function to specific OS versions. This can be used to determine if a method or function should be marked as deprecated, or if a function is only available on a specific minimum OS version. This decorator is inspired by the <code>@available</code> property wrapper in Swift.</p>
-<p>Information about when the method or function was introduced and deprecated is added to the function's docstring.</p>
-<pre><code class="language-py">from store.CADeprecated import available
-
-# To mark a function as available for all OS versions.
-@available(&quot;*&quot;, introduced=&quot;bahama&quot;)
-def new_test_function():
-    return True
-
-# To mark a function as available to a minimum version.
-@available(&quot;bahama&quot;, introduced=&quot;bahama&quot;)
-def requires_bahama():
-    return new_test_function() and False
-
-# To mark a function as deprecated in a given version.
-@available(&quot;*&quot;, deprecated=&quot;bahama&quot;, message=&quot;Please use new_test_function instead.&quot;)
-def is_truthy():
-    return True
-</code></pre>
-<h3 id="arguments">Arguments</h3>
-<ul>
-<li>minimum_codename (str): The minimum OS version that this function supports. To support all, use '*'.</li>
-<li>introduced (str): The OS version that this function was introduced. Defaults to apple-cinnamon.</li>
-<li>deprecated (str): The OS version that this function was deprecated. Defaults to None.</li>
-<li>message (str): A message used to mark why something is deprecated or introduced. Defaults to None.</li>
-</ul>
-<h2 id="deprecated"><code>@deprecated</code></h2>
-<p>{label:deprecated}</p>
+<p>Candella includes a small module that facilitates deprecating functions. To mark a function as deprecated, import the function and decorate the function you want to deprecate:</p>
 <pre><code class="language-py">from store.CADeprecated import deprecated
 
 @deprecated('21.02')
@@ -575,7 +515,7 @@ def deprecated_func():
 <footer>
     <div class="p-strip p-strip--light is-shallow">
         <div class="row">
-            <p>Copyright &copy; 2021-2022 Unscripted VN Team.</p>
+            <p>Copyright &copy; 2021 Unscripted VN Team.</p>
             <p class="p-link--external"><a href="https://github.com/UnscriptedVN/candella">View the source</a></p>
         </div>
     </div>
