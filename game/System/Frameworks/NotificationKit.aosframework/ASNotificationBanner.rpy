@@ -6,7 +6,7 @@
 # Copyright © 2019 ProjectAliceDev. All rights reserved.
 #
 
-init screen ASNotificationBanner(applet=None, message, withDetails, r_text="Respond", responseCallback=Return('didClickRespond')):
+init screen ASNotificationBanner(message, withDetails, applet=None, r_text="Respond", responseCallback=Return('didClickRespond')):
     tag ASNotificationBanner
     zorder 100
     style_prefix "ASNotificationBanner"
