@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html>
+
+
+
+
+
+
+
+
+<head>
+    <title>Candella Documentation - Multiuser Framework</title>
+    <link href="/css/vanilla.min.css" rel="stylesheet" />
+    <link href="/css/style.css" rel="stylesheet" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Candella Documentation - Multiuser Framework" />
+    <meta property="og:description" content="Candella is a fork of the AliceOS framework for Ren'Py." />
+    <meta property="og:url" content="None" />
+    <meta property="og:image" content="http://candella.unscriptedvn.dev/img/desktop.png" />
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:width" content="1280" />
+    <meta property="og:image:height" content="720" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/python.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/json.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <script src="./search/main.js" defer=""></script>
+    <script src="../js/vanilla.js" defer=""></script>
+</head>
+
+<div class="cc-header">
+    <div class="row">
+        <p>
+            <a class="p-link--inverted" href="https://candella.unscriptedvn.dev">Candella</a>
+            <sup>beta</sup>
+        </p>
+    </div>
+</div>
+<nav>
+    <header id="navigation" class="p-navigation is-dark">
+        <div class="p-navigation__row">
+            <div class="p-navigation__banner">
+                <div class="p-navigation__logo">
+                    <a class="p-navigation__item" href="/index.html">
+                        <img class="p-navigation__image" src="/img/logomark-dark.svg" alt="Candella Documentation"
+                            width="95">
+                    </a>
+                </div>
+                <a href="#navigation" class="p-navigation__toggle--open" title="menu">Menu</a>
+                <a href="#navigation-closed" class="p-navigation__toggle--close" title="close menu">Close menu</a>
+            </div>
+            <nav class="p-navigation__nav" aria-label="Example main navigation">
+                <span class="u-off-screen">
+                    <a href="#main-content">Jump to main content</a>
+                </span>
+                <ul class="p-navigation__items">
+                    <li class="p-navigation__item is-selected">
+                        <a class="p-navigation__link" href="/index.html">Docs</a>
+                    </li>
+                    
+                    
+                    <li class="p-navigation__item">
+                        <a class="p-navigation__link" href="https://marquiskurt.itch.io/candella">Download</a>
+                    </li>
+                    
+                    <li class="p-navigation__item">
+                        <a class="p-navigation__link" href="https://github.com/UnscriptedVN/candella">GitHub</a>
+                    </li>
+                    
+                    <li class="p-navigation__item">
+                        <a class="p-navigation__link" href="https://appdb.unscriptedvn.dev">AppDB</a>
+                    </li>
+                    
+                    
+                </ul>
+                
+                <form class="p-search-box" action="../search.html" method="get">
+                    <input class="p-search-box__input" type="text" placeholder="Search docs" name="q" autocomplete="off"
+                        id="mkdocs-search-query" required="">
+                    <button type="reset" class="p-search-box__reset"><i class="p-icon--close"></i></button>
+                    <button type="submit" class="p-search-box__button"><i class="p-icon--search"></i></button>
+                </form>
+                
+            </nav>
+        </div>
+    </header>
+</nav>
+
+<body>
+    
+    <div class="p-strip--suru-topped">
+        <div class="row">
+            
+
+<div class="p-side-navigation col-3" id="drawer">
+    <a href="#drawer" class="p-side-navigation__toggle js-drawer-toggle" aria-controls="drawer">
+        Toggle side navigation
+    </a>
+
+    <div class="p-side-navigation__overlay js-drawer-toggle" aria-controls="drawer"></div>
+
+    <nav class="p-side-navigation__drawer" aria-label="Example side navigation">
+        <div class="p-side-navigation__drawer-header">
+            <a href="#" class="p-side-navigation__toggle--in-drawer js-drawer-toggle" aria-controls="drawer">
+                Toggle side navigation
+            </a>
+        </div>
+
+        
+        
+        <ul class="p-side-navigation__list">
+            <li class="p-side-navigation__item--title">
+                <a class="p-side-navigation__link" href=".." >Home</a>
+            </li>
+            
+            
+            
+            
+            
+        </ul>
+        
+        
+        
+        <ul class="p-side-navigation__list">
+            <li class="p-side-navigation__item--title">
+                <a class="p-side-navigation__link" href="../00-release-notes/" >Release Notes</a>
+            </li>
+            
+            
+            <li class="p-side-navigation__item">
+                <a class="p-side-navigation__link" href="../00-release-notes/#v2107-apple-cinnamon">v21.07 (Apple Cinnamon)</a>
+            </li>
+            
+            
+        </ul>
+        
+        
+        
+        <ul class="p-side-navigation__list">
+            <li class="p-side-navigation__item--title">
+                <a class="p-side-navigation__link" href="../01-getting-started/" >Getting started</a>
+            </li>
+            
+            
+            <li class="p-side-navigation__item">
+                <a class="p-side-navigation__link" href="../01-getting-started/#quick-start-get-candella">Quick start: Get Candella</a>
+            </li>
+            
+            <li class="p-side-navigation__item">
+                <a class="p-side-navigation__link" href="../01-getting-started/#build-from-source">Build from source</a>
+            </li>
+            
+            
+        </ul>
+        
+        
+        
+        
+        
+        <ul class="p-side-navigation__list">
+            <li class="p-side-navigation__item--title">
+                <a class="p-side-navigation__link" href="../02-celeste-shell/" >Celeste Shell</a>
+            </li>
+            
+            
+            <li class="p-side-navigation__item">
+                <a class="p-side-navigation__link" href="../02-celeste-shell/#using-celeste-shell">Using Celeste Shell</a>
+            </li>
+            
+            <li class="p-side-navigation__item">
+                <a class="p-side-navigation__link" href="../02-celeste-shell/#available-methods-for-developers">Available methods for developers</a>
+            </li>
+            
+            
+        </ul>
+        
+        
+        
+        <ul class="p-side-navigation__list">
+            <li class="p-side-navigation__item--title">
+                <a class="p-side-navigation__link" href="../03-candella-app/" >Writing a Candella app</a>
+            </li>
+            
+            
+            <li class="p-side-navigation__item">
+                <a class="p-side-navigation__link" href="../03-candella-app/#creating-an-app">Creating an app</a>
+            </li>
+            
+            <li class="p-side-navigation__item">
+                <a class="p-side-navigation__link" href="../03-candella-app/#app-lifecycle">App lifecycle</a>
+            </li>
+            
+            <li class="p-side-navigation__item">
+                <a class="p-side-navigation__link" href="../03-candella-app/#convenience-methods">Convenience methods</a>
+            </li>
+            
+            <li class="p-side-navigation__item">
+                <a class="p-side-navigation__link" href="../03-candella-app/#app-storage">App storage</a>
+            </li>
+            
+            <li class="p-side-navigation__item">
+                <a class="p-side-navigation__link" href="../03-candella-app/#user-interfaces">User interfaces</a>
+            </li>
+            
+            <li class="p-side-navigation__item">
+                <a class="p-side-navigation__link" href="../03-candella-app/#sending-notifications">Sending notifications</a>
+            </li>
+            
+            <li class="p-side-navigation__item">
+                <a class="p-side-navigation__link" href="../03-candella-app/#sending-app-signals">Sending app signals</a>
+            </li>
+            
+            <li class="p-side-navigation__item">
+                <a class="p-side-navigation__link" href="../03-candella-app/#caapplication">CAApplication</a>
+            </li>
+            
+            
+        </ul>
+        
+        
+        
+        <ul class="p-side-navigation__list">
+            <li class="p-side-navigation__item--title">
+                <a class="p-side-navigation__link" href="../04-observable/" >Observable Framework</a>
+            </li>
+            
+            
+            <li class="p-side-navigation__item">
+                <a class="p-side-navigation__link" href="../04-observable/#what-uses-observable">What uses Observable?</a>
+            </li>
+            
+            <li class="p-side-navigation__item">
+                <a class="p-side-navigation__link" href="../04-observable/#logic">Logic</a>
+            </li>
+            
+            <li class="p-side-navigation__item">
+                <a class="p-side-navigation__link" href="../04-observable/#caobservable">CAObservable</a>
+            </li>
+            
+            
+        </ul>
+        
+        
+        
+        <ul class="p-side-navigation__list">
+            <li class="p-side-navigation__item--title">
+                <a class="p-side-navigation__link" href="./" aria-current="page" >Multiuser Framework</a>
+            </li>
+            
+            
+            <li class="p-side-navigation__item">
+                <a class="p-side-navigation__link" href="./#what-is-a-candella-user">What is a Candella user?</a>
+            </li>
+            
+            <li class="p-side-navigation__item">
+                <a class="p-side-navigation__link" href="./#the-userland-folder">The userland folder</a>
+            </li>
+            
+            <li class="p-side-navigation__item">
+                <a class="p-side-navigation__link" href="./#readingwriting-data-for-the-current-user">Reading/writing data for the current user</a>
+            </li>
+            
+            
+        </ul>
+        
+        
+        
+        <ul class="p-side-navigation__list">
+            <li class="p-side-navigation__item--title">
+                <a class="p-side-navigation__link" href="../06-accounts-service/" >Accounts Service</a>
+            </li>
+            
+            
+            <li class="p-side-navigation__item">
+                <a class="p-side-navigation__link" href="../06-accounts-service/#viewing-information-about-the-userspace">Viewing information about the userspace</a>
+            </li>
+            
+            <li class="p-side-navigation__item">
+                <a class="p-side-navigation__link" href="../06-accounts-service/#managing-users">Managing users</a>
+            </li>
+            
+            
+        </ul>
+        
+        
+        
+        <ul class="p-side-navigation__list">
+            <li class="p-side-navigation__item--title">
+                <a class="p-side-navigation__link" href="../07-roland-boot/" >Roland Boot Manager</a>
+            </li>
+            
+            
+            <li class="p-side-navigation__item">
+                <a class="p-side-navigation__link" href="../07-roland-boot/#loading-the-boot-manager">Loading the boot manager</a>
+            </li>
+            
+            <li class="p-side-navigation__item">
+                <a class="p-side-navigation__link" href="../07-roland-boot/#shutting-down-candella-with-the-boot-manager">Shutting down Candella with the boot manager</a>
+            </li>
+            
+            
+        </ul>
+        
+        
+        
+        <ul class="p-side-navigation__list">
+            <li class="p-side-navigation__item--title">
+                <a class="p-side-navigation__link" href="../08-thorax-setup/" >Thorax Setup</a>
+            </li>
+            
+            
+            <li class="p-side-navigation__item">
+                <a class="p-side-navigation__link" href="../08-thorax-setup/#running-the-default-setup">Running the default setup</a>
+            </li>
+            
+            <li class="p-side-navigation__item">
+                <a class="p-side-navigation__link" href="../08-thorax-setup/#writing-a-custom-setup-script">Writing a custom setup script</a>
+            </li>
+            
+            
+        </ul>
+        
+        
+        
+        <ul class="p-side-navigation__list">
+            <li class="p-side-navigation__item--title">
+                <a class="p-side-navigation__link" href="../09-glossary/" >Glossary</a>
+            </li>
+            
+            
+            <li class="p-side-navigation__item">
+                <a class="p-side-navigation__link" href="../09-glossary/#creating-a-glossary">Creating a glossary</a>
+            </li>
+            
+            <li class="p-side-navigation__item">
+                <a class="p-side-navigation__link" href="../09-glossary/#displaying-the-glossary">Displaying the glossary</a>
+            </li>
+            
+            <li class="p-side-navigation__item">
+                <a class="p-side-navigation__link" href="../09-glossary/#overriding-the-default-glossary">Overriding the default glossary</a>
+            </li>
+            
+            
+        </ul>
+        
+        
+        
+        <ul class="p-side-navigation__list">
+            <li class="p-side-navigation__item--title">
+                <a class="p-side-navigation__link" href="../10-candella-service/" >Writing core services</a>
+            </li>
+            
+            
+            <li class="p-side-navigation__item">
+                <a class="p-side-navigation__link" href="../10-candella-service/#creating-a-core-service">Creating a core service</a>
+            </li>
+            
+            <li class="p-side-navigation__item">
+                <a class="p-side-navigation__link" href="../10-candella-service/#the-manifest-file">The manifest file</a>
+            </li>
+            
+            <li class="p-side-navigation__item">
+                <a class="p-side-navigation__link" href="../10-candella-service/#core-service-lifecycle">Core service lifecycle</a>
+            </li>
+            
+            <li class="p-side-navigation__item">
+                <a class="p-side-navigation__link" href="../10-candella-service/#sending-service-signals">Sending service signals</a>
+            </li>
+            
+            <li class="p-side-navigation__item">
+                <a class="p-side-navigation__link" href="../10-candella-service/#service-storage">Service storage</a>
+            </li>
+            
+            
+        </ul>
+        
+        
+        
+        <ul class="p-side-navigation__list">
+            <li class="p-side-navigation__item--title">
+                <a class="p-side-navigation__link" href="../11-notifications/" >NotificationKit Changes</a>
+            </li>
+            
+            
+            <li class="p-side-navigation__item">
+                <a class="p-side-navigation__link" href="../11-notifications/#notification-banner-design">Notification banner design</a>
+            </li>
+            
+            <li class="p-side-navigation__item">
+                <a class="p-side-navigation__link" href="../11-notifications/#creating-modular-banners">Creating modular banners</a>
+            </li>
+            
+            
+        </ul>
+        
+        
+        
+        <ul class="p-side-navigation__list">
+            <li class="p-side-navigation__item--title">
+                <a class="p-side-navigation__link" href="../96-design-and-branding/" >Design and branding</a>
+            </li>
+            
+            
+            <li class="p-side-navigation__item">
+                <a class="p-side-navigation__link" href="../96-design-and-branding/#design">Design</a>
+            </li>
+            
+            <li class="p-side-navigation__item">
+                <a class="p-side-navigation__link" href="../96-design-and-branding/#branding">Branding</a>
+            </li>
+            
+            
+        </ul>
+        
+        
+        
+        <ul class="p-side-navigation__list">
+            <li class="p-side-navigation__item--title">
+                <a class="p-side-navigation__link" href="../97-deprecated/" >Deprecations</a>
+            </li>
+            
+            
+            <li class="p-side-navigation__item">
+                <a class="p-side-navigation__link" href="../97-deprecated/#deprecated-arguments">deprecated arguments</a>
+            </li>
+            
+            
+        </ul>
+        
+        
+        
+        <ul class="p-side-navigation__list">
+            <li class="p-side-navigation__item--title">
+                <a class="p-side-navigation__link" href="../98-stop-errors/" >Common Stop Errors</a>
+            </li>
+            
+            
+            <li class="p-side-navigation__item">
+                <a class="p-side-navigation__link" href="../98-stop-errors/#requisite_framework_missing">REQUISITE_FRAMEWORK_MISSING</a>
+            </li>
+            
+            <li class="p-side-navigation__item">
+                <a class="p-side-navigation__link" href="../98-stop-errors/#missing_oobe_service">MISSING_OOBE_SERVICE</a>
+            </li>
+            
+            
+        </ul>
+        
+        
+        
+        <ul class="p-side-navigation__list">
+            <li class="p-side-navigation__item--title">
+                <a class="p-side-navigation__link" href="../99-candella-sdk/" >Candella SDK</a>
+            </li>
+            
+            
+            <li class="p-side-navigation__item">
+                <a class="p-side-navigation__link" href="../99-candella-sdk/#quickstart-install-from-pypi">Quickstart: Install from PyPI</a>
+            </li>
+            
+            <li class="p-side-navigation__item">
+                <a class="p-side-navigation__link" href="../99-candella-sdk/#build-the-sdk-from-source">Build the SDK from source</a>
+            </li>
+            
+            <li class="p-side-navigation__item">
+                <a class="p-side-navigation__link" href="../99-candella-sdk/#creating-projects">Creating projects</a>
+            </li>
+            
+            <li class="p-side-navigation__item">
+                <a class="p-side-navigation__link" href="../99-candella-sdk/#validating-projects">Validating projects</a>
+            </li>
+            
+            <li class="p-side-navigation__item">
+                <a class="p-side-navigation__link" href="../99-candella-sdk/#using-candella-sdk-programmatically">Using Candella SDK programmatically</a>
+            </li>
+            
+            
+        </ul>
+        
+        
+    </nav>
+</div>
+
+
+            <main id="main-content" class="col-9">
+                <h1 id="multiuser-framework">Multiuser Framework</h1>
+<p>Multi-user support in Candella is provided by the Multiuser framework. This framework adds the necessary classes and utilities to create and manage multiple users, as well as manage data for specific users.</p>
+<h2 id="what-is-a-candella-user">What is a Candella user?</h2>
+<p>A user is defined by a username and is represented as the <code>CAUser</code> data class. In most cases, developers will not need to create an instance of this class as core services and applications will provide this automatically.</p>
+<ul>
+<li><code>CAUser.username</code> contains the username of the user. Usernames must be in lowercase with no spaces or special characters.</li>
+<li><code>CAUser.display_name</code> contains the user-facing display name for the user. This display name is used by core services such as Celeste Shell to display the user's name. By default, this name defaults to the username.</li>
+</ul>
+<p><code>CAUser</code> provides methods for checking equality and string representation.</p>
+<h2 id="the-userland-folder">The userland folder</h2>
+<p>Each user gets a corresponding file in the <code>.causerland</code> directory. This directory is located in the save directory of the Ren'Py project. For instance, if Candella were installed in <em>Doki Doki Literature Club!</em>, the userland folder is located at the following path:</p>
+<pre><code>%AppData%\RenPy\DDLC\.causerland # Windows
+~/Library/RenPy/DDLC/.causerland # macOS
+~/.renpy/DDLC/.causerland # Linux
+</code></pre>
+<p>Users and app/service developers typically don't need to worry about the user file as classes exists for managing data in the userland folder.</p>
+<h2 id="readingwriting-data-for-the-current-user">Reading/writing data for the current user</h2>
+<p>Apps and services provide their own means of accessing sandboxed data. These classes ensure that the app or service can locally access only their data. App/service data is registered under its bundle ID.</p>
+<h3 id="appstorage"><code>AppStorage</code></h3>
+<p>For Candella apps, the <code>AppStorage</code> class is used to manage data. More information using AppStorage can be <a href="../03-candella-app/#app-storage">found in the documentation for creating Candella apps</a>.</p>
+<h3 id="servicestorage"><code>ServiceStorage</code></h3>
+<p>Likewise, core services in Candella utilize the <code>ServiceStorage</code> class. Like <code>AppStorage</code>, data is separated by bundle ID and is accessible via the <code>data</code> field of the <code>CACoreService</code> class.</p>
+<p>There are three methods available for managing service data:</p>
+<ul>
+<li><code>ServiceStorage.get_entry(field, raise_falsy=False)</code> will fetch the value for a field or return <code>None</code> if no value for the field was found. If <code>raise_falsy</code> is set to <code>True</code>, the method will instead raise an exception.</li>
+<li><code>ServiceStorage.set_entry(field, value)</code> will write the value <code>value</code> into the specified <code>field</code>.</li>
+<li><code>ServiceStorage.commit()</code> will commit all written changes to the current user's data file.</li>
+</ul>
+<div class="admonition danger">
+<p class="admonition-title">Sensitive Information</p>
+<p>Do <em><strong>not</strong></em> store sensitive information in service storage unless you are using cryptography to encrypt the information. Service storage is provided in the user's data file in a human-readable format and may be easily compromised if not encrypted properly.</p>
+</div>
+<h3 id="global-scope-access">Global scope access</h3>
+<p>There may be instances where you need to access application data outside of the app class. There are two static methods in the <code>CAUserData</code> class to handle this:</p>
+<h4 id="causerdataget_current_user_databundle_id"><code>CAUserData.get_current_user_data(bundle_id)</code></h4>
+<p>Returns the application data for the current user.</p>
+<p><strong>Arguments</strong></p>
+<ul>
+<li>bundle_id (str): The app's bundle ID.</li>
+</ul>
+<p><strong>Returns</strong></p>
+<ul>
+<li>app_data (dict): The user data for the specified app as a dictionary. If no data was found for the app, an empty dictionary will be returned.</li>
+</ul>
+<p><strong>Raises</strong></p>
+<p>If the app doesn't have permissions to open the data, CAUserDataPermissionError is raised.
+    If the user file doesn't exist, FileNotFoundError is raised. Otherwise, any other
+    exceptions from file opening and parsing may be thrown.</p>
+<h4 id="causerdatawrite_data_to_current_userbundle_id-data"><code>CAUserData.write_data_to_current_user(bundle_id, data={})</code></h4>
+<p>Writes the specified app data to the current user's file.</p>
+<p><strong>Arguments</strong></p>
+<ul>
+<li>bundle_id (str): The app's bundle ID</li>
+<li>data (dict): The data to write to the file for that bundle ID.</li>
+</ul>
+<p><strong>Raises</strong></p>
+<p>If the app doesn't have permissions to write the data, CAUserDataPermissionError is raised.
+    If the user file doesn't exist, FileNotFoundError is raised. Otherwise, any other
+    exceptions from file opening and writing may be thrown.</p>
+            </main>
+        </div>
+    </div>
+    <script>var base_url = '..';</script>
+
+</body>
+
+<footer>
+    <div class="p-strip p-strip--light is-shallow">
+        <div class="row">
+            <p>Copyright &copy; 2021 Unscripted VN Team.</p>
+            <p class="p-link--external"><a href="https://github.com/UnscriptedVN/candella">View the source</a></p>
+        </div>
+    </div>
+</footer>
+
+</html>

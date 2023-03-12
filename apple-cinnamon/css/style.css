@@ -1,0 +1,11 @@
+.cc-header {
+  background-color: #212121;
+  color: #f4f4f4;
+  height: auto;
+}
+
+.cc-header p {
+  font-size: 0.7em;
+  margin: 1px 0;
+  padding: 0;
+}
