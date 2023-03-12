@@ -78,8 +78,8 @@ init python:
                 store.tempPermission = False
                 renpy.call_screen(
                     "ASPermissionRequest",
-                    bundleName=self.bundleName,
                     requestingFor=forPermission,
+                    bundleName=self.bundleName,
                     onAcceptRequest=[SetVariable("tempPermission", True), Return(0)]
                 )
 

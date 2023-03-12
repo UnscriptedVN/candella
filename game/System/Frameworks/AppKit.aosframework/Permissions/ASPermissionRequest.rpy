@@ -6,7 +6,7 @@
 # Copyright © 2019 ProjectAliceDev. All rights reserved.
 #
 
-init screen ASPermissionRequest(bundleName="AS_APP_BUNDLE", requestingFor, onDeclineRequest=Return(1), onAcceptRequest=Return(0)):
+init screen ASPermissionRequest(requestingFor, bundleName="AS_APP_BUNDLE", onDeclineRequest=Return(1), onAcceptRequest=Return(0)):
     tag ASPermissionRequest
     style_prefix "ASPermissionRequest"
     zorder 100
